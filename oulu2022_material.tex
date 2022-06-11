@@ -563,7 +563,7 @@ the R session, if needed. Only uninstalled packages are installed.
 \begin{Highlighting}[]
 \CommentTok{\# If there are packages that need to be installed, install them }
 \ControlFlowTok{if}\NormalTok{( }\FunctionTok{length}\NormalTok{(packages\_to\_install) ) \{}
-   \FunctionTok{install.packages}\NormalTok{(packages\_to\_install)}
+\NormalTok{   BiocManager}\SpecialCharTok{::}\FunctionTok{install}\NormalTok{(packages\_to\_install)}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
@@ -586,9 +586,9 @@ mia and miaViz are prioritized. Packages that are loaded first have higher prior
 ## miaViz                 TRUE
 ## yulab.utils            TRUE
 ## ggtree                 TRUE
-## ANCOMBC               FALSE
+## ANCOMBC                TRUE
 ## ape                    TRUE
-## DESeq2                FALSE
+## DESeq2                 TRUE
 ## DirichletMultinomial   TRUE
 ## BiocManager            TRUE
 ## bookdown               TRUE

@@ -104,7 +104,7 @@ packages_to_install <- c( bioc_pkg_to_be_installed, cran_pkg_to_be_installed )
 ```r
 # If there are packages that need to be installed, install them 
 if( length(packages_to_install) ) {
-   install.packages(packages_to_install)
+   BiocManager::install(packages_to_install)
 }
 ```
 
@@ -125,9 +125,9 @@ as.data.frame(loaded)
 ## miaViz                 TRUE
 ## yulab.utils            TRUE
 ## ggtree                 TRUE
-## ANCOMBC               FALSE
+## ANCOMBC                TRUE
 ## ape                    TRUE
-## DESeq2                FALSE
+## DESeq2                 TRUE
 ## DirichletMultinomial   TRUE
 ## BiocManager            TRUE
 ## bookdown               TRUE
