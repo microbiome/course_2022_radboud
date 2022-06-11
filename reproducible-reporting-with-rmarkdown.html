@@ -4,34 +4,33 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Reproducible reporting with Rmarkdown | Questions for Lab 1, 2 and 3</title>
+  <title>4 Reproducible reporting with Rmarkdown | Multi-omic data science with R/Bioconductor</title>
   <meta name="description" content="Course material" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Reproducible reporting with Rmarkdown | Questions for Lab 1, 2 and 3" />
+  <meta property="og:title" content="4 Reproducible reporting with Rmarkdown | Multi-omic data science with R/Bioconductor" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Course material" />
   <meta name="github-repo" content="microbiome/course_2022_oulu" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Reproducible reporting with Rmarkdown | Questions for Lab 1, 2 and 3" />
+  <meta name="twitter:title" content="4 Reproducible reporting with Rmarkdown | Multi-omic data science with R/Bioconductor" />
   
   <meta name="twitter:description" content="Course material" />
   
 
-<meta name="author" content="Leo lahti &amp; Rajesh Shigdel" />
 
 
-<meta name="date" content="2022-04-23" />
+<meta name="date" content="2022-06-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="getting-started.html"/>
-<link rel="next" href="importing-microbiome-data.html"/>
+<link rel="prev" href="start.html"/>
+<link rel="next" href="material.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -52,8 +51,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -162,132 +159,33 @@ div.csl-indent {
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#learning-goals"><i class="fa fa-check"></i><b>1.2</b> Learning goals</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i><b>1.3</b> Schedule</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#material"><i class="fa fa-check"></i><b>1.4</b> Material</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#contents-and-learning-goals"><i class="fa fa-check"></i><b>1.1</b> Contents and learning goals</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#schedule-and-organizers"><i class="fa fa-check"></i><b>1.2</b> Schedule and organizers</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#how-to-apply"><i class="fa fa-check"></i><b>1.3</b> How to apply</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>1.4</b> Acknowledgments</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="organizers.html"><a href="organizers.html"><i class="fa fa-check"></i><b>2</b> Organizers</a>
+<li class="chapter" data-level="2" data-path="program.html"><a href="program.html"><i class="fa fa-check"></i><b>2</b> Program</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="organizers.html"><a href="organizers.html#acknowledgments"><i class="fa fa-check"></i><b>2.1</b> Acknowledgments</a></li>
+<li class="chapter" data-level="2.1" data-path="program.html"><a href="program.html#day-1---open-data-science"><i class="fa fa-check"></i><b>2.1</b> Day 1 - Open data science</a></li>
+<li class="chapter" data-level="2.2" data-path="program.html"><a href="program.html#day-2---tabular-data"><i class="fa fa-check"></i><b>2.2</b> Day 2 - Tabular data</a></li>
+<li class="chapter" data-level="2.3" data-path="program.html"><a href="program.html#day-3---multi-assay-data"><i class="fa fa-check"></i><b>2.3</b> Day 3 - Multi-assay data</a></li>
+<li class="chapter" data-level="2.4" data-path="program.html"><a href="program.html#day-4---advanced-topics"><i class="fa fa-check"></i><b>2.4</b> Day 4 - Advanced topics</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="program.html"><a href="program.html"><i class="fa fa-check"></i><b>3</b> Program</a>
+<li class="chapter" data-level="3" data-path="start.html"><a href="start.html"><i class="fa fa-check"></i><b>3</b> Getting started</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="program.html"><a href="program.html#day-1-from-raw-sequences-to-ecological-data-analysis"><i class="fa fa-check"></i><b>3.1</b> Day 1: from raw sequences to ecological data analysis</a></li>
-<li class="chapter" data-level="3.2" data-path="program.html"><a href="program.html#day-2---alpha-diversity"><i class="fa fa-check"></i><b>3.2</b> Day 2 - Alpha diversity</a></li>
-<li class="chapter" data-level="3.3" data-path="program.html"><a href="program.html#day-3---beta-diversity"><i class="fa fa-check"></i><b>3.3</b> Day 3 - Beta diversity</a></li>
-<li class="chapter" data-level="3.4" data-path="program.html"><a href="program.html#day-4--differential-abundance"><i class="fa fa-check"></i><b>3.4</b> Day 4- Differential abundance</a></li>
-<li class="chapter" data-level="3.5" data-path="program.html"><a href="program.html#day-5-presentations-closing"><i class="fa fa-check"></i><b>3.5</b> Day 5 : Presentations &amp; closing</a></li>
+<li class="chapter" data-level="3.1" data-path="start.html"><a href="start.html#checklist-before-the-course"><i class="fa fa-check"></i><b>3.1</b> Checklist (before the course)</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="start.html"><a href="start.html#csc-notebook"><i class="fa fa-check"></i><b>3.1.1</b> CSC Notebook</a></li>
+<li class="chapter" data-level="3.1.2" data-path="start.html"><a href="start.html#your-own-computer"><i class="fa fa-check"></i><b>3.1.2</b> (Your own computer)</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>4</b> Getting started</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="getting-started.html"><a href="getting-started.html#checklist-before-the-course"><i class="fa fa-check"></i><b>4.1</b> Checklist (before the course)</a></li>
-<li class="chapter" data-level="4.2" data-path="getting-started.html"><a href="getting-started.html#support-and-resources"><i class="fa fa-check"></i><b>4.2</b> Support and resources</a></li>
-<li class="chapter" data-level="4.3" data-path="getting-started.html"><a href="getting-started.html#installing-and-loading-the-required-r-packages"><i class="fa fa-check"></i><b>4.3</b> Installing and loading the required R packages</a></li>
+<li class="chapter" data-level="3.2" data-path="start.html"><a href="start.html#support-and-resources"><i class="fa fa-check"></i><b>3.2</b> Support and resources</a></li>
+<li class="chapter" data-level="3.3" data-path="start.html"><a href="start.html#packages"><i class="fa fa-check"></i><b>3.3</b> Installing and loading the required R packages</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="reproducible-reporting-with-rmarkdown.html"><a href="reproducible-reporting-with-rmarkdown.html"><i class="fa fa-check"></i><b>5</b> Reproducible reporting with Rmarkdown</a></li>
-<li class="chapter" data-level="6" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html"><i class="fa fa-check"></i><b>6</b> Importing microbiome data</a>
+<li class="chapter" data-level="4" data-path="reproducible-reporting-with-rmarkdown.html"><a href="reproducible-reporting-with-rmarkdown.html"><i class="fa fa-check"></i><b>4</b> Reproducible reporting with Rmarkdown</a></li>
+<li class="chapter" data-level="5" data-path="material.html"><a href="material.html"><i class="fa fa-check"></i><b>5</b> Study material</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#data-access"><i class="fa fa-check"></i><b>6.1</b> Data access</a></li>
-<li class="chapter" data-level="6.2" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#importing-microbiome-data-in-r"><i class="fa fa-check"></i><b>6.2</b> Importing microbiome data in R</a></li>
-<li class="chapter" data-level="6.3" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#example-solutions"><i class="fa fa-check"></i><b>6.3</b> Example solutions</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="microbiome-data-exploration.html"><a href="microbiome-data-exploration.html"><i class="fa fa-check"></i><b>7</b> Microbiome data exploration</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="microbiome-data-exploration.html"><a href="microbiome-data-exploration.html#data-structure"><i class="fa fa-check"></i><b>7.1</b> Data structure</a>
-<ul>
-<li class="chapter" data-level="7.1.1" data-path="microbiome-data-exploration.html"><a href="microbiome-data-exploration.html#transformations"><i class="fa fa-check"></i><b>7.1.1</b> Transformations</a></li>
-<li class="chapter" data-level="7.1.2" data-path="microbiome-data-exploration.html"><a href="microbiome-data-exploration.html#aggregation"><i class="fa fa-check"></i><b>7.1.2</b> Aggregation</a></li>
-</ul></li>
-<li class="chapter" data-level="7.2" data-path="microbiome-data-exploration.html"><a href="microbiome-data-exploration.html#visualization"><i class="fa fa-check"></i><b>7.2</b> Visualization</a></li>
-<li class="chapter" data-level="7.3" data-path="microbiome-data-exploration.html"><a href="microbiome-data-exploration.html#exercises-optional"><i class="fa fa-check"></i><b>7.3</b> Exercises (optional)</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="alpha-diversity.html"><a href="alpha-diversity.html"><i class="fa fa-check"></i><b>8</b> Alpha diversity</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="alpha-diversity.html"><a href="alpha-diversity.html#visualization-1"><i class="fa fa-check"></i><b>8.1</b> Visualization</a></li>
-<li class="chapter" data-level="8.2" data-path="alpha-diversity.html"><a href="alpha-diversity.html#statistical-testing-and-comparisons"><i class="fa fa-check"></i><b>8.2</b> Statistical testing and comparisons</a></li>
-<li class="chapter" data-level="8.3" data-path="alpha-diversity.html"><a href="alpha-diversity.html#exercises"><i class="fa fa-check"></i><b>8.3</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="beta-diversity.html"><a href="beta-diversity.html"><i class="fa fa-check"></i><b>9</b> Beta diversity</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="beta-diversity.html"><a href="beta-diversity.html#examples-of-pcoa-with-different-settings"><i class="fa fa-check"></i><b>9.1</b> Examples of PCoA with different settings</a>
-<ul>
-<li class="chapter" data-level="9.1.1" data-path="beta-diversity.html"><a href="beta-diversity.html#pcoa-for-asv-level-data-with-bray-curtis"><i class="fa fa-check"></i><b>9.1.1</b> PCoA for ASV-level data with Bray-Curtis</a></li>
-<li class="chapter" data-level="9.1.2" data-path="beta-diversity.html"><a href="beta-diversity.html#pcoa-for-asv-level-data-with-aitchison-distance"><i class="fa fa-check"></i><b>9.1.2</b> PCoA for ASV-level data with Aitchison distance</a></li>
-<li class="chapter" data-level="9.1.3" data-path="beta-diversity.html"><a href="beta-diversity.html#pcoa-aggregated-to-phylum-level"><i class="fa fa-check"></i><b>9.1.3</b> PCoA aggregated to Phylum level</a></li>
-</ul></li>
-<li class="chapter" data-level="9.2" data-path="beta-diversity.html"><a href="beta-diversity.html#highlighting-external-variables"><i class="fa fa-check"></i><b>9.2</b> Highlighting external variables</a>
-<ul>
-<li class="chapter" data-level="9.2.1" data-path="beta-diversity.html"><a href="beta-diversity.html#discrete-grouping-variable-shown-with-colors"><i class="fa fa-check"></i><b>9.2.1</b> Discrete grouping variable shown with colors</a></li>
-<li class="chapter" data-level="9.2.2" data-path="beta-diversity.html"><a href="beta-diversity.html#pcoa-plot-with-continuous-variable"><i class="fa fa-check"></i><b>9.2.2</b> PCoA plot with continuous variable</a></li>
-</ul></li>
-<li class="chapter" data-level="9.3" data-path="beta-diversity.html"><a href="beta-diversity.html#estimating-associations-with-an-external-variable"><i class="fa fa-check"></i><b>9.3</b> Estimating associations with an external variable</a></li>
-<li class="chapter" data-level="9.4" data-path="beta-diversity.html"><a href="beta-diversity.html#community-typing"><i class="fa fa-check"></i><b>9.4</b> Community typing</a></li>
-<li class="chapter" data-level="9.5" data-path="beta-diversity.html"><a href="beta-diversity.html#exercises-1"><i class="fa fa-check"></i><b>9.5</b> Exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="differential-abundance-analysis.html"><a href="differential-abundance-analysis.html"><i class="fa fa-check"></i><b>10</b> Differential abundance analysis</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="differential-abundance-analysis.html"><a href="differential-abundance-analysis.html#wilcoxon-test"><i class="fa fa-check"></i><b>10.1</b> Wilcoxon test</a></li>
-<li class="chapter" data-level="10.2" data-path="differential-abundance-analysis.html"><a href="differential-abundance-analysis.html#ancom-bc"><i class="fa fa-check"></i><b>10.2</b> ANCOM-BC</a></li>
-<li class="chapter" data-level="10.3" data-path="differential-abundance-analysis.html"><a href="differential-abundance-analysis.html#comparison-of-the-methods"><i class="fa fa-check"></i><b>10.3</b> Comparison of the methods</a></li>
-<li class="chapter" data-level="10.4" data-path="differential-abundance-analysis.html"><a href="differential-abundance-analysis.html#comparison-of-abundance"><i class="fa fa-check"></i><b>10.4</b> Comparison of abundance</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="study-material.html"><a href="study-material.html"><i class="fa fa-check"></i><b>11</b> Study material</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="study-material.html"><a href="study-material.html#lecture-slides"><i class="fa fa-check"></i><b>11.1</b> Lecture slides</a></li>
-<li class="chapter" data-level="11.2" data-path="study-material.html"><a href="study-material.html#r-programming-resources"><i class="fa fa-check"></i><b>11.2</b> R programming resources</a></li>
-<li class="chapter" data-level="11.3" data-path="study-material.html"><a href="study-material.html#resources-for-treesummarizedexperiment"><i class="fa fa-check"></i><b>11.3</b> Resources for TreeSummarizedExperiment</a></li>
-<li class="chapter" data-level="11.4" data-path="study-material.html"><a href="study-material.html#resources-for-phyloseq"><i class="fa fa-check"></i><b>11.4</b> Resources for phyloseq</a></li>
-<li class="chapter" data-level="11.5" data-path="study-material.html"><a href="study-material.html#further-reading"><i class="fa fa-check"></i><b>11.5</b> Further reading</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="additional-community-typing.html"><a href="additional-community-typing.html"><i class="fa fa-check"></i><b>12</b> Additional Community Typing</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="additional-community-typing.html"><a href="additional-community-typing.html#community-composition"><i class="fa fa-check"></i><b>12.1</b> Community composition</a>
-<ul>
-<li class="chapter" data-level="12.1.1" data-path="additional-community-typing.html"><a href="additional-community-typing.html#composition-barplot"><i class="fa fa-check"></i><b>12.1.1</b> Composition barplot</a></li>
-<li class="chapter" data-level="12.1.2" data-path="additional-community-typing.html"><a href="additional-community-typing.html#composition-heatmap"><i class="fa fa-check"></i><b>12.1.2</b> Composition heatmap</a></li>
-</ul></li>
-<li class="chapter" data-level="12.2" data-path="additional-community-typing.html"><a href="additional-community-typing.html#cluster-into-csts"><i class="fa fa-check"></i><b>12.2</b> Cluster into CSTs</a>
-<ul>
-<li class="chapter" data-level="12.2.1" data-path="additional-community-typing.html"><a href="additional-community-typing.html#elbow-method"><i class="fa fa-check"></i><b>12.2.1</b> Elbow Method</a></li>
-<li class="chapter" data-level="12.2.2" data-path="additional-community-typing.html"><a href="additional-community-typing.html#silhouette-method"><i class="fa fa-check"></i><b>12.2.2</b> Silhouette Method</a></li>
-<li class="chapter" data-level="12.2.3" data-path="additional-community-typing.html"><a href="additional-community-typing.html#gap-statistic-method"><i class="fa fa-check"></i><b>12.2.3</b> Gap-Statistic Method</a></li>
-</ul></li>
-<li class="chapter" data-level="12.3" data-path="additional-community-typing.html"><a href="additional-community-typing.html#holmes-and-mcmurdie-workflow"><i class="fa fa-check"></i><b>12.3</b> Holmes and McMurdie Workflow</a>
-<ul>
-<li class="chapter" data-level="12.3.1" data-path="additional-community-typing.html"><a href="additional-community-typing.html#jensen-shannon-distance"><i class="fa fa-check"></i><b>12.3.1</b> Jensen-Shannon Distance</a></li>
-<li class="chapter" data-level="12.3.2" data-path="additional-community-typing.html"><a href="additional-community-typing.html#nonmetric-multidimensional-scaling"><i class="fa fa-check"></i><b>12.3.2</b> NonMetric Multidimensional Scaling</a></li>
-<li class="chapter" data-level="12.3.3" data-path="additional-community-typing.html"><a href="additional-community-typing.html#chi-squared-correspondence-results"><i class="fa fa-check"></i><b>12.3.3</b> Chi-Squared Correspondence Results</a></li>
-<li class="chapter" data-level="12.3.4" data-path="additional-community-typing.html"><a href="additional-community-typing.html#bray-curtis-mds"><i class="fa fa-check"></i><b>12.3.4</b> Bray-Curtis MDS</a></li>
-<li class="chapter" data-level="12.3.5" data-path="additional-community-typing.html"><a href="additional-community-typing.html#bray-curtis-nmds"><i class="fa fa-check"></i><b>12.3.5</b> Bray-Curtis NMDS</a></li>
-<li class="chapter" data-level="12.3.6" data-path="additional-community-typing.html"><a href="additional-community-typing.html#other-distances-from-the-philentropy-package"><i class="fa fa-check"></i><b>12.3.6</b> Other distances from the Philentropy package</a></li>
-<li class="chapter" data-level="12.3.7" data-path="additional-community-typing.html"><a href="additional-community-typing.html#add-a-clustering-variable"><i class="fa fa-check"></i><b>12.3.7</b> Add a Clustering Variable</a></li>
-<li class="chapter" data-level="12.3.8" data-path="additional-community-typing.html"><a href="additional-community-typing.html#more-clustering"><i class="fa fa-check"></i><b>12.3.8</b> More Clustering</a></li>
-</ul></li>
-<li class="chapter" data-level="12.4" data-path="additional-community-typing.html"><a href="additional-community-typing.html#cst-analysis"><i class="fa fa-check"></i><b>12.4</b> CST Analysis</a></li>
-<li class="chapter" data-level="12.5" data-path="additional-community-typing.html"><a href="additional-community-typing.html#session-info"><i class="fa fa-check"></i><b>12.5</b> Session Info</a></li>
-<li class="chapter" data-level="12.6" data-path="additional-community-typing.html"><a href="additional-community-typing.html#bibliography"><i class="fa fa-check"></i><b>12.6</b> Bibliography</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>13</b> Exercise Solutions</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#section-5"><i class="fa fa-check"></i><b>13.1</b> Section 5</a></li>
-<li class="chapter" data-level="13.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#section-6"><i class="fa fa-check"></i><b>13.2</b> Section 6</a></li>
-<li class="chapter" data-level="13.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#section-7"><i class="fa fa-check"></i><b>13.3</b> Section 7</a></li>
-<li class="chapter" data-level="13.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#section-8"><i class="fa fa-check"></i><b>13.4</b> Section 8</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="tutorial-aims.html"><a href="tutorial-aims.html"><i class="fa fa-check"></i><b>14</b> Tutorial Aims</a></li>
-<li class="chapter" data-level="15" data-path="lab-1.html"><a href="lab-1.html"><i class="fa fa-check"></i><b>15</b> Lab 1</a>
-<ul>
-<li class="chapter" data-level="15.1" data-path="lab-1.html"><a href="lab-1.html#unsupervised-learning-feature-selection-dimension-reduction"><i class="fa fa-check"></i><b>15.1</b> unsupervised learning: Feature selection &amp; dimension reduction</a></li>
-<li class="chapter" data-level="15.2" data-path="lab-1.html"><a href="lab-1.html#load-the-data"><i class="fa fa-check"></i><b>15.2</b> Load the data</a></li>
-</ul></li>
-<li class="chapter" data-level="16" data-path="lab-2.html"><a href="lab-2.html"><i class="fa fa-check"></i><b>16</b> Lab 2</a>
-<ul>
-<li class="chapter" data-level="16.1" data-path="lab-2.html"><a href="lab-2.html#unsupervised-learning-clustering-visualization"><i class="fa fa-check"></i><b>16.1</b> unsupervised learning: clustering &amp; visualization</a></li>
-</ul></li>
-<li class="chapter" data-level="17" data-path="lab-3.html"><a href="lab-3.html"><i class="fa fa-check"></i><b>17</b> Lab 3</a>
-<ul>
-<li class="chapter" data-level="17.1" data-path="lab-3.html"><a href="lab-3.html#unsupervised-learninganalysis-and-interpretation"><i class="fa fa-check"></i><b>17.1</b> unsupervised learning:Analysis and interpretation</a></li>
+<li class="chapter" data-level="5.1" data-path="material.html"><a href="material.html#lecture-slides"><i class="fa fa-check"></i><b>5.1</b> Lecture slides</a></li>
+<li class="chapter" data-level="5.2" data-path="material.html"><a href="material.html#further-reading"><i class="fa fa-check"></i><b>5.2</b> Further reading</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -301,7 +199,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Questions for Lab 1, 2 and 3</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Multi-omic data science with R/Bioconductor</a>
           </h1>
         </div>
 
@@ -309,24 +207,25 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="reproducible-reporting-with-rmarkdown" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Reproducible reporting with Rmarkdown<a href="reproducible-reporting-with-rmarkdown.html#reproducible-reporting-with-rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="reproducible-reporting-with-rmarkdown" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Reproducible reporting with Rmarkdown<a href="reproducible-reporting-with-rmarkdown.html#reproducible-reporting-with-rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Reproducible reporting is the starting point for robust interactive
 data science. Perform the following tasks:</p>
 <ul>
-<li><p>Create a Rmarkdown template in RStudio, and render it into a
-document (markdown, PDF, docx or other format)</p></li>
 <li><p>If you are entirely new to Markdown, take
 <a href="https://www.markdowntutorial.com/">this</a> 10 minute tutorial to get
 introduced to the most important functions within Markdown. Then
 experiment with different options with
 <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">Rmarkdown</a></p></li>
-</ul>
-<p>In case you are new to Rmarkdown <a href="https://rmarkdown.rstudio.com/lesson-1.html">Rstudio provides
+<li><p>Create a Rmarkdown template in RStudio, and render it into a
+document (markdown, PDF, docx or other format). In case you are new
+to Rmarkdown <a href="https://rmarkdown.rstudio.com/lesson-1.html">Rstudio provides
 resources</a> to learn
-about the use cases and the basics of Rmarkdown. A good online
-tutorial to reproducible reporting is available by <a href="https://rpubs.com/marschmi/RMarkdown">Dr. C Titus
-Brown</a>.</p>
+about the use cases and the basics of Rmarkdown.</p></li>
+<li><p>Further examples are tips for Rmarkdown are available in the
+online tutorial to reproducible reporting by <a href="https://rpubs.com/marschmi/RMarkdown">Dr. C Titus
+Brown</a>.</p></li>
+</ul>
 
 </div>
             </section>
@@ -334,8 +233,8 @@ Brown</a>.</p>
           </div>
         </div>
       </div>
-<a href="getting-started.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="importing-microbiome-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="start.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="material.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -377,7 +276,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["radboud2021_material.pdf"],
+"download": ["oulu2022_material.pdf"],
 "search": {
 "engine": "fuse",
 "options": null
@@ -389,20 +288,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

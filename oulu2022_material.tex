@@ -1,0 +1,653 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  oneside]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Multi-omic data science with R/Bioconductor},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[top=30mm,left=15mm]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{Multi-omic data science with R/Bioconductor}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Welcome to Oulu Summer School, June 2022}
+\author{}
+\date{\vspace{-2.5em}2022-06-11}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{overview}{%
+\chapter{Overview}\label{overview}}
+
+\hypertarget{contents-and-learning-goals}{%
+\section{Contents and learning goals}\label{contents-and-learning-goals}}
+
+This course will teach the \textbf{basics of biomedical data analysis with
+R/Bioconductor}, a popular open source environment for scientific
+data analysis. The participants get an overview of the reproducible
+data analysis workflow in modern multi-omics, with a focus on recent
+examples from published microbiome studies. After the course you will
+know how to approach new tasks in biomedical data analysis by
+utilizing available documentation and R tools.
+
+The teaching will follow open online documentation created by the
+course teachers, extending the online book Orchestrating Microbiome
+Analysis (\url{https://microbiome.github.io/OMA}). The openly licensed
+teaching material will be available online during and after the
+course, following national recommendations on open education.
+
+The training material walks you through the standard steps of
+biomedical data analysis covering data access, exploration, analysis,
+visualization, reproducible reporting, and best practices in open
+science. We will teach generic data analytical skills that are
+applicable to common data analysis tasks encountered in modern omics
+research. The teaching format allows adaptations according to the
+student's learning speed.
+
+\hypertarget{schedule-and-organizers}{%
+\section{Schedule and organizers}\label{schedule-and-organizers}}
+
+The course will be organized in a live format (Flyer)
+
+\textbf{Venue} University of Oulu. June 20-23, 2022.
+
+\textbf{Schedule} Contact teaching daily between 9am -- 5pm, including
+lectures, demonstrations, hands-on sessions, and breaks. A
+detailed schedule is available at the course website:
+(\url{https://microbiome.github.io/course_2022_oulu}).
+
+\textbf{Teachers and organizers}
+
+\href{https://datascience.utu.fi}{Leo Lahti} is the main teacher and Associate Professor in Data Science at the University of Turku, with specialization on biomedical data analysis. Course assistants are \emph{Tuomas Borman} (University of Turku) is one of the main developers of the open training material covered by the course and \emph{Jenni Hekkala}, a PhD researcher at the University of Oulu, in the group of the course coordinator Docent \emph{Justus Reunanen}.
+
+The course is jointly organized by
+
+\begin{itemize}
+\tightlist
+\item
+  Health and Biosciences Doctoral Programme University of Oulu Graduate School
+\item
+  Cancer \& Translational Medicine Research Unit, University of Oulu
+\item
+  Department of Computing, University of Turku, Finland
+\item
+  Finnish IT Center for Science (CSC) supports the course with cloud
+  computing services
+\end{itemize}
+
+\hypertarget{how-to-apply}{%
+\section{How to apply}\label{how-to-apply}}
+
+\textbf{Target audience}
+
+The course is primarily designed for advanced MSc and PhD students,
+Postdocs, and biomedical researchers who wish to learn and develop new skills in
+scientific programming and biomedical data analysis. Academic students
+and researchers from Finland and abroad are welcome and encouraged to
+apply. The course has limited capacity of max 20 participants, and
+priority will given for local students from Oulu.
+
+\textbf{Expected background} Some earlier experience with R or another
+programming language is recommended. However, this can be
+compensated by familiarizing with the course material in advance, if
+necessary. The teaching format allows adaptations according to the
+student's learning speed.
+
+\textbf{Application}
+
+\begin{itemize}
+\tightlist
+\item
+  Send a brief motivation letter to Jenni Hekkala \href{mailto:first.last@oulu.fi}{\nolinkurl{first.last@oulu.fi}}
+\item
+  Applications sent before May 20 will be given priority
+\end{itemize}
+
+\textbf{Course fee}
+
+The course fee covers contact teaching and teaching material.
+
+\begin{itemize}
+\tightlist
+\item
+  285 euros with registration by May 20, 2022
+\item
+  350 euros with registration after May 20, 2022
+\item
+  Local students are exempted from the fee
+\end{itemize}
+
+\textbf{Accommodation}
+
+Accommodation and travel costs are not included in the registration fee. For
+accommodation tips, see \url{https://visitoulu.fi/en/arrival-overnight/}
+
+\hypertarget{acknowledgments}{%
+\section{Acknowledgments}\label{acknowledgments}}
+
+\textbf{Citation} We thank all \href{https://microbiome.github.io}{developers and contributors} who have contributed open resources that supported the development of the training material. Kindly cite the course material as \citet{miacourse}
+
+\textbf{Contact} See \url{https://microbiome.github.io}
+
+\textbf{License and source code}
+
+All material is released under the open \href{LICENSE}{CC BY-NC-SA 3.0 License} and available online during and after the course, following the \href{https://avointiede.fi/fi/linjaukset-ja-aineistot/kotimaiset-linjaukset/oppimisen-ja-oppimateriaalien-avoimuuden-linjaus}{recommendations on open teaching materials} of the national open science coordination in Finland**.
+
+The source code of this repository is reproducible and contains
+the Rmd files with executable code. All files can be rendered at one
+go by running the file \url{main.R}. You can check the file for
+details on how to clone the repository and convert it into a gitbook,
+although this is not necessary for the training.
+
+\begin{itemize}
+\tightlist
+\item
+  Source code (github): \href{https://github.com/microbiome/course_2022_oulu}{miaverse teaching material}
+\item
+  Course page (html): \href{https://microbiome.github.io/course_2022_oulu/}{miaverse teaching material}
+\end{itemize}
+
+\hypertarget{program}{%
+\chapter{Program}\label{program}}
+
+The course takes place daily from 9am -- 5pm (CEST), including
+coffee and lunch breaks.
+
+We expect that participants will prepare for the course in advance, see section
+\ref{start}. Online support is available.
+
+The material follows open online book created by the course teachers,
+Orchestrating Microbiome Analysis
+\url{https://microbiome.github.io/OMA}. This is R/Bioconductor framework for
+multi-omic data science.
+
+Figure source: Moreno-Indias \emph{et al}. (2021) \href{https://doi.org/10.3389/fmicb.2021.635781}{Statistical and Machine Learning Techniques in Human Microbiome Studies: Contemporary Challenges and Solutions}. Frontiers in Microbiology 12:11.
+
+\hypertarget{day-1---open-data-science}{%
+\section{Day 1 - Open data science}\label{day-1---open-data-science}}
+
+\textbf{Morning session}
+
+9-10 Coffee, Welcome \& Practicalities
+
+10-11 Lecture: Open \& reproducible workflows
+
+11-12 Demo \& hands-on: Introduction to CSC RStudio notebook
+
+12-13 Lunch break
+
+\textbf{Afternoon hands-on session}
+
+13-15 Demo: Data science framework
+
+15-17 Hands-on: microbiome data summaries \& exploration
+
+17-18 Presentations \& Discussion
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{day-2---tabular-data}{%
+\section{Day 2 - Tabular data}\label{day-2---tabular-data}}
+
+\textbf{Morning session}
+
+9-10 Lecture: Analysis \& visualization of \emph{tabular data}
+
+10-12 Demo \& hands-on: Univariate methods
+
+12-13 Lunch break
+
+\textbf{Afternoon hands-on session}
+
+13-14 Demo: Multivariate data analysis \& visualization
+
+14-17 Hands-on: Multivariate data analysis \& visualization
+
+17-18 Presentations \& Discussion
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{day-3---multi-assay-data}{%
+\section{Day 3 - Multi-assay data}\label{day-3---multi-assay-data}}
+
+\textbf{Morning session}
+
+9-10 Lecture: multi-omic data integration
+
+10-12 Demo \& hands-on: multi-assay data container
+
+12-13 Lunch break
+
+\textbf{Afternoon hands-on session}
+
+13-15: Demo \& hands-on: association analysis
+
+13-17: Demo \& hands-on: machine learning
+
+17-18 Presentations \& Discussion
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{day-4---advanced-topics}{%
+\section{Day 4 - Advanced topics}\label{day-4---advanced-topics}}
+
+\textbf{Morning session}
+
+9-10 Summary of the learning material
+
+10-12 Demo \& hands-on: custom data \& advanced tools
+
+12-13 Q \& A session
+
+\textbf{Afternoon session}
+
+13-14 Lunch
+
+14-16 Wrap-up
+
+\hypertarget{start}{%
+\chapter{Getting started}\label{start}}
+
+\hypertarget{checklist-before-the-course}{%
+\section{Checklist (before the course)}\label{checklist-before-the-course}}
+
+\hypertarget{csc-notebook}{%
+\subsection{CSC Notebook}\label{csc-notebook}}
+
+We will provide a temporary access to a cloud computing environment
+that readily contains the available software packages. Instructions to access
+the environment will be sent to the registered participants.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Read the \href{https://docs.csc.fi/cloud/csc_notebooks/guide_for_students/}{instructions}
+\item
+  Go to the \href{https://notebooks-beta.rahtiapp.fi/welcome}{CSC notebook frontpage}
+\item
+  Login
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Haka login
+
+    \begin{itemize}
+    \tightlist
+    \item
+      If you have a Finnish university account, you should be able to login with Haka
+    \end{itemize}
+
+    \begin{enumerate}
+    \def\labelenumiii{\arabic{enumiii}.}
+    \tightlist
+    \item
+      Press \textbf{Login} button from the frontpage
+    \item
+      Press \textbf{Haka} button
+    \item
+      Select right organization
+    \item
+      Enter login information
+    \end{enumerate}
+  \item
+    CSC login
+
+    \begin{itemize}
+    \tightlist
+    \item
+      You can create a CSC account by following the \href{https://research.csc.fi/accounts-and-projects}{instructions}
+    \end{itemize}
+
+    \begin{enumerate}
+    \def\labelenumiii{\arabic{enumiii}.}
+    \tightlist
+    \item
+      Press \textbf{Login} button from the frontpage
+    \item
+      Press \textbf{CSC} button
+    \item
+      Enter login information
+    \end{enumerate}
+  \item
+    Special login
+
+    \begin{itemize}
+    \tightlist
+    \item
+      For those who cannot login with Haka or CSC account
+    \end{itemize}
+
+    \begin{enumerate}
+    \def\labelenumiii{\arabic{enumiii}.}
+    \tightlist
+    \item
+      \href{https://microbiome.github.io/course_2022_oulu/organizers.html\#acknowledgments}{Contact us} if you are not able to login
+    \item
+      We give you a guest account
+    \item
+      Press \textbf{Special Login} button from the frontpage (below the \textbf{Login} button)
+    \item
+      Enter login information (username goes to \textbf{email} slot)
+    \end{enumerate}
+  \end{enumerate}
+\item
+  Join workspace
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Press \textbf{Join workspace} button (Top right corner)
+  \item
+    Enter the \textbf{Join Code} (Check your email)
+  \end{enumerate}
+\item
+  Start session
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Press \textbf{ON} button
+  \end{enumerate}
+\item
+  You can save files to \textbf{my-work} directory. They are kept stored even when the session is closed. \textbf{shared} folder is shared with all participants.
+\end{enumerate}
+
+\hypertarget{your-own-computer}{%
+\subsection{(Your own computer)}\label{your-own-computer}}
+
+Setting up the system on your own computer is not required for the
+course but it can be useful for later use. The required software:
+
+\begin{itemize}
+\item
+  \href{https://www.r-project.org/}{R (version \textgreater4.1.0)}
+\item
+  \href{https://www.rstudio.com/products/rstudio/download/}{RStudio};
+  choose ``Rstudio Desktop'' to download the latest version. Optional
+  but preferred. For further details, check the \href{https://www.rstudio.com/}{Rstudio home
+  page}.
+\item
+  Install and load the required R packages (see Section \ref{packages})
+\item
+  After a successful installation you can start with the
+  case study examples in this training material
+\end{itemize}
+
+\hypertarget{support-and-resources}{%
+\section{Support and resources}\label{support-and-resources}}
+
+\begin{itemize}
+\item
+  Online support on installation and other matters, join us at \href{https://gitter.im/microbiome/miaverse?utm_source=badge\&utm_medium=badge\&utm_campaign=pr-badge\&utm_content=badge}{Gitter}
+\item
+  Additional reading and online material are listed in Section \ref{material}.
+\end{itemize}
+
+\textbf{You can run the workflows by simply copy-pasting the examples.} For
+further, advanced material, you can test and modify further examples
+from the online book, and apply these techniques to your own data.
+
+\hypertarget{packages}{%
+\section{Installing and loading the required R packages}\label{packages}}
+
+Note that the CSC/RStudio environment has readily installed setup. You
+may need the examples from this subsection if you are installing the
+environment on your own computer. If you need to add new packages, you
+can modify the examples below.
+
+This section shows how to install and load all required packages into
+the R session, if needed. Only uninstalled packages are installed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# List of packages that we need from cran and bioc }
+\NormalTok{cran\_pkg }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"BiocManager"}\NormalTok{, }\StringTok{"bookdown"}\NormalTok{, }\StringTok{"dplyr"}\NormalTok{, }\StringTok{"ecodist"}\NormalTok{, }\StringTok{"ggplot2"}\NormalTok{, }
+              \StringTok{"gridExtra"}\NormalTok{, }\StringTok{"kableExtra"}\NormalTok{,  }\StringTok{"knitr"}\NormalTok{, }\StringTok{"scales"}\NormalTok{, }\StringTok{"vegan"}\NormalTok{, }\StringTok{"matrixStats"}\NormalTok{)}
+\NormalTok{bioc\_pkg }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"yulab.utils"}\NormalTok{,}\StringTok{"ggtree"}\NormalTok{,}\StringTok{"ANCOMBC"}\NormalTok{, }\StringTok{"ape"}\NormalTok{, }\StringTok{"DESeq2"}\NormalTok{, }\StringTok{"DirichletMultinomial"}\NormalTok{, }\StringTok{"mia"}\NormalTok{, }\StringTok{"miaViz"}\NormalTok{)}
+
+\CommentTok{\# Get those packages that are already installed}
+\NormalTok{cran\_pkg\_already\_installed }\OtherTok{\textless{}{-}}\NormalTok{ cran\_pkg[ cran\_pkg }\SpecialCharTok{\%in\%} \FunctionTok{installed.packages}\NormalTok{() ]}
+\NormalTok{bioc\_pkg\_already\_installed }\OtherTok{\textless{}{-}}\NormalTok{ bioc\_pkg[ bioc\_pkg }\SpecialCharTok{\%in\%} \FunctionTok{installed.packages}\NormalTok{() ]}
+
+\CommentTok{\# Get those packages that need to be installed}
+\NormalTok{cran\_pkg\_to\_be\_installed }\OtherTok{\textless{}{-}} \FunctionTok{setdiff}\NormalTok{(cran\_pkg, cran\_pkg\_already\_installed)}
+\NormalTok{bioc\_pkg\_to\_be\_installed }\OtherTok{\textless{}{-}} \FunctionTok{setdiff}\NormalTok{(bioc\_pkg, bioc\_pkg\_already\_installed)}
+
+\CommentTok{\# Reorders bioc packages, so that mia and miaViz are first}
+\NormalTok{bioc\_pkg }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(bioc\_pkg[ bioc\_pkg }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"mia"}\NormalTok{, }\StringTok{"miaViz"}\NormalTok{) ], }
+\NormalTok{              bioc\_pkg[ }\SpecialCharTok{!}\NormalTok{bioc\_pkg }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"mia"}\NormalTok{, }\StringTok{"miaViz"}\NormalTok{) ] ) }
+
+\CommentTok{\# Combine to one vector}
+\NormalTok{packages }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(bioc\_pkg, cran\_pkg)}
+\NormalTok{packages\_to\_install }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{( bioc\_pkg\_to\_be\_installed, cran\_pkg\_to\_be\_installed )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# If there are packages that need to be installed, install them }
+\ControlFlowTok{if}\NormalTok{( }\FunctionTok{length}\NormalTok{(packages\_to\_install) ) \{}
+   \FunctionTok{install.packages}\NormalTok{(packages\_to\_install)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Now all required packages are installed, so let's load them into the session.
+Some function names occur in multiple packages. That is why miaverse's packages
+mia and miaViz are prioritized. Packages that are loaded first have higher priority.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Loading all packages into session. Returns true if package was successfully loaded.}
+\NormalTok{loaded }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(packages, require, }\AttributeTok{character.only =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{as.data.frame}\NormalTok{(loaded)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                      loaded
+## mia                    TRUE
+## miaViz                 TRUE
+## yulab.utils            TRUE
+## ggtree                 TRUE
+## ANCOMBC               FALSE
+## ape                    TRUE
+## DESeq2                FALSE
+## DirichletMultinomial   TRUE
+## BiocManager            TRUE
+## bookdown               TRUE
+## dplyr                  TRUE
+## ecodist                TRUE
+## ggplot2                TRUE
+## gridExtra              TRUE
+## kableExtra             TRUE
+## knitr                  TRUE
+## scales                 TRUE
+## vegan                  TRUE
+## matrixStats            TRUE
+\end{verbatim}
+
+\hypertarget{reproducible-reporting-with-rmarkdown}{%
+\chapter{Reproducible reporting with Rmarkdown}\label{reproducible-reporting-with-rmarkdown}}
+
+Reproducible reporting is the starting point for robust interactive
+data science. Perform the following tasks:
+
+\begin{itemize}
+\item
+  If you are entirely new to Markdown, take
+  \href{https://www.markdowntutorial.com/}{this} 10 minute tutorial to get
+  introduced to the most important functions within Markdown. Then
+  experiment with different options with
+  \href{https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf}{Rmarkdown}
+\item
+  Create a Rmarkdown template in RStudio, and render it into a
+  document (markdown, PDF, docx or other format). In case you are new
+  to Rmarkdown \href{https://rmarkdown.rstudio.com/lesson-1.html}{Rstudio provides
+  resources} to learn
+  about the use cases and the basics of Rmarkdown.
+\item
+  Further examples are tips for Rmarkdown are available in the
+  online tutorial to reproducible reporting by \href{https://rpubs.com/marschmi/RMarkdown}{Dr.~C Titus
+  Brown}.
+\end{itemize}
+
+\hypertarget{material}{%
+\chapter{Study material}\label{material}}
+
+\hypertarget{lecture-slides}{%
+\section{Lecture slides}\label{lecture-slides}}
+
+\href{https://github.com/microbiome/course_2022_oulu/tree/main/slides}{Slides} (will be added).
+
+\hypertarget{further-reading}{%
+\section{Further reading}\label{further-reading}}
+
+\begin{itemize}
+\item
+  \href{https://datacarpentry.org/R-ecology-lesson/}{Data Analysis and Visualization in R for Ecologists} by Data Carpentry
+\item
+  \href{http://web.stanford.edu/class/bios221/book/}{Modern Statistics for Modern Biology. Holmes \& Huber (2018)} for background in statistical analysis
+\item
+  \href{https://openresearchlabs.github.io/publications/papers/2018-Shetty-Lahti-MDS.pdf}{Microbiome Data Science. Shetty \& Lahti, 2019}
+\end{itemize}
+
+  \bibliography{packages.bib}
+
+\end{document}

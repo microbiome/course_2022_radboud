@@ -12,3 +12,14 @@ pre {
 pre code {
   white-space: inherit;
 }
+
+
+.book .book-summary ul.summary li a, .book .book-summary ul.summary li span {
+  color: #87b13f;
+  font-weight: bold;
+}
+
+body{
+  padding: 10px;
+  background: #87b13f;
+}
