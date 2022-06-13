@@ -56,14 +56,13 @@ course but it can be useful for later use. The required software:
 
 ## Support and resources
 
- * Online support on installation and other matters, join us at [Gitter](https://gitter.im/microbiome/miaverse?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
- * Additional reading and online material are listed in Section \@ref(material).
-
+ * We recommend to have a look at the additional reading tips and try out online material listed in Section \@ref(material).
 
 **You can run the workflows by simply copy-pasting the examples.** For
 further, advanced material, you can test and modify further examples
 from the online book, and apply these techniques to your own data.
+
+ * Online support on installation and other matters, join us at [Gitter](https://gitter.im/microbiome/miaverse?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
 ## Installing and loading the required R packages {#packages}
