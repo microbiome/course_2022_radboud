@@ -1,5 +1,13 @@
 # Study material {#material}
 
+## Online tutorial
+
+The course will utilize material from the online book (beta version)
+[Orchestrating Microbiome Analysis with R/Bioconductor (OMA)](https://microbiome.github.io/OMA/).
+
+We encourage to familiarize with the material and test examples
+already before the course.
+
 
 ## Lecture slides
 
