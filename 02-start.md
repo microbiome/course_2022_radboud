@@ -24,7 +24,7 @@ the environment will be sent to the registered participants.
         3. Enter login information
     c. Special login
         * For those who cannot login with Haka or CSC account
-        1. [Contact us](https://microbiome.github.io/course_2022_oulu/organizers.html#acknowledgments) if you are not able to login
+        1. Contact Tuomas by email (first.v.last@utu.fi)  if you are not able to login
         2. We give you a guest account
         3. Press **Special Login** button from the frontpage (below the **Login** button)
         4. Enter login information (username goes to **email** slot)
