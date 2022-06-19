@@ -21,3 +21,16 @@ already before the course.
 ## Extra material on miaverse and R programming
 
 [Resources](https://microbiome.github.io/OMA/resources.html)
+
+In this course, we will analyze [HintikkaXOData](https://rdrr.io/github/microbiome/microbiomeDataSets/man/HintikkaXOData.html).
+In this rat study, it was analyzed whether fats and prebiotics affects the microbiome. 
+
+The data consist of 4 groups:
+    - High-fat diet without prebiotics
+    - High-fat diet with prebiotics
+    - Low-fat diet without prebiotics
+    - Low-fat diet with prebiotics
+
+You can find the data from [here](https://github.com/microbiome/course_2022_oulu/tree/main/data).
+    
+    
