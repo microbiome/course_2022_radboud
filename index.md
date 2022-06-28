@@ -1,7 +1,7 @@
 --- 
 title: "Multi-omic data science with R/Bioconductor"
 subtitle: "Welcome to Oulu Summer School, June 2022"
-date: "2022-06-20"
+date: "2022-06-28"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [packages.bib]
