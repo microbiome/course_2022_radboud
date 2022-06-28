@@ -64,7 +64,7 @@ The course will be organized in a live format <a href="https://github.com/microb
 
 **Teachers and organizers**
 
-[Leo Lahti](https://datascience.utu.fi) is the main teacher and Associate Professor in Data Science at the University of Turku, with specialization on biomedical data analysis. Course assistants are _Tuomas Borman_ (University of Turku) is one of the main developers of the open training material covered by the course and _Jenni Hekkala_, a PhD researcher at the University of Oulu, in the group of the course coordinator Docent _Justus Reunanen_.
+[Leo Lahti](https://datascience.utu.fi) is the main teacher and Associate Professor in Data Science at the University of Turku, with specialization on biomedical data analysis. Course assistants are _Tuomas Borman_ (University of Turku) is one of the main developers of the open training material covered by the course, _Jenni Hekkala_, a PhD researcher at the University of Oulu, in the group of the course coordinator Docent _Justus Reunanen_, and _Rajesh Shigdel_ who has supported the writing of the course material.
 
 The course is jointly organized by
 
