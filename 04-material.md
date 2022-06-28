@@ -26,6 +26,7 @@ In this course, we will analyze [HintikkaXOData](https://rdrr.io/github/microbio
 In this rat study, it was analyzed whether fats and prebiotics affects the microbiome. 
 
 The data consist of 4 groups:
+
     - High-fat diet without prebiotics
     - High-fat diet with prebiotics
     - Low-fat diet without prebiotics
