@@ -11,7 +11,7 @@ already before the course.
 
 ## Lecture slides
 
-[Slides](https://github.com/microbiome/course_2022_oulu/tree/main/slides) (will be added).
+[Slides](https://github.com/microbiome/course_2022_oulu/tree/main/slides) 
 
 ## Tasks
 
