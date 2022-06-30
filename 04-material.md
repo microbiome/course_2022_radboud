@@ -17,6 +17,8 @@ already before the course.
 
 [Exercises](https://microbiome.github.io/OMA/exercises.html)
 
+[Example solutions](https://github.com/microbiome/course_2022_oulu/blob/main/example_solutions.Rmd)
+
 
 ## Extra material on miaverse and R programming
 
