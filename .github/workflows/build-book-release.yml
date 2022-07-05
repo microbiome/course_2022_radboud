@@ -167,7 +167,7 @@ jobs:
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          git config --global --add safe.directory /__w/course_2022_oulu/course_2022_oulu
+          git config --global --add safe.directory /__w/course_2022_radboud/course_2022_radboud
           git fetch --all
           commit=$(git --work-tree=../ rev-parse --verify --short HEAD)
           git worktree add --track -B gh-pages docs origin/gh-pages
