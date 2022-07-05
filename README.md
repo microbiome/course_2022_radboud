@@ -1,6 +1,6 @@
-# Multi-omic data science with R/Bioconductor
+# Microbiome data science with R/Bioconductor
 
-**Welcome to Oulu Summer School, June 2022**
+**Welcome to Radboud Summer School, July 2022**
 
 <img src="https://user-images.githubusercontent.com/60338854/121848694-1072a480-ccf3-11eb-9af2-7fdefd8d1794.png" alt="ML4microbiome" width="50%"/>
 
@@ -60,14 +60,13 @@ national recommendations on open teaching materials.
 **Target audience** The course is primarily designed for advanced MSc and PhD students, Postdocs, and
 biomedical researchers who wish to learn new skills in scientific programming and
 biomedical data analysis. Academic students and researchers from Finland and abroad are
-welcome and encouraged to apply. The course has limited capacity of max 20 participants,
-and priority will be given for local students from Oulu.
+welcome and encouraged to apply. Priority will be given for local students from Radboud.
 
-**Venue** University of Oulu. June 20-23, 2022.
+**Venue** Radboud University. July 11-15, 2022.
 
 ## Acknowledgments
 
-**Citation** "Multi-omic data science with R/Bioconductor (2022). Tuomas Borman and Leo Lahti. URL: https://microbiome.github.io/course_2022_oulu/"
+**Citation** "Microbiome data science with R/Bioconductor (2022). Tuomas Borman, Henrik Eckermann, Anna Aatsinki, Leo Lahti. URL: https://microbiome.github.io/course_2022_radboud/"
 
 **Contact**
 - [Leo Lahti](http://datascience.utu.fi), University of Turku
