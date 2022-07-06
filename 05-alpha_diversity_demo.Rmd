@@ -1,0 +1,136 @@
+# Alpha diversity demo
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Alpha diversity estimation
+
+
+First let`s load the required packages and data set
+
+
+```{r load}
+library(mia)
+library(miaViz)
+library(tidyverse)
+# library(vegan)
+
+tse <- read_rds("data/Tengeler2020/tse.rds")
+
+tse
+
+```
+Then let's estimate multiple diversity indices.
+
+```{r estimate diversity}
+
+?estimateDiversity
+
+tse <- estimateDiversity(tse, 
+                              index = c("shannon","gini_simpson","faith"),
+                              name = c("shannon","gini_simpson","faith"))
+head(colData(tse))
+
+```
+
+We can see that the variables are included in the data.
+Similarly, let's calculate richness indices.
+
+```{r estimate richness}
+
+tse <- estimateRichness(tse, 
+                              index = c("chao1","observed"))
+head(colData(tse))
+
+```
+
+## Visualizing alpha diversity 
+
+We can plot the distributions of individual indices:
+
+```{r distributions}
+#individual plot
+p <- as_tibble(colData(tse)) %>% 
+  ggplot(aes(shannon)) +
+  geom_histogram() 
+
+print(p)
+
+#multiple plots
+
+p <- as_tibble(colData(tse)) %>% 
+  pivot_longer(cols = c("shannon","gini_simpson","faith","chao1","observed"), names_to = "index", values_to = "alpha") %>% 
+  ggplot(aes(alpha)) +
+  geom_histogram() +
+  facet_wrap(vars(index), scales = "free")
+
+
+print(p)
+
+
+```
+
+and the correlation between indices:
+
+```{r scatterlots, fig.width=13,fig.height=12}
+
+p <- as_tibble(colData(tse)) %>% 
+  pivot_longer(cols = c("shannon","gini_simpson","faith","chao1","observed"), names_to = "index", values_to = "alpha") %>% 
+  full_join(.,., by = "sample_name") %>% 
+  ggplot( aes(x = alpha.x, y = alpha.y)) + 
+  geom_point() +
+  geom_smooth() +
+  facet_wrap(index.x ~ index.y, scales = "free")
+
+print(p)
+
+```
+
+## Comparing alpha diversity 
+
+It is often interesting to look for any group differences:
+
+
+```{r boxplots}
+
+p <- as_tibble(colData(tse)) %>% 
+  pivot_longer(cols = c("shannon","gini_simpson","faith","chao1","observed"), names_to = "index", values_to = "alpha") %>% 
+  ggplot( aes(x = patient_status, y = alpha)) + 
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(alpha =0.5) +
+  facet_wrap(vars(index), scales = "free")
+
+print(p)
+
+```
+
+Moreover, we can test the group differences by parametric or non-parametric tests:
+
+```{r comparison}
+
+df1 <- as_tibble(colData(tse)) %>% 
+  pivot_longer(cols = c("faith","chao1","observed"), names_to = "index", values_to = "alpha") %>% 
+  group_by(index) %>% 
+  nest() %>% 
+  mutate(test_pval = map_dbl(data, ~ t.test(alpha ~ patient_status, data = .x)$p.value)) %>% 
+  mutate(test = "ttest" ) 
+
+df2 <- as_tibble(colData(tse)) %>% 
+  pivot_longer(cols = c("shannon","gini_simpson"), names_to = "index", values_to = "alpha") %>% 
+  group_by(index) %>% 
+  nest() %>% 
+  mutate(test_pval = map_dbl(data, ~ wilcox.test(alpha ~ patient_status, data = .x)$p.value))%>% 
+  mutate(test = "wilcoxon" ) 
+
+df <- rbind(df1,df2) %>% select(-data) %>% arrange(test_pval) %>% ungroup()
+
+df
+
+```
+End of the demo.
+
+
+## Exercises
+
+Do "Alpha diversity basics" from the [exercises](https://microbiome.github.io/OMA/exercises.html).

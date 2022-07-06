@@ -17,9 +17,12 @@ To be added.
 
 ## Tasks
 
-[Exercises](https://microbiome.github.io/OMA/exercises.html)
+Seek guidance from the [https://microbiome.github.io/OMA/](https://microbiome.github.io/OMA/)
 
-[Example solutions](https://github.com/microbiome/course_2022_radboud/blob/main/example_solutions.Rmd)
+ * [Exercises](https://microbiome.github.io/OMA/exercises.html)
+
+ * [Example solutions](https://github.com/microbiome/course_2022_radboud/blob/main/example_solutions.Rmd)
+
 
 
 ## Extra material on miaverse and R programming
