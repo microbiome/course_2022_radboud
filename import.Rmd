@@ -1,6 +1,6 @@
-biom_file_path <- "data/Aggregated_humanization2.biom"
-sample_meta_file_path <- "data/Mapping_file_ADHD_aggregated.csv"
-tree_file_path <- "data/Data_humanization_phylo_aggregation.tre"
+biom_file_path <- "data/Tengeler2020/Aggregated_humanization2.biom"
+sample_meta_file_path <- "data/Tengeler2020/Mapping_file_ADHD_aggregated.csv"
+tree_file_path <- "data/Tengeler2020/Data_humanization_phylo_aggregation.tre"
 
 library(mia)
 
