@@ -74,7 +74,7 @@ experience with R or another programming language is recommended.
 
 ## Acknowledgments
 
-**Citation** We thank all [developers and contributors](https://microbiome.github.io) who have contributed open resources that supported the development of the training material. Kindly cite the course material as @radboud2021course 
+**Citation** We thank all [developers and contributors](https://microbiome.github.io) who have contributed open resources that supported the development of the training material. Kindly cite the course material as @radboud2022course 
 
 **Contact** See [https://microbiome.github.io](https://microbiome.github.io)
 

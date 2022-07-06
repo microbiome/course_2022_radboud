@@ -7,7 +7,6 @@ library(mia)
 # Imports the data
 se <- loadFromBiom(biom_file_path)
 
-
 names(rowData(se)) <- c("Kingdom", "Phylum", "Class", "Order", 
                         "Family", "Genus")
 
