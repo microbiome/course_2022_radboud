@@ -13,9 +13,9 @@ rmd_files:
   - 02-start.Rmd
   - 02-data.Rmd  
   - 03-reproduciblereporting.Rmd
-  - 04-material.Rmd
   - 05-alpha_diversity_demo.Rmd
   - 06-beta_diversity_demo.Rmd
+  - 04-material.Rmd  
   #- 04-import.Rmd
   #- 05-explore.Rmd
   #- 06-alpha.Rmd

@@ -71,4 +71,4 @@ f1000research.1118447.1) F1000Research 9:1464 (slides).
 
 ## Example solutions
 
- * Example code for data import: [import.Rmd](import.Rmd)
+Example code for data import: [import.Rmd](import.Rmd)
