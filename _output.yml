@@ -5,7 +5,7 @@ bookdown::gitbook:
       theme: white
     toc:
       before: |
-        <li><a href="./">Multi-omic data science with R/Bioconductor</a></li>
+        <li><a href="./">Microbiome data science with R/Bioconductor</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
     download: ["pdf"]

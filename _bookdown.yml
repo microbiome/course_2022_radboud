@@ -1,5 +1,5 @@
 book_filename: oulu2022_material
-pagetitle: "Multi-omic data science with R/Bioconductor"
+pagetitle: "Microbiome data science with R/Bioconductor"
 delete_merged_file: true
 new_session: true
 language:
@@ -8,7 +8,7 @@ language:
 output_dir: docs
 rmd_files:
   - index.Rmd  
-  - 01-program.Rmd
+  #- 01-program.Rmd
   - 01.1-codeofconduct.Rmd
   - 02-start.Rmd
   - 03-reproduciblereporting.Rmd
