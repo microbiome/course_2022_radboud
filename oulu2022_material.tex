@@ -109,20 +109,6 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
 \usepackage{booktabs}
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage{xcolor}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -138,7 +124,7 @@
 \makeatother
 \subtitle{Welcome to Radboud Summer School, July 2022}
 \author{}
-\date{\vspace{-2.5em}2022-07-05}
+\date{\vspace{-2.5em}2022-07-06}
 
 \begin{document}
 \maketitle
@@ -153,19 +139,21 @@
 \hypertarget{contents-and-learning-goals}{%
 \section{Contents and learning goals}\label{contents-and-learning-goals}}
 
-This course will focus on the \textbf{basics of microbiome data analysis
+This course will focus on \textbf{microbiome data analysis
 with R/Bioconductor}, a popular open source environment for
-scientific data analysis. The participants get an overview of the
-reproducible data analysis workflow in microbiome research, with a
-focus on gut-brain axis. After the course you will know how to
-approach new tasks in biomedical data analysis by utilizing available
+scientific data analysis. You will get an overview of the
+reproducible data analysis workflows in microbiome research, with a
+focus on gut-brain axis studies.
+
+After the course you will know how to approach new tasks in the
+analysis of taxonomic profiling data by taking advantage of available
 documentation and R tools.
 
-The teaching will follow open online documentation created by the
+The teaching follows the open online documentation created by the
 course teachers, extending the online book Orchestrating Microbiome
 Analysis (\url{https://microbiome.github.io/OMA}). The openly licensed
 teaching material will be available online during and after the
-course, following national recommendations on open education.
+course, following Finnish national recommendations on open education.
 
 The training material walks you through the standard steps of
 biomedical data analysis covering data access, exploration, analysis,
@@ -178,70 +166,42 @@ student's learning speed.
 \hypertarget{schedule-and-organizers}{%
 \section{Schedule and organizers}\label{schedule-and-organizers}}
 
-The course will be organized in a live format (website)
+\textbf{Format} In-person course. For detailed schedule, see the
+\href{https://www.ru.nl/radboudsummerschool/courses/2022/registration-longer-possible-brain-bacteria}{course
+website}.
 
 \textbf{Venue} University of Radboud. July 11-15, 2022.
 
-\textbf{Schedule} A
-detailed schedule is available at the course website:
-(\url{https://www.ru.nl/radboudsummerschool/courses/2022/registration-longer-possible-brain-bacteria}).
+\textbf{Expected background}
 
-\textbf{Expected background} Some earlier experience with R or another
-programming language is recommended. However, this can be
-compensated by familiarizing with the course material in advance, if
-necessary. The teaching format allows adaptations according to the
-student's learning speed.
+\textbf{Target audience} The course is primarily designed for advanced MSc
+and PhD students, Postdocs, and biomedical researchers who wish to
+learn new skills in scientific programming and biomedical data
+analysis. Academic students and researchers encouraged to
+apply. Priority will be given for local students. Some earlier
+experience with R or another programming language is recommended.
+
+\textbf{Preparation} Advance preparation is expected. Online support is available. See section \ref{start} for instructions.
 
 \hypertarget{acknowledgments}{%
 \section{Acknowledgments}\label{acknowledgments}}
 
-\textbf{Citation} We thank all \href{https://microbiome.github.io}{developers and contributors} who have contributed open resources that supported the development of the training material. Kindly cite the course material as \citet{miacourse}
+\textbf{Citation} We thank all \href{https://microbiome.github.io}{developers and contributors} who have contributed open resources that supported the development of the training material. Kindly cite the course material as \citet{radboud2022course}
 
 \textbf{Contact} See \url{https://microbiome.github.io}
 
 \textbf{License and source code}
 
-All material is released under the open \href{LICENSE}{CC BY-NC-SA 3.0 License} and available online during and after the course, following the \href{https://avointiede.fi/fi/linjaukset-ja-aineistot/kotimaiset-linjaukset/oppimisen-ja-oppimateriaalien-avoimuuden-linjaus}{recommendations on open teaching materials} of the national open science coordination in Finland**.
+All material is released under the open \href{LICENSE}{CC BY-NC-SA 3.0
+License} and available online during and after the course,
+following the \href{https://avointiede.fi/fi/linjaukset-ja-aineistot/kotimaiset-linjaukset/oppimisen-ja-oppimateriaalien-avoimuuden-linjaus}{recommendations on open teaching
+materials}
+of the national open science coordination in Finland. The source code
+of this repository is reproducible and contains the Rmd files with
+executable code. See \href{README.md}{README}.
 
-The source code of this repository is reproducible and contains
-the Rmd files with executable code. All files can be rendered at one
-go by running the file \url{main.R}. You can check the file for
-details on how to clone the repository and convert it into a gitbook,
-although this is not necessary for the training.
-
-\begin{itemize}
-\tightlist
-\item
-  Source code (github): \href{https://github.com/microbiome/course_2022_radboud}{miaverse teaching material}
-\item
-  Course page (html): \href{https://microbiome.github.io/course_2022_radboud/}{miaverse teaching material}
-\end{itemize}
-
-\hypertarget{program}{%
-\chapter{Program}\label{program}}
-
-The course takes place daily from 9am -- 5pm (CEST), including
-coffee and lunch breaks. See \href{https://www.ru.nl/publish/pages/1026487/brain_bacteria_and_behaviour_-_understanding_the_gut-brain_axis-rss2022-v3.pdf}{Detailed program}.
-
-We expect that participants will prepare for the course in advance, see section
-\ref{start}. Online support is available.
-
-The material follows open online book created by the course teachers,
-Orchestrating Microbiome Analysis
-\url{https://microbiome.github.io/OMA}. This is R/Bioconductor framework for
-microbiome data science.
-
-Figure source: Moreno-Indias \emph{et al}. (2021) \href{https://doi.org/10.3389/fmicb.2021.635781}{Statistical and Machine Learning Techniques in Human Microbiome Studies: Contemporary Challenges and Solutions}. Frontiers in Microbiology 12:11.
-
-\hypertarget{project-wide-code-of-conduct-statement-for-bioconductor}{%
-\chapter{Project-wide Code of Conduct statement for Bioconductor}\label{project-wide-code-of-conduct-statement-for-bioconductor}}
-
-\href{https://bioconductor.github.io/bioc_coc_multilingual/}{link to code of conduct}
-
-(Adapted from the BioC 2020 Code of Conduct)
-
-\hypertarget{code-of-conduct--version-1.0.2-july-27-2021}{%
-\section{Code of Conduct -Version 1.0.2 (July 27, 2021)}\label{code-of-conduct--version-1.0.2-july-27-2021}}
+\hypertarget{code-of-conduct}{%
+\chapter{Code of Conduct}\label{code-of-conduct}}
 
 The Bioconductor community values an open approach to science that promotes the
 
@@ -259,90 +219,9 @@ The Bioconductor community values an open approach to science that promotes the
   community contributions
 \end{itemize}
 
-In line with these values, Bioconductor is dedicated to providing a welcoming, supportive, collegial experience free of harassment, intimidation, and bullying regardless of:
-
-\begin{itemize}
-\tightlist
-\item
-  identity: gender, gender identity and expression, sexual orientation, disability, physical appearance, ethnicity, body size, race, age, religion, language etc.
-\item
-  intellectual position: approaches to data analysis, software preferences, coding style, scientific perspective, stage of career, etc.
-\end{itemize}
-
-By participating in this community, you agree not to engage in behavior contrary to these values at any Bioconductor-sponsored event (in person or virtual, including but not limited to talks, workshops, poster sessions, social activities) or electronic communication channel (including but not limited to community-bioc Slack, the support site, online forums, package review site and social media communications). Furthermore, we require all participants to have identifiable accounts in Bioconductor online forums. Accounts that do not adhere to this after request to de-anonymise may be deleted.
-
-We do not tolerate harassment, intimidation, or bullying of community members. Sexual language and imagery are not appropriate in presentations, communications or in online venues, including chats.
-
-Any person/s violating the Code of Conduct may be sanctioned or expelled temporarily or permanently from an electronic platform or event at the discretion of the Code of Conduct committee.
-
-\textbf{Examples of unacceptable harassment, intimidation, and bullying behavior}
-
-Harassment includes, but is not limited to:
-
-\begin{itemize}
-\tightlist
-\item
-  Making comments in chats, to an audience or personally, that belittle or demean another person
-\item
-  Sharing sexual images online
-\item
-  Harassing photography or recording
-\item
-  Sustained disruption of talks or other events
-\item
-  Unwelcome sexual attention
-\item
-  Advocating for, or encouraging, any of the above behavior
-\end{itemize}
-
-Intimidation and bullying include, but are not limited to:
-
-\begin{itemize}
-\tightlist
-\item
-  Aggressive or browbeating behavior
-\item
-  Mocking or insulting another person's intellect, work, perspective, or question/comment
-\item
-  Making reference to someone's gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race, age, religion, or other personal attributes in the context of a scientific discussion
-\item
-  Deliberately making someone feel unwelcome
-\item
-  Trolling behaviour (deliberately inflammatory or offensive messages)
-\item
-  Sustained off-topic posts
-\end{itemize}
-
-\hypertarget{enforcement}{%
-\section{Enforcement}\label{enforcement}}
-
-Anyone asked to stop harassing or intimidating behavior are expected to comply immediately.
-
-If a person/s contravene the Code of Conduct the Code of Conduct committee retains the right to take any action that ensures a welcoming environment for all community members. This includes warning the alleged offender or temporary/permanent expulsion from the event and/or electronic platforms under Bioconductor's control.
-
-The Code of Conduct committee may take action to redress anything designed to, or with the clear impact of, disrupting an event or electronic communication platform or making the environment hostile for any community member.
-
-We expect everyone in the Bioconductor community to comply with the Code of Conduct when participating in Bioconductor events and online communication platforms.
-
-\hypertarget{reporting}{%
-\section{Reporting}\label{reporting}}
-
-If someone makes you or anyone else feel unsafe or unwelcome, please report it as soon as possible. You can make a report either anonymously or personally. All reports will be reviewed by the Code of Conduct Committee and will be kept confidential.
-
-\emph{Electronically}
-You can make an anonymous or non-anonymous report via the following link: \url{https://forms.gle/gEWHBWnXvZbEdFsq5}. It is a free-form text box that will be forwarded to the Code of Conduct Committee. Alternatively you can email the Code of Conduct Committee (\href{mailto:code-of-conduct@bioconductor.org}{\nolinkurl{code-of-conduct@bioconductor.org}}). If you are uncomfortable reporting to the Code of Conduct committee as a group, you can contact any individual committee member via email or a direct message on the community-bioc Slack channel. Please include screenshots/copies of all relevant electronic conversations whenever possible (you don't need to compromise your anonymity!).
-
-We can't follow up an anonymous report with you directly, but we will fully investigate it and take whatever action is necessary to prevent a recurrence.
-
-\textbf{Personal Report (for any Bioconductor events: in-person or virtual)}
-
-You can make a personal report to any member of the event Code of Conduct committee present at an event.
-
-When taking a personal report, we will ensure you are safe and cannot be overheard. We may involve other event staff to ensure your report is managed properly. Once safe, we'll ask you to tell us about what happened. This can be upsetting, but we'll handle it as respectfully as possible, and you can bring someone to support you. You won't be asked to confront anyone, and we won't tell anyone who you are.
-
-Our team will be happy to help you get the relevant support (e.g.~help contacting hotel/venue security, local law enforcement, local support services, provide escorts, or otherwise assist you to feel safe for the duration of the event).
-
 We value your attendance and participation at Bioconductor events and in our community.
+
+For the full version, enforcement, and reporting instructions, see the \href{https://bioconductor.github.io/bioc_coc_multilingual/}{Bioconductor code of conduct}.
 
 \hypertarget{start}{%
 \chapter{Getting started}\label{start}}
@@ -350,121 +229,15 @@ We value your attendance and participation at Bioconductor events and in our com
 \hypertarget{checklist-before-the-course}{%
 \section{Checklist (before the course)}\label{checklist-before-the-course}}
 
-\hypertarget{csc-notebook}{%
-\subsection{CSC Notebook}\label{csc-notebook}}
-
-We will provide a temporary access to a cloud computing environment
-that readily contains the available software packages. Instructions to access
-the environment will be sent to the registered participants.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Read the \href{https://docs.csc.fi/cloud/csc_notebooks/guide_for_students/}{instructions}
-\item
-  Go to the \href{https://notebooks-beta.rahtiapp.fi/welcome}{CSC notebook frontpage}
-\item
-  Login
-
-  \begin{enumerate}
-  \def\labelenumii{\alph{enumii}.}
-  \tightlist
-  \item
-    Haka login
-
-    \begin{itemize}
-    \tightlist
-    \item
-      If you have a Finnish university account, you should be able to login with Haka
-    \end{itemize}
-
-    \begin{enumerate}
-    \def\labelenumiii{\arabic{enumiii}.}
-    \tightlist
-    \item
-      Press \textbf{Login} button from the frontpage
-    \item
-      Press \textbf{Haka} button
-    \item
-      Select right organization
-    \item
-      Enter login information
-    \end{enumerate}
-  \item
-    CSC login
-
-    \begin{itemize}
-    \tightlist
-    \item
-      You can create a CSC account by following the \href{https://research.csc.fi/accounts-and-projects}{instructions}
-    \end{itemize}
-
-    \begin{enumerate}
-    \def\labelenumiii{\arabic{enumiii}.}
-    \tightlist
-    \item
-      Press \textbf{Login} button from the frontpage
-    \item
-      Press \textbf{CSC} button
-    \item
-      Enter login information
-    \end{enumerate}
-  \item
-    Special login
-
-    \begin{itemize}
-    \tightlist
-    \item
-      For those who cannot login with Haka or CSC account
-    \end{itemize}
-
-    \begin{enumerate}
-    \def\labelenumiii{\arabic{enumiii}.}
-    \tightlist
-    \item
-      Contact Tuomas by email (\href{mailto:first.v.last@utu.fi}{\nolinkurl{first.v.last@utu.fi}}) if you are not able to login
-    \item
-      We give you a guest account
-    \item
-      Press \textbf{Special Login} button from the frontpage (below the \textbf{Login} button)
-    \item
-      Enter login information (username goes to \textbf{email} slot)
-    \end{enumerate}
-  \end{enumerate}
-\item
-  Join workspace
-
-  \begin{enumerate}
-  \def\labelenumii{\alph{enumii}.}
-  \tightlist
-  \item
-    Press \textbf{Join workspace} button (Top right corner)
-  \item
-    Enter the \textbf{Join Code} (Check your email)
-  \end{enumerate}
-\item
-  Start session
-
-  \begin{enumerate}
-  \def\labelenumii{\alph{enumii}.}
-  \tightlist
-  \item
-    Press \textbf{ON} button
-  \end{enumerate}
-\item
-  You can save files to \textbf{my-work} directory. They are kept stored even when the session is closed. \textbf{shared} folder is shared with all participants.
-\end{enumerate}
-
-\hypertarget{your-own-computer}{%
-\subsection{(Your own computer)}\label{your-own-computer}}
+\hypertarget{computer-setup-and-installations}{%
+\subsection{Computer setup and installations}\label{computer-setup-and-installations}}
 
 Setting up the system on your own computer is not required for the
 course but it can be useful for later use. The required software:
 
 \begin{itemize}
 \item
-  \href{https://www.r-project.org/}{R (version \textgreater4.1.0)}
+  \href{https://www.r-project.org/}{R (version \textgreater4.2.0)}
 \item
   \href{https://www.rstudio.com/products/rstudio/download/}{RStudio};
   choose ``Rstudio Desktop'' to download the latest version. Optional
@@ -481,17 +254,13 @@ course but it can be useful for later use. The required software:
 \section{Support and resources}\label{support-and-resources}}
 
 \begin{itemize}
-\tightlist
 \item
   We recommend to have a look at the additional reading tips and try out online material listed in Section \ref{material}.
-\end{itemize}
-
-\textbf{You can run the workflows by simply copy-pasting the examples.} For
-further, advanced material, you can test and modify further examples
-from the online book, and apply these techniques to your own data.
-
-\begin{itemize}
-\tightlist
+\item
+  \textbf{You can run the workflows by simply copy-pasting the examples.}
+  For further, advanced material, you can test and modify further
+  examples from the online book, and apply these techniques to your own
+  data.
 \item
   Online support on installation and other matters, join us at \href{https://gitter.im/microbiome/miaverse?utm_source=badge\&utm_medium=badge\&utm_campaign=pr-badge\&utm_content=badge}{Gitter}
 \end{itemize}
@@ -499,36 +268,27 @@ from the online book, and apply these techniques to your own data.
 \hypertarget{packages}{%
 \section{Installing and loading the required R packages}\label{packages}}
 
-Note that the CSC/RStudio environment has readily installed setup. You
-may need the examples from this subsection if you are installing the
-environment on your own computer. If you need to add new packages, you
-can modify the examples below.
+You may need the examples from this subsection if you are installing
+the environment on your own computer. If you need to add new packages,
+you can modify the examples below.
 
 This section shows how to install and load all required packages into
 the R session, if needed. Only uninstalled packages are installed.
 
+Download the file \url{pkgs.csv}. This contains the list of
+packages that we recommend to preinstall. This can be done with the
+following code.
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# List of packages that we need from cran and bioc }
-\NormalTok{cran\_pkg }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"BiocManager"}\NormalTok{, }\StringTok{"bookdown"}\NormalTok{, }\StringTok{"dplyr"}\NormalTok{, }\StringTok{"ecodist"}\NormalTok{, }\StringTok{"ggplot2"}\NormalTok{, }
-              \StringTok{"gridExtra"}\NormalTok{, }\StringTok{"kableExtra"}\NormalTok{,  }\StringTok{"knitr"}\NormalTok{, }\StringTok{"scales"}\NormalTok{, }\StringTok{"vegan"}\NormalTok{, }\StringTok{"matrixStats"}\NormalTok{)}
-\NormalTok{bioc\_pkg }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"yulab.utils"}\NormalTok{,}\StringTok{"ggtree"}\NormalTok{,}\StringTok{"ANCOMBC"}\NormalTok{, }\StringTok{"ape"}\NormalTok{, }\StringTok{"DESeq2"}\NormalTok{, }\StringTok{"DirichletMultinomial"}\NormalTok{, }\StringTok{"mia"}\NormalTok{, }\StringTok{"miaViz"}\NormalTok{)}
+\CommentTok{\# List of packages that we need}
+\NormalTok{pkg }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"pkgs.csv"}\NormalTok{)[,}\DecValTok{1}\NormalTok{]}
 
-\CommentTok{\# Get those packages that are already installed}
-\NormalTok{cran\_pkg\_already\_installed }\OtherTok{\textless{}{-}}\NormalTok{ cran\_pkg[ cran\_pkg }\SpecialCharTok{\%in\%} \FunctionTok{installed.packages}\NormalTok{() ]}
-\NormalTok{bioc\_pkg\_already\_installed }\OtherTok{\textless{}{-}}\NormalTok{ bioc\_pkg[ bioc\_pkg }\SpecialCharTok{\%in\%} \FunctionTok{installed.packages}\NormalTok{() ]}
+\CommentTok{\# List packages that are already installed}
+\NormalTok{pkg\_already\_installed }\OtherTok{\textless{}{-}}\NormalTok{ pkg[ pkg }\SpecialCharTok{\%in\%} \FunctionTok{installed.packages}\NormalTok{() ]}
 
-\CommentTok{\# Get those packages that need to be installed}
-\NormalTok{cran\_pkg\_to\_be\_installed }\OtherTok{\textless{}{-}} \FunctionTok{setdiff}\NormalTok{(cran\_pkg, cran\_pkg\_already\_installed)}
-\NormalTok{bioc\_pkg\_to\_be\_installed }\OtherTok{\textless{}{-}} \FunctionTok{setdiff}\NormalTok{(bioc\_pkg, bioc\_pkg\_already\_installed)}
-
-\CommentTok{\# Reorders bioc packages, so that mia and miaViz are first}
-\NormalTok{bioc\_pkg }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(bioc\_pkg[ bioc\_pkg }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"mia"}\NormalTok{, }\StringTok{"miaViz"}\NormalTok{) ], }
-\NormalTok{              bioc\_pkg[ }\SpecialCharTok{!}\NormalTok{bioc\_pkg }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"mia"}\NormalTok{, }\StringTok{"miaViz"}\NormalTok{) ] ) }
-
-\CommentTok{\# Combine to one vector}
-\NormalTok{packages }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(bioc\_pkg, cran\_pkg)}
-\NormalTok{packages\_to\_install }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{( bioc\_pkg\_to\_be\_installed, cran\_pkg\_to\_be\_installed )}
+\CommentTok{\# List remaining packages that need to be installed}
+\NormalTok{packages\_to\_install }\OtherTok{\textless{}{-}} \FunctionTok{setdiff}\NormalTok{(pkg, pkg\_already\_installed)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -553,28 +313,79 @@ mia and miaViz are prioritized. Packages that are loaded first have higher prior
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-##                      loaded
-## mia                    TRUE
-## miaViz                 TRUE
-## yulab.utils            TRUE
-## ggtree                 TRUE
-## ANCOMBC                TRUE
-## ape                    TRUE
-## DESeq2                 TRUE
-## DirichletMultinomial   TRUE
-## BiocManager            TRUE
-## bookdown               TRUE
-## dplyr                  TRUE
-## ecodist                TRUE
-## ggplot2                TRUE
-## gridExtra              TRUE
-## kableExtra             TRUE
-## knitr                  TRUE
-## scales                 TRUE
-## vegan                  TRUE
-## matrixStats            TRUE
-\end{verbatim}
+\hypertarget{importing-microbiome-data}{%
+\chapter{Importing microbiome data}\label{importing-microbiome-data}}
+
+This section demonstrates how to import microbiome profiling data in R.
+
+\hypertarget{data-access}{%
+\section{Data access}\label{data-access}}
+
+\textbf{Option 1}
+
+\emph{ADHD-associated changes in gut microbiota and brain in a mouse model}
+
+Tengeler AC \emph{et
+al.} (2020) \href{https://doi.org/10.1186/s40168-020-00816-x}{\textbf{Gut microbiota from persons with
+attention-deficit/hyperactivity disorder affects the brain in
+mice}}. Microbiome
+8:44.
+
+In this study, mice are colonized with microbiota from participants
+with ADHD (attention deficit hyperactivity disorder) and healthy
+participants. The aim of the study was to assess whether the mice
+display ADHD behaviors after being inoculated with ADHD microbiota,
+suggesting a role of the microbiome in ADHD pathology.
+
+Download the data from
+\href{https://github.com/microbiome/course_2022_radboud/tree/main/data}{data}
+subfolder.
+
+\textbf{Option 2}
+
+\emph{Open data set of your own choice}, different options are listed in \href{https://microbiome.github.io/OMA/containers.html\#example-data}{OMA}.
+
+\hypertarget{importing-microbiome-data-in-r}{%
+\section{Importing microbiome data in R}\label{importing-microbiome-data-in-r}}
+
+\textbf{Import example data} by modifying the examples in the online book
+section on \href{https://microbiome.github.io/OMA/data-introduction.html\#loading-experimental-microbiome-data}{data exploration and
+manipulation}. The
+data files in our example are in \emph{biom} format, which is a standard
+file format for microbiome data. Other file formats exist as well, and
+import details vary by platform.
+
+Here, we import \emph{biom} data files into a specific data container (structure)
+in R, \emph{TreeSummarizedExperiment} (TSE) \href{https://f1000research.com/articles/9-1246}{Huang et
+al.~(2020)}. This provides
+the basis for downstream data analysis in the \emph{miaverse} data science
+framework.
+
+In this course, we focus on downstream analysis of taxonomic profiling
+data, and assume that the data has already been appropriately
+preprocessed and available in the TSE format. In addition to our
+example data, further demonstration data sets are readily available in
+the TSE format through
+\href{https://bioconductor.org/packages/release/data/experiment/html/microbiomeDataSets.html}{microbiomeDataSets}.
+
+\textbf{Figure sources:}
+
+\textbf{Original article}
+- Huang R \emph{et al}. (2021) \href{https://doi.org/10.12688/\%20f1000research.26669.2}{TreeSummarizedExperiment: a S4 class
+for data with hierarchical structure}. F1000Research 9:1246.
+
+\textbf{Reference Sequence slot extension}
+- Lahti L \emph{et al}. (2020) \href{https://doi.org/10.7490/\%20f1000research.1118447.1}{Upgrading the R/Bioconductor ecosystem for microbiome
+research} F1000Research 9:1464 (slides).
+
+\hypertarget{example-solutions}{%
+\section{Example solutions}\label{example-solutions}}
+
+\begin{itemize}
+\tightlist
+\item
+  Example code for data import: \url{import.Rmd}
+\end{itemize}
 
 \hypertarget{reproducible-reporting-with-rmarkdown}{%
 \chapter{Reproducible reporting with Rmarkdown}\label{reproducible-reporting-with-rmarkdown}}
@@ -608,41 +419,734 @@ data science. Perform the following tasks:
 \section{Online tutorial}\label{online-tutorial}}
 
 The course will utilize material from the online book (beta version)
-\href{https://microbiome.github.io/OMA/}{Orchestrating Microbiome Analysis with R/Bioconductor (OMA)}.
-
-We encourage to familiarize with the material and test examples
-already before the course.
+\href{https://microbiome.github.io/OMA/}{Orchestrating Microbiome Analysis with R/Bioconductor
+(OMA)}. We encourage to familiarize
+with this material and test examples already before the course.
 
 \hypertarget{lecture-slides}{%
 \section{Lecture slides}\label{lecture-slides}}
 
-\href{https://github.com/microbiome/course_2022_oulu/tree/main/slides}{Slides}
+To be added.
 
 \hypertarget{tasks}{%
 \section{Tasks}\label{tasks}}
 
-\href{https://microbiome.github.io/OMA/exercises.html}{Exercises}
+Seek guidance from the \url{https://microbiome.github.io/OMA/}
 
-\href{https://github.com/microbiome/course_2022_oulu/blob/main/example_solutions.Rmd}{Example solutions}
+\begin{itemize}
+\item
+  \href{https://microbiome.github.io/OMA/exercises.html}{Exercises}
+\item
+  \href{https://github.com/microbiome/course_2022_radboud/blob/main/example_solutions.Rmd}{Example solutions}
+\end{itemize}
 
 \hypertarget{extra-material-on-miaverse-and-r-programming}{%
 \section{Extra material on miaverse and R programming}\label{extra-material-on-miaverse-and-r-programming}}
 
-\href{https://microbiome.github.io/OMA/resources.html}{Resources}
+\href{https://microbiome.github.io/OMA/resources.html}{Further information on the data science framework}
 
-In this course, we will analyze \href{https://rdrr.io/github/microbiome/microbiomeDataSets/man/HintikkaXOData.html}{HintikkaXOData}.
-In this rat study, it was analyzed whether fats and prebiotics affects the microbiome.
+\hypertarget{alpha-diversity-demo}{%
+\chapter{Alpha diversity demo}\label{alpha-diversity-demo}}
 
-The data consist of 4 groups:
+\hypertarget{alpha-diversity-estimation}{%
+\section{Alpha diversity estimation}\label{alpha-diversity-estimation}}
+
+First let`s load the required packages and data set
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(mia)}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{verbatim}
-- High-fat diet without prebiotics
-- High-fat diet with prebiotics
-- Low-fat diet without prebiotics
-- Low-fat diet with prebiotics
+## Loading required package: SummarizedExperiment
 \end{verbatim}
 
-You can find the data from \href{https://github.com/microbiome/course_2022_oulu/tree/main/data}{here}.
+\begin{verbatim}
+## Loading required package: MatrixGenerics
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: matrixStats
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'MatrixGenerics'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:matrixStats':
+## 
+##     colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+##     colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+##     colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+##     colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+##     colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+##     colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+##     colWeightedMeans, colWeightedMedians, colWeightedSds,
+##     colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+##     rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+##     rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+##     rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+##     rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+##     rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+##     rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+##     rowWeightedSds, rowWeightedVars
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: GenomicRanges
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: stats4
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: BiocGenerics
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'BiocGenerics'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     IQR, mad, sd, var, xtabs
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     anyDuplicated, append, as.data.frame, basename, cbind, colnames,
+##     dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+##     grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
+##     order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+##     rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
+##     union, unique, unsplit, which.max, which.min
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: S4Vectors
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'S4Vectors'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     expand.grid, I, unname
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: IRanges
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: GenomeInfoDb
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: Biobase
+\end{verbatim}
+
+\begin{verbatim}
+## Welcome to Bioconductor
+## 
+##     Vignettes contain introductory material; view with
+##     'browseVignettes()'. To cite Bioconductor, see
+##     'citation("Biobase")', and for packages 'citation("pkgname")'.
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'Biobase'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:MatrixGenerics':
+## 
+##     rowMedians
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:matrixStats':
+## 
+##     anyMissing, rowMedians
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: SingleCellExperiment
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: TreeSummarizedExperiment
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: Biostrings
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: XVector
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'Biostrings'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:base':
+## 
+##     strsplit
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: MultiAssayExperiment
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(miaViz)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: ggplot2
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: ggraph
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
+\end{verbatim}
+
+\begin{verbatim}
+## v tibble  3.1.7     v dplyr   1.0.9
+## v tidyr   1.2.0     v stringr 1.4.0
+## v readr   2.1.2     v forcats 0.5.1
+## v purrr   0.3.4
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::collapse()   masks Biostrings::collapse(), IRanges::collapse()
+## x dplyr::combine()    masks Biobase::combine(), BiocGenerics::combine()
+## x purrr::compact()    masks XVector::compact()
+## x dplyr::count()      masks matrixStats::count()
+## x dplyr::desc()       masks IRanges::desc()
+## x tidyr::expand()     masks S4Vectors::expand()
+## x dplyr::filter()     masks stats::filter()
+## x dplyr::first()      masks S4Vectors::first()
+## x dplyr::lag()        masks stats::lag()
+## x ggplot2::Position() masks BiocGenerics::Position(), base::Position()
+## x purrr::reduce()     masks GenomicRanges::reduce(), IRanges::reduce()
+## x dplyr::rename()     masks S4Vectors::rename()
+## x dplyr::slice()      masks XVector::slice(), IRanges::slice()
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# library(vegan)}
+
+\NormalTok{tse }\OtherTok{\textless{}{-}} \FunctionTok{read\_rds}\NormalTok{(}\StringTok{"data/Tengeler2020/tse.rds"}\NormalTok{)}
+
+\NormalTok{tse}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## class: TreeSummarizedExperiment 
+## dim: 151 27 
+## metadata(0):
+## assays(1): counts
+## rownames(151): 1726470 1726471 ... 17264756 17264757
+## rowData names(6): Kingdom Phylum ... Family Genus
+## colnames(27): A110 A12 ... A35 A38
+## colData names(4): patient_status cohort patient_status_vs_cohort
+##   sample_name
+## reducedDimNames(0):
+## mainExpName: NULL
+## altExpNames(0):
+## rowLinks: a LinkDataFrame (151 rows)
+## rowTree: 1 phylo tree(s) (151 leaves)
+## colLinks: NULL
+## colTree: NULL
+\end{verbatim}
+
+Then let's estimate multiple diversity indices.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{?estimateDiversity}
+
+\NormalTok{tse }\OtherTok{\textless{}{-}} \FunctionTok{estimateDiversity}\NormalTok{(tse, }
+                              \AttributeTok{index =} \FunctionTok{c}\NormalTok{(}\StringTok{"shannon"}\NormalTok{,}\StringTok{"gini\_simpson"}\NormalTok{,}\StringTok{"faith"}\NormalTok{),}
+                              \AttributeTok{name =} \FunctionTok{c}\NormalTok{(}\StringTok{"shannon"}\NormalTok{,}\StringTok{"gini\_simpson"}\NormalTok{,}\StringTok{"faith"}\NormalTok{))}
+\FunctionTok{head}\NormalTok{(}\FunctionTok{colData}\NormalTok{(tse))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## DataFrame with 6 rows and 7 columns
+##      patient_status      cohort patient_status_vs_cohort sample_name   shannon
+##         <character> <character>              <character> <character> <numeric>
+## A110           ADHD    Cohort_1            ADHD_Cohort_1        A110   1.76541
+## A12            ADHD    Cohort_1            ADHD_Cohort_1         A12   2.71644
+## A15            ADHD    Cohort_1            ADHD_Cohort_1         A15   3.17810
+## A19            ADHD    Cohort_1            ADHD_Cohort_1         A19   2.89199
+## A21            ADHD    Cohort_2            ADHD_Cohort_2         A21   2.84198
+## A23            ADHD    Cohort_2            ADHD_Cohort_2         A23   2.79794
+##      gini_simpson     faith
+##         <numeric> <numeric>
+## A110     0.669537   7.39224
+## A12      0.871176   6.29378
+## A15      0.930561   6.60608
+## A19      0.899210   6.79708
+## A21      0.885042   6.65110
+## A23      0.859813   5.96246
+\end{verbatim}
+
+We can see that the variables are included in the data.
+Similarly, let's calculate richness indices.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tse }\OtherTok{\textless{}{-}} \FunctionTok{estimateRichness}\NormalTok{(tse, }
+                              \AttributeTok{index =} \FunctionTok{c}\NormalTok{(}\StringTok{"chao1"}\NormalTok{,}\StringTok{"observed"}\NormalTok{))}
+\FunctionTok{head}\NormalTok{(}\FunctionTok{colData}\NormalTok{(tse))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## DataFrame with 6 rows and 10 columns
+##      patient_status      cohort patient_status_vs_cohort sample_name   shannon
+##         <character> <character>              <character> <character> <numeric>
+## A110           ADHD    Cohort_1            ADHD_Cohort_1        A110   1.76541
+## A12            ADHD    Cohort_1            ADHD_Cohort_1         A12   2.71644
+## A15            ADHD    Cohort_1            ADHD_Cohort_1         A15   3.17810
+## A19            ADHD    Cohort_1            ADHD_Cohort_1         A19   2.89199
+## A21            ADHD    Cohort_2            ADHD_Cohort_2         A21   2.84198
+## A23            ADHD    Cohort_2            ADHD_Cohort_2         A23   2.79794
+##      gini_simpson     faith     chao1  chao1_se  observed
+##         <numeric> <numeric> <numeric> <numeric> <numeric>
+## A110     0.669537   7.39224        68  0.000000        68
+## A12      0.871176   6.29378        51  0.000000        51
+## A15      0.930561   6.60608        68  0.000000        68
+## A19      0.899210   6.79708        62  0.000000        62
+## A21      0.885042   6.65110        58  0.000000        58
+## A23      0.859813   5.96246        61  0.247942        61
+\end{verbatim}
+
+\hypertarget{visualizing-alpha-diversity}{%
+\section{Visualizing alpha diversity}\label{visualizing-alpha-diversity}}
+
+We can plot the distributions of individual indices:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#individual plot}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{as\_tibble}\NormalTok{(}\FunctionTok{colData}\NormalTok{(tse)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(shannon)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{() }
+
+\FunctionTok{print}\NormalTok{(p)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
+
+\includegraphics{05-alpha_diversity_demo_files/figure-latex/distributions-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#multiple plots}
+
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{as\_tibble}\NormalTok{(}\FunctionTok{colData}\NormalTok{(tse)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{c}\NormalTok{(}\StringTok{"shannon"}\NormalTok{,}\StringTok{"gini\_simpson"}\NormalTok{,}\StringTok{"faith"}\NormalTok{,}\StringTok{"chao1"}\NormalTok{,}\StringTok{"observed"}\NormalTok{), }\AttributeTok{names\_to =} \StringTok{"index"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"alpha"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(alpha)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\FunctionTok{vars}\NormalTok{(index), }\AttributeTok{scales =} \StringTok{"free"}\NormalTok{)}
+
+
+\FunctionTok{print}\NormalTok{(p)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
+
+\includegraphics{05-alpha_diversity_demo_files/figure-latex/distributions-2.pdf}
+
+and the correlation between indices:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{as\_tibble}\NormalTok{(}\FunctionTok{colData}\NormalTok{(tse)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{c}\NormalTok{(}\StringTok{"shannon"}\NormalTok{,}\StringTok{"gini\_simpson"}\NormalTok{,}\StringTok{"faith"}\NormalTok{,}\StringTok{"chao1"}\NormalTok{,}\StringTok{"observed"}\NormalTok{), }\AttributeTok{names\_to =} \StringTok{"index"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"alpha"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{full\_join}\NormalTok{(.,., }\AttributeTok{by =} \StringTok{"sample\_name"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{( }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ alpha.x, }\AttributeTok{y =}\NormalTok{ alpha.y)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(index.x }\SpecialCharTok{\textasciitilde{}}\NormalTok{ index.y, }\AttributeTok{scales =} \StringTok{"free"}\NormalTok{)}
+
+\FunctionTok{print}\NormalTok{(p)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{05-alpha_diversity_demo_files/figure-latex/scatterlots-1.pdf}
+
+\hypertarget{comparing-alpha-diversity}{%
+\section{Comparing alpha diversity}\label{comparing-alpha-diversity}}
+
+It is often interesting to look for any group differences:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{as\_tibble}\NormalTok{(}\FunctionTok{colData}\NormalTok{(tse)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{c}\NormalTok{(}\StringTok{"shannon"}\NormalTok{,}\StringTok{"gini\_simpson"}\NormalTok{,}\StringTok{"faith"}\NormalTok{,}\StringTok{"chao1"}\NormalTok{,}\StringTok{"observed"}\NormalTok{), }\AttributeTok{names\_to =} \StringTok{"index"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"alpha"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{( }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ patient\_status, }\AttributeTok{y =}\NormalTok{ alpha)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{outlier.shape =} \ConstantTok{NA}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_jitter}\NormalTok{(}\AttributeTok{alpha =}\FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\FunctionTok{vars}\NormalTok{(index), }\AttributeTok{scales =} \StringTok{"free"}\NormalTok{)}
+
+\FunctionTok{print}\NormalTok{(p)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{05-alpha_diversity_demo_files/figure-latex/boxplots-1.pdf}
+
+Moreover, we can test the group differences by parametric or non-parametric tests:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df1 }\OtherTok{\textless{}{-}} \FunctionTok{as\_tibble}\NormalTok{(}\FunctionTok{colData}\NormalTok{(tse)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{c}\NormalTok{(}\StringTok{"faith"}\NormalTok{,}\StringTok{"chao1"}\NormalTok{,}\StringTok{"observed"}\NormalTok{), }\AttributeTok{names\_to =} \StringTok{"index"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"alpha"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(index) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{nest}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{test\_pval =} \FunctionTok{map\_dbl}\NormalTok{(data, }\SpecialCharTok{\textasciitilde{}} \FunctionTok{t.test}\NormalTok{(alpha }\SpecialCharTok{\textasciitilde{}}\NormalTok{ patient\_status, }\AttributeTok{data =}\NormalTok{ .x)}\SpecialCharTok{$}\NormalTok{p.value)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{test =} \StringTok{"ttest"}\NormalTok{ ) }
+
+\NormalTok{df2 }\OtherTok{\textless{}{-}} \FunctionTok{as\_tibble}\NormalTok{(}\FunctionTok{colData}\NormalTok{(tse)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{c}\NormalTok{(}\StringTok{"shannon"}\NormalTok{,}\StringTok{"gini\_simpson"}\NormalTok{), }\AttributeTok{names\_to =} \StringTok{"index"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"alpha"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(index) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{nest}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{test\_pval =} \FunctionTok{map\_dbl}\NormalTok{(data, }\SpecialCharTok{\textasciitilde{}} \FunctionTok{wilcox.test}\NormalTok{(alpha }\SpecialCharTok{\textasciitilde{}}\NormalTok{ patient\_status, }\AttributeTok{data =}\NormalTok{ .x)}\SpecialCharTok{$}\NormalTok{p.value))}\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{test =} \StringTok{"wilcoxon"}\NormalTok{ ) }
+
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(df1,df2) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{data) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(test\_pval) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ungroup}\NormalTok{()}
+
+\NormalTok{df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 3
+##   index        test_pval test    
+##   <chr>            <dbl> <chr>   
+## 1 shannon          0.488 wilcoxon
+## 2 gini_simpson     0.685 wilcoxon
+## 3 chao1            0.856 ttest   
+## 4 observed         0.900 ttest   
+## 5 faith            0.983 ttest
+\end{verbatim}
+
+End of the demo.
+
+\hypertarget{exercises}{%
+\section{Exercises}\label{exercises}}
+
+Do ``Alpha diversity basics'' from the \href{https://microbiome.github.io/OMA/exercises.html}{exercises}.
+
+\hypertarget{beta-diversity-demo}{%
+\chapter{Beta diversity demo}\label{beta-diversity-demo}}
+
+\hypertarget{visualizations}{%
+\section{Visualizations}\label{visualizations}}
+
+Lets generate ordination plots with different methods and transformations.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\# calculating Bray Curtis dissimilarity and PCoA}
+
+\NormalTok{tse }\OtherTok{\textless{}{-}} \FunctionTok{transformSamples}\NormalTok{(tse, }\AttributeTok{method =} \StringTok{"relabundance"}\NormalTok{)}
+\NormalTok{tse }\OtherTok{\textless{}{-}} \FunctionTok{runMDS}\NormalTok{(tse, }\AttributeTok{FUN =}\NormalTok{ vegan}\SpecialCharTok{::}\NormalTok{vegdist, }\AttributeTok{method =} \StringTok{"bray"}\NormalTok{, }\AttributeTok{name =} \StringTok{"PCoA\_BC"}\NormalTok{, }\AttributeTok{exprs\_values =} \StringTok{"relabundance"}\NormalTok{)}
+
+
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{plotReducedDim}\NormalTok{(tse, }\StringTok{"PCoA\_BC"}\NormalTok{, }\AttributeTok{colour\_by =} \StringTok{"patient\_status"}\NormalTok{)}
+
+\CommentTok{\# Add explained variance for each axis}
+\NormalTok{e }\OtherTok{\textless{}{-}} \FunctionTok{attr}\NormalTok{(}\FunctionTok{reducedDim}\NormalTok{(tse, }\StringTok{"PCoA\_BC"}\NormalTok{), }\StringTok{"eig"}\NormalTok{);}
+\NormalTok{rel\_eig }\OtherTok{\textless{}{-}}\NormalTok{ e}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(e[e}\SpecialCharTok{\textgreater{}}\DecValTok{0}\NormalTok{])          }
+\NormalTok{p }\OtherTok{\textless{}{-}}\NormalTok{ p }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \FunctionTok{paste}\NormalTok{(}\StringTok{"PCoA 1 ("}\NormalTok{, }\FunctionTok{round}\NormalTok{(}\DecValTok{100} \SpecialCharTok{*}\NormalTok{ rel\_eig[[}\DecValTok{1}\NormalTok{]],}\DecValTok{1}\NormalTok{), }\StringTok{"\%"}\NormalTok{, }\StringTok{")"}\NormalTok{, }\AttributeTok{sep =} \StringTok{""}\NormalTok{),}
+              \AttributeTok{y =} \FunctionTok{paste}\NormalTok{(}\StringTok{"PCoA 2 ("}\NormalTok{, }\FunctionTok{round}\NormalTok{(}\DecValTok{100} \SpecialCharTok{*}\NormalTok{ rel\_eig[[}\DecValTok{2}\NormalTok{]],}\DecValTok{1}\NormalTok{), }\StringTok{"\%"}\NormalTok{, }\StringTok{")"}\NormalTok{, }\AttributeTok{sep =} \StringTok{""}\NormalTok{))}
+
+\FunctionTok{print}\NormalTok{(p)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{06-beta_diversity_demo_files/figure-latex/viz1-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\# Aitchinson distances and PCA}
+
+\NormalTok{tse }\OtherTok{\textless{}{-}} \FunctionTok{transformSamples}\NormalTok{(tse, }\AttributeTok{method =} \StringTok{"clr"}\NormalTok{, }\AttributeTok{pseudocount =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: All the total abundances of samples do not sum-up to a fixed constant.
+## Please consider to apply, e.g., relative transformation in prior to CLR
+## transformation.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tse }\OtherTok{\textless{}{-}} \FunctionTok{runMDS}\NormalTok{(tse, }\AttributeTok{FUN =}\NormalTok{ vegan}\SpecialCharTok{::}\NormalTok{vegdist, }\AttributeTok{name =} \StringTok{"MDS\_euclidean"}\NormalTok{,}
+              \AttributeTok{method =} \StringTok{"euclidean"}\NormalTok{, }\AttributeTok{exprs\_values =} \StringTok{"clr"}\NormalTok{)}
+
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{plotReducedDim}\NormalTok{(tse, }\StringTok{"MDS\_euclidean"}\NormalTok{, }\AttributeTok{colour\_by =} \StringTok{"patient\_status\_vs\_cohort"}\NormalTok{)}
+
+\CommentTok{\# Add explained variance for each axis}
+\NormalTok{e }\OtherTok{\textless{}{-}} \FunctionTok{attr}\NormalTok{(}\FunctionTok{reducedDim}\NormalTok{(tse, }\StringTok{"MDS\_euclidean"}\NormalTok{), }\StringTok{"eig"}\NormalTok{);}
+\NormalTok{rel\_eig }\OtherTok{\textless{}{-}}\NormalTok{ e}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(e[e}\SpecialCharTok{\textgreater{}}\DecValTok{0}\NormalTok{])          }
+\NormalTok{p }\OtherTok{\textless{}{-}}\NormalTok{ p }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Axis 1 ("}\NormalTok{, }\FunctionTok{round}\NormalTok{(}\DecValTok{100} \SpecialCharTok{*}\NormalTok{ rel\_eig[[}\DecValTok{1}\NormalTok{]],}\DecValTok{1}\NormalTok{), }\StringTok{"\%"}\NormalTok{, }\StringTok{")"}\NormalTok{, }\AttributeTok{sep =} \StringTok{""}\NormalTok{),}
+              \AttributeTok{y =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Axis 2 ("}\NormalTok{, }\FunctionTok{round}\NormalTok{(}\DecValTok{100} \SpecialCharTok{*}\NormalTok{ rel\_eig[[}\DecValTok{2}\NormalTok{]],}\DecValTok{1}\NormalTok{), }\StringTok{"\%"}\NormalTok{, }\StringTok{")"}\NormalTok{, }\AttributeTok{sep =} \StringTok{""}\NormalTok{))}
+
+\FunctionTok{print}\NormalTok{(p)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{06-beta_diversity_demo_files/figure-latex/viz1-2.pdf}
+
+PCA is a subtype of MDS with Euclidean distances, below is a different alternative for running the same analysis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# alternative method }
+
+\NormalTok{tse }\OtherTok{\textless{}{-}} \FunctionTok{runPCA}\NormalTok{(tse, }\AttributeTok{name =} \StringTok{"PCA"}\NormalTok{, }\AttributeTok{exprs\_values =} \StringTok{"clr"}\NormalTok{, }\AttributeTok{ncomponents =} \DecValTok{10}\NormalTok{)}
+\FunctionTok{plotReducedDim}\NormalTok{(tse, }\StringTok{"PCA"}\NormalTok{, }\AttributeTok{colour\_by =} \StringTok{"patient\_status\_vs\_cohort"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{06-beta_diversity_demo_files/figure-latex/viz2-1.pdf}
+
+One can use also ggplot for ordination plots for the flexible adaptablity.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dis }\OtherTok{\textless{}{-}}\NormalTok{ vegan}\SpecialCharTok{::}\FunctionTok{vegdist}\NormalTok{(}\FunctionTok{t}\NormalTok{(}\FunctionTok{assays}\NormalTok{(tse)}\SpecialCharTok{$}\NormalTok{counts), }\AttributeTok{method =} \StringTok{"jaccard"}\NormalTok{)}
+
+\CommentTok{\# principal coordinate analysis}
+\NormalTok{jaccard\_pcoa }\OtherTok{\textless{}{-}}\NormalTok{ ecodist}\SpecialCharTok{::}\FunctionTok{pco}\NormalTok{(dis)}
+
+\CommentTok{\# a data frame from principal coordinates and groupng variable}
+\NormalTok{jaccard\_pcoa\_df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{pcoa1 =}\NormalTok{ jaccard\_pcoa}\SpecialCharTok{$}\NormalTok{vectors[,}\DecValTok{1}\NormalTok{], }
+                                \AttributeTok{pcoa2 =}\NormalTok{ jaccard\_pcoa}\SpecialCharTok{$}\NormalTok{vectors[,}\DecValTok{2}\NormalTok{],}
+                              \AttributeTok{patient\_status\_vs\_cohort =}  \FunctionTok{colData}\NormalTok{(tse)}\SpecialCharTok{$}\NormalTok{patient\_status\_vs\_cohort)}
+
+
+\CommentTok{\# plot}
+\NormalTok{jaccard\_plot }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ jaccard\_pcoa\_df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{pcoa1, }\AttributeTok{y=}\NormalTok{pcoa2, }\AttributeTok{color =}\NormalTok{ patient\_status\_vs\_cohort)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Axis 1 ("}\NormalTok{, }\FunctionTok{round}\NormalTok{(}\DecValTok{100} \SpecialCharTok{*}\NormalTok{ jaccard\_pcoa}\SpecialCharTok{$}\NormalTok{values[[}\DecValTok{1}\NormalTok{]] }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(jaccard\_pcoa}\SpecialCharTok{$}\NormalTok{values), }\DecValTok{1}\NormalTok{), }\StringTok{"\%"}\NormalTok{, }\StringTok{")"}\NormalTok{, }\AttributeTok{sep =} \StringTok{""}\NormalTok{),}
+       \AttributeTok{y =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Axis 2 ("}\NormalTok{, }\FunctionTok{round}\NormalTok{(}\DecValTok{100} \SpecialCharTok{*}\NormalTok{ jaccard\_pcoa}\SpecialCharTok{$}\NormalTok{values[[}\DecValTok{2}\NormalTok{]] }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(jaccard\_pcoa}\SpecialCharTok{$}\NormalTok{values), }\DecValTok{1}\NormalTok{), }\StringTok{"\%"}\NormalTok{, }\StringTok{")"}\NormalTok{, }\AttributeTok{sep =} \StringTok{""}\NormalTok{),}
+       \AttributeTok{title =} \StringTok{"Jaccard PCoA"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{12}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{theme\_light}\NormalTok{()}
+
+\NormalTok{jaccard\_plot}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{06-beta_diversity_demo_files/figure-latex/viz ggplot-1.pdf}
+
+\hypertarget{hypothesis-testing}{%
+\section{Hypothesis testing}\label{hypothesis-testing}}
+
+PERMANOVA with the function adonis is most commonly used to detect differences in multivariate data.
+adonis function was recently updated with slightly different functionality. Now the adonis2 allows independent analysis of terms.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{variable\_names }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"patient\_status"}\NormalTok{, }\StringTok{"cohort"}\NormalTok{)}
+
+\NormalTok{tse\_genus }\OtherTok{\textless{}{-}} \FunctionTok{agglomerateByRank}\NormalTok{(tse, }\StringTok{"Genus"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: 'clr' includes negative values.
+## Agglomeration of it might lead to meaningless values.
+## Check the assay, and consider doing transformation again manually with agglomerated data.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Apply relative transform}
+\NormalTok{tse\_genus }\OtherTok{\textless{}{-}} \FunctionTok{transformSamples}\NormalTok{(tse\_genus, }\AttributeTok{method =} \StringTok{"relabundance"}\NormalTok{)}
+
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{12346}\NormalTok{)}
+\CommentTok{\# We choose 99 random permutations for speed. Consider applying more (999 or 9999) }
+
+\NormalTok{assay }\OtherTok{\textless{}{-}} \FunctionTok{t}\NormalTok{(}\FunctionTok{assay}\NormalTok{(tse\_genus,}\StringTok{"relabundance"}\NormalTok{))}
+
+\NormalTok{mod }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(}\StringTok{"assay \textasciitilde{}"}\NormalTok{, }\FunctionTok{paste}\NormalTok{(variable\_names, }\AttributeTok{collapse=}\StringTok{"+"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{as.formula}\NormalTok{()}
+
+\NormalTok{permanova2 }\OtherTok{\textless{}{-}}\NormalTok{ vegan}\SpecialCharTok{::}\FunctionTok{adonis2}\NormalTok{(mod,}
+                     \AttributeTok{by =} \StringTok{"margin"}\NormalTok{, }\CommentTok{\# each term analyzed individually}
+                     \AttributeTok{data =} \FunctionTok{colData}\NormalTok{(tse),}
+                     \AttributeTok{method =} \StringTok{"bray"}\NormalTok{,}
+                     \AttributeTok{permutations =} \DecValTok{99}\NormalTok{)}
+
+\FunctionTok{print}\NormalTok{(permanova2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Permutation test for adonis under reduced model
+## Marginal effects of terms
+## Permutation: free
+## Number of permutations: 99
+## 
+## vegan::adonis2(formula = mod, data = colData(tse), permutations = 99, method = "bray", by = "margin")
+##                Df SumOfSqs      R2     F Pr(>F)
+## patient_status  1   0.1885 0.05817 1.490   0.23
+## cohort          2   0.1450 0.04474 0.573   0.75
+## Residual       23   2.9104 0.89787             
+## Total          26   3.2414 1.00000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# older adonis for reference}
+\NormalTok{permanova }\OtherTok{\textless{}{-}}\NormalTok{ vegan}\SpecialCharTok{::}\FunctionTok{adonis}\NormalTok{(mod,}
+                            \CommentTok{\#by = "margin", \# each term analyzed sequentially}
+                            \AttributeTok{data =} \FunctionTok{colData}\NormalTok{(tse),}
+                            \AttributeTok{method =} \StringTok{"bray"}\NormalTok{,}
+                            \AttributeTok{permutations =} \DecValTok{99}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'adonis' will be deprecated: use 'adonis2' instead
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{permanova}\SpecialCharTok{$}\NormalTok{aov.tab}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Permutation: free
+## Number of permutations: 99
+## 
+## Terms added sequentially (first to last)
+## 
+##                Df SumsOfSqs  MeanSqs F.Model      R2 Pr(>F)
+## patient_status  1    0.1860 0.186024 1.47011 0.05739   0.22
+## cohort          2    0.1450 0.072503 0.57298 0.04474   0.79
+## Residuals      23    2.9104 0.126537         0.89787       
+## Total          26    3.2414                  1.00000
+\end{verbatim}
+
+With older adonis version one cam calculate top coefficients driving the differences between groups.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# older adonis supplies the coefficients}
+\NormalTok{coef }\OtherTok{\textless{}{-}} \FunctionTok{coefficients}\NormalTok{(permanova)[}\StringTok{"cohort1"}\NormalTok{,]}
+\NormalTok{top.coef }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(}\FunctionTok{head}\NormalTok{(coef[}\FunctionTok{rev}\NormalTok{(}\FunctionTok{order}\NormalTok{(}\FunctionTok{abs}\NormalTok{(coef)))],}\DecValTok{20}\NormalTok{))}
+
+\CommentTok{\# plot }
+\NormalTok{top\_taxa\_coeffient\_plot }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x =}\NormalTok{ top.coef,}
+                                             \AttributeTok{y =} \FunctionTok{factor}\NormalTok{(}\FunctionTok{names}\NormalTok{(top.coef),}
+                                                        \FunctionTok{unique}\NormalTok{(}\FunctionTok{names}\NormalTok{(top.coef)))),}
+                                  \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{y =}\NormalTok{ y)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat=}\StringTok{"identity"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x=}\StringTok{""}\NormalTok{, }\AttributeTok{y=}\StringTok{""}\NormalTok{, }\AttributeTok{title=}\StringTok{"Top Taxa"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_bw}\NormalTok{()}
+
+\NormalTok{top\_taxa\_coeffient\_plot}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{06-beta_diversity_demo_files/figure-latex/permanova coef-1.pdf}
+
+\hypertarget{testing-the-differences-in-dispersion}{%
+\subsection{Testing the differences in dispersion}\label{testing-the-differences-in-dispersion}}
+
+PEMRANOVA doesn't differentiate between different within-group variation, i.e.~dispersion, or the mean differences between groups, i.e.~the location of the centroid.
+Follow-up testing can be done with PERMDISP2 implemented in the vegan package.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dis }\OtherTok{\textless{}{-}}\NormalTok{ vegan}\SpecialCharTok{::}\FunctionTok{vegdist}\NormalTok{(}\FunctionTok{t}\NormalTok{(}\FunctionTok{assays}\NormalTok{(tse)}\SpecialCharTok{$}\NormalTok{counts), }\AttributeTok{method =} \StringTok{"bray"}\NormalTok{)}
+\NormalTok{b }\OtherTok{\textless{}{-}}\NormalTok{ vegan}\SpecialCharTok{::}\FunctionTok{betadisper}\NormalTok{(dis, }\FunctionTok{colData}\NormalTok{(tse)}\SpecialCharTok{$}\NormalTok{cohort)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{anova}\NormalTok{(b))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: Distances
+##           Df   Sum Sq   Mean Sq F value Pr(>F)
+## Groups     2 0.000375 0.0001875  0.0166 0.9835
+## Residuals 24 0.270795 0.0112831
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# boxplor for distances to centroid}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(}\AttributeTok{distance =} \FunctionTok{as.numeric}\NormalTok{(b}\SpecialCharTok{$}\NormalTok{distances),}
+          \AttributeTok{cohort =} \FunctionTok{colData}\NormalTok{(tse)}\SpecialCharTok{$}\NormalTok{cohort) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{as\_tibble}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{distance =} \FunctionTok{as.numeric}\NormalTok{(distance)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(cohort, distance)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_boxplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme\_light}\NormalTok{()}
+
+\FunctionTok{print}\NormalTok{(p)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{06-beta_diversity_demo_files/figure-latex/dispersion-1.pdf}
+
+End of the demo.
+
+\hypertarget{exercises-1}{%
+\section{Exercises}\label{exercises-1}}
+
+Do ``Beta diversity'' from the \href{https://microbiome.github.io/OMA/exercises.html}{exercises}.
 
   \bibliography{packages.bib}
 

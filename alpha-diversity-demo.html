@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Alpha diversity demo | Microbiome data science with R/Bioconductor</title>
+  <meta name="description" content="Course material" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Alpha diversity demo | Microbiome data science with R/Bioconductor" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Course material" />
+  <meta name="github-repo" content="microbiome/course_2022_oulu" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Alpha diversity demo | Microbiome data science with R/Bioconductor" />
+  
+  <meta name="twitter:description" content="Course material" />
+  
+
+
+
+<meta name="date" content="2022-07-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="material.html"/>
+<link rel="next" href="beta-diversity-demo.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Microbiome data science with R/Bioconductor</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#contents-and-learning-goals"><i class="fa fa-check"></i><b>1.1</b> Contents and learning goals</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#schedule-and-organizers"><i class="fa fa-check"></i><b>1.2</b> Schedule and organizers</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>1.3</b> Acknowledgments</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="code-of-conduct.html"><a href="code-of-conduct.html"><i class="fa fa-check"></i><b>2</b> Code of Conduct</a></li>
+<li class="chapter" data-level="3" data-path="start.html"><a href="start.html"><i class="fa fa-check"></i><b>3</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="start.html"><a href="start.html#checklist-before-the-course"><i class="fa fa-check"></i><b>3.1</b> Checklist (before the course)</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="start.html"><a href="start.html#computer-setup-and-installations"><i class="fa fa-check"></i><b>3.1.1</b> Computer setup and installations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="start.html"><a href="start.html#support-and-resources"><i class="fa fa-check"></i><b>3.2</b> Support and resources</a></li>
+<li class="chapter" data-level="3.3" data-path="start.html"><a href="start.html#packages"><i class="fa fa-check"></i><b>3.3</b> Installing and loading the required R packages</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html"><i class="fa fa-check"></i><b>4</b> Importing microbiome data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#data-access"><i class="fa fa-check"></i><b>4.1</b> Data access</a></li>
+<li class="chapter" data-level="4.2" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#importing-microbiome-data-in-r"><i class="fa fa-check"></i><b>4.2</b> Importing microbiome data in R</a></li>
+<li class="chapter" data-level="4.3" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#example-solutions"><i class="fa fa-check"></i><b>4.3</b> Example solutions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="reproducible-reporting-with-rmarkdown.html"><a href="reproducible-reporting-with-rmarkdown.html"><i class="fa fa-check"></i><b>5</b> Reproducible reporting with Rmarkdown</a></li>
+<li class="chapter" data-level="6" data-path="material.html"><a href="material.html"><i class="fa fa-check"></i><b>6</b> Study material</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="material.html"><a href="material.html#online-tutorial"><i class="fa fa-check"></i><b>6.1</b> Online tutorial</a></li>
+<li class="chapter" data-level="6.2" data-path="material.html"><a href="material.html#lecture-slides"><i class="fa fa-check"></i><b>6.2</b> Lecture slides</a></li>
+<li class="chapter" data-level="6.3" data-path="material.html"><a href="material.html#tasks"><i class="fa fa-check"></i><b>6.3</b> Tasks</a></li>
+<li class="chapter" data-level="6.4" data-path="material.html"><a href="material.html#extra-material-on-miaverse-and-r-programming"><i class="fa fa-check"></i><b>6.4</b> Extra material on miaverse and R programming</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="alpha-diversity-demo.html"><a href="alpha-diversity-demo.html"><i class="fa fa-check"></i><b>7</b> Alpha diversity demo</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="alpha-diversity-demo.html"><a href="alpha-diversity-demo.html#alpha-diversity-estimation"><i class="fa fa-check"></i><b>7.1</b> Alpha diversity estimation</a></li>
+<li class="chapter" data-level="7.2" data-path="alpha-diversity-demo.html"><a href="alpha-diversity-demo.html#visualizing-alpha-diversity"><i class="fa fa-check"></i><b>7.2</b> Visualizing alpha diversity</a></li>
+<li class="chapter" data-level="7.3" data-path="alpha-diversity-demo.html"><a href="alpha-diversity-demo.html#comparing-alpha-diversity"><i class="fa fa-check"></i><b>7.3</b> Comparing alpha diversity</a></li>
+<li class="chapter" data-level="7.4" data-path="alpha-diversity-demo.html"><a href="alpha-diversity-demo.html#exercises"><i class="fa fa-check"></i><b>7.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="beta-diversity-demo.html"><a href="beta-diversity-demo.html"><i class="fa fa-check"></i><b>8</b> Beta diversity demo</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="beta-diversity-demo.html"><a href="beta-diversity-demo.html#visualizations"><i class="fa fa-check"></i><b>8.1</b> Visualizations</a></li>
+<li class="chapter" data-level="8.2" data-path="beta-diversity-demo.html"><a href="beta-diversity-demo.html#hypothesis-testing"><i class="fa fa-check"></i><b>8.2</b> Hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="beta-diversity-demo.html"><a href="beta-diversity-demo.html#testing-the-differences-in-dispersion"><i class="fa fa-check"></i><b>8.2.1</b> Testing the differences in dispersion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="beta-diversity-demo.html"><a href="beta-diversity-demo.html#exercises-1"><i class="fa fa-check"></i><b>8.3</b> Exercises</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Microbiome data science with R/Bioconductor</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="alpha-diversity-demo" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> Alpha diversity demo<a href="alpha-diversity-demo.html#alpha-diversity-demo" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="alpha-diversity-estimation" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Alpha diversity estimation<a href="alpha-diversity-demo.html#alpha-diversity-estimation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>First let`s load the required packages and data set</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="alpha-diversity-demo.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mia)</span></code></pre></div>
+<pre><code>## Loading required package: SummarizedExperiment</code></pre>
+<pre><code>## Loading required package: MatrixGenerics</code></pre>
+<pre><code>## Loading required package: matrixStats</code></pre>
+<pre><code>## 
+## Attaching package: &#39;MatrixGenerics&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:matrixStats&#39;:
+## 
+##     colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+##     colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+##     colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+##     colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+##     colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+##     colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+##     colWeightedMeans, colWeightedMedians, colWeightedSds,
+##     colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+##     rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+##     rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+##     rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+##     rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+##     rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+##     rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+##     rowWeightedSds, rowWeightedVars</code></pre>
+<pre><code>## Loading required package: GenomicRanges</code></pre>
+<pre><code>## Loading required package: stats4</code></pre>
+<pre><code>## Loading required package: BiocGenerics</code></pre>
+<pre><code>## 
+## Attaching package: &#39;BiocGenerics&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     IQR, mad, sd, var, xtabs</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     anyDuplicated, append, as.data.frame, basename, cbind, colnames,
+##     dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+##     grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
+##     order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+##     rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
+##     union, unique, unsplit, which.max, which.min</code></pre>
+<pre><code>## Loading required package: S4Vectors</code></pre>
+<pre><code>## 
+## Attaching package: &#39;S4Vectors&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     expand.grid, I, unname</code></pre>
+<pre><code>## Loading required package: IRanges</code></pre>
+<pre><code>## Loading required package: GenomeInfoDb</code></pre>
+<pre><code>## Loading required package: Biobase</code></pre>
+<pre><code>## Welcome to Bioconductor
+## 
+##     Vignettes contain introductory material; view with
+##     &#39;browseVignettes()&#39;. To cite Bioconductor, see
+##     &#39;citation(&quot;Biobase&quot;)&#39;, and for packages &#39;citation(&quot;pkgname&quot;)&#39;.</code></pre>
+<pre><code>## 
+## Attaching package: &#39;Biobase&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:MatrixGenerics&#39;:
+## 
+##     rowMedians</code></pre>
+<pre><code>## The following objects are masked from &#39;package:matrixStats&#39;:
+## 
+##     anyMissing, rowMedians</code></pre>
+<pre><code>## Loading required package: SingleCellExperiment</code></pre>
+<pre><code>## Loading required package: TreeSummarizedExperiment</code></pre>
+<pre><code>## Loading required package: Biostrings</code></pre>
+<pre><code>## Loading required package: XVector</code></pre>
+<pre><code>## 
+## Attaching package: &#39;Biostrings&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:base&#39;:
+## 
+##     strsplit</code></pre>
+<pre><code>## Loading required package: MultiAssayExperiment</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="alpha-diversity-demo.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(miaViz)</span></code></pre></div>
+<pre><code>## Loading required package: ggplot2</code></pre>
+<pre><code>## Loading required package: ggraph</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="alpha-diversity-demo.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✔ tibble  3.1.7     ✔ dplyr   1.0.9
+## ✔ tidyr   1.2.0     ✔ stringr 1.4.0
+## ✔ readr   2.1.2     ✔ forcats 0.5.1
+## ✔ purrr   0.3.4</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::collapse()   masks Biostrings::collapse(), IRanges::collapse()
+## ✖ dplyr::combine()    masks Biobase::combine(), BiocGenerics::combine()
+## ✖ purrr::compact()    masks XVector::compact()
+## ✖ dplyr::count()      masks matrixStats::count()
+## ✖ dplyr::desc()       masks IRanges::desc()
+## ✖ tidyr::expand()     masks S4Vectors::expand()
+## ✖ dplyr::filter()     masks stats::filter()
+## ✖ dplyr::first()      masks S4Vectors::first()
+## ✖ dplyr::lag()        masks stats::lag()
+## ✖ ggplot2::Position() masks BiocGenerics::Position(), base::Position()
+## ✖ purrr::reduce()     masks GenomicRanges::reduce(), IRanges::reduce()
+## ✖ dplyr::rename()     masks S4Vectors::rename()
+## ✖ dplyr::slice()      masks XVector::slice(), IRanges::slice()</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="alpha-diversity-demo.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(vegan)</span></span>
+<span id="cb40-2"><a href="alpha-diversity-demo.html#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="alpha-diversity-demo.html#cb40-3" aria-hidden="true" tabindex="-1"></a>tse <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">&quot;data/Tengeler2020/tse.rds&quot;</span>)</span>
+<span id="cb40-4"><a href="alpha-diversity-demo.html#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="alpha-diversity-demo.html#cb40-5" aria-hidden="true" tabindex="-1"></a>tse</span></code></pre></div>
+<pre><code>## class: TreeSummarizedExperiment 
+## dim: 151 27 
+## metadata(0):
+## assays(1): counts
+## rownames(151): 1726470 1726471 ... 17264756 17264757
+## rowData names(6): Kingdom Phylum ... Family Genus
+## colnames(27): A110 A12 ... A35 A38
+## colData names(4): patient_status cohort patient_status_vs_cohort
+##   sample_name
+## reducedDimNames(0):
+## mainExpName: NULL
+## altExpNames(0):
+## rowLinks: a LinkDataFrame (151 rows)
+## rowTree: 1 phylo tree(s) (151 leaves)
+## colLinks: NULL
+## colTree: NULL</code></pre>
+<p>Then let’s estimate multiple diversity indices.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="alpha-diversity-demo.html#cb42-1" aria-hidden="true" tabindex="-1"></a>?estimateDiversity</span>
+<span id="cb42-2"><a href="alpha-diversity-demo.html#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="alpha-diversity-demo.html#cb42-3" aria-hidden="true" tabindex="-1"></a>tse <span class="ot">&lt;-</span> <span class="fu">estimateDiversity</span>(tse, </span>
+<span id="cb42-4"><a href="alpha-diversity-demo.html#cb42-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;shannon&quot;</span>,<span class="st">&quot;gini_simpson&quot;</span>,<span class="st">&quot;faith&quot;</span>),</span>
+<span id="cb42-5"><a href="alpha-diversity-demo.html#cb42-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;shannon&quot;</span>,<span class="st">&quot;gini_simpson&quot;</span>,<span class="st">&quot;faith&quot;</span>))</span>
+<span id="cb42-6"><a href="alpha-diversity-demo.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">colData</span>(tse))</span></code></pre></div>
+<pre><code>## DataFrame with 6 rows and 7 columns
+##      patient_status      cohort patient_status_vs_cohort sample_name   shannon
+##         &lt;character&gt; &lt;character&gt;              &lt;character&gt; &lt;character&gt; &lt;numeric&gt;
+## A110           ADHD    Cohort_1            ADHD_Cohort_1        A110   1.76541
+## A12            ADHD    Cohort_1            ADHD_Cohort_1         A12   2.71644
+## A15            ADHD    Cohort_1            ADHD_Cohort_1         A15   3.17810
+## A19            ADHD    Cohort_1            ADHD_Cohort_1         A19   2.89199
+## A21            ADHD    Cohort_2            ADHD_Cohort_2         A21   2.84198
+## A23            ADHD    Cohort_2            ADHD_Cohort_2         A23   2.79794
+##      gini_simpson     faith
+##         &lt;numeric&gt; &lt;numeric&gt;
+## A110     0.669537   7.39224
+## A12      0.871176   6.29378
+## A15      0.930561   6.60608
+## A19      0.899210   6.79708
+## A21      0.885042   6.65110
+## A23      0.859813   5.96246</code></pre>
+<p>We can see that the variables are included in the data.
+Similarly, let’s calculate richness indices.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="alpha-diversity-demo.html#cb44-1" aria-hidden="true" tabindex="-1"></a>tse <span class="ot">&lt;-</span> <span class="fu">estimateRichness</span>(tse, </span>
+<span id="cb44-2"><a href="alpha-diversity-demo.html#cb44-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;chao1&quot;</span>,<span class="st">&quot;observed&quot;</span>))</span>
+<span id="cb44-3"><a href="alpha-diversity-demo.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">colData</span>(tse))</span></code></pre></div>
+<pre><code>## DataFrame with 6 rows and 10 columns
+##      patient_status      cohort patient_status_vs_cohort sample_name   shannon
+##         &lt;character&gt; &lt;character&gt;              &lt;character&gt; &lt;character&gt; &lt;numeric&gt;
+## A110           ADHD    Cohort_1            ADHD_Cohort_1        A110   1.76541
+## A12            ADHD    Cohort_1            ADHD_Cohort_1         A12   2.71644
+## A15            ADHD    Cohort_1            ADHD_Cohort_1         A15   3.17810
+## A19            ADHD    Cohort_1            ADHD_Cohort_1         A19   2.89199
+## A21            ADHD    Cohort_2            ADHD_Cohort_2         A21   2.84198
+## A23            ADHD    Cohort_2            ADHD_Cohort_2         A23   2.79794
+##      gini_simpson     faith     chao1  chao1_se  observed
+##         &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
+## A110     0.669537   7.39224        68  0.000000        68
+## A12      0.871176   6.29378        51  0.000000        51
+## A15      0.930561   6.60608        68  0.000000        68
+## A19      0.899210   6.79708        62  0.000000        62
+## A21      0.885042   6.65110        58  0.000000        58
+## A23      0.859813   5.96246        61  0.247942        61</code></pre>
+</div>
+<div id="visualizing-alpha-diversity" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Visualizing alpha diversity<a href="alpha-diversity-demo.html#visualizing-alpha-diversity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We can plot the distributions of individual indices:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="alpha-diversity-demo.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#individual plot</span></span>
+<span id="cb46-2"><a href="alpha-diversity-demo.html#cb46-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">colData</span>(tse)) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-3"><a href="alpha-diversity-demo.html#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(shannon)) <span class="sc">+</span></span>
+<span id="cb46-4"><a href="alpha-diversity-demo.html#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() </span>
+<span id="cb46-5"><a href="alpha-diversity-demo.html#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="alpha-diversity-demo.html#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="05-alpha_diversity_demo_files/figure-html/distributions-1.png" width="672" /></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="alpha-diversity-demo.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#multiple plots</span></span>
+<span id="cb48-2"><a href="alpha-diversity-demo.html#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="alpha-diversity-demo.html#cb48-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">colData</span>(tse)) <span class="sc">%&gt;%</span> </span>
+<span id="cb48-4"><a href="alpha-diversity-demo.html#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;shannon&quot;</span>,<span class="st">&quot;gini_simpson&quot;</span>,<span class="st">&quot;faith&quot;</span>,<span class="st">&quot;chao1&quot;</span>,<span class="st">&quot;observed&quot;</span>), <span class="at">names_to =</span> <span class="st">&quot;index&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;alpha&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb48-5"><a href="alpha-diversity-demo.html#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(alpha)) <span class="sc">+</span></span>
+<span id="cb48-6"><a href="alpha-diversity-demo.html#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb48-7"><a href="alpha-diversity-demo.html#cb48-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(index), <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>)</span>
+<span id="cb48-8"><a href="alpha-diversity-demo.html#cb48-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-9"><a href="alpha-diversity-demo.html#cb48-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-10"><a href="alpha-diversity-demo.html#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="05-alpha_diversity_demo_files/figure-html/distributions-2.png" width="672" /></p>
+<p>and the correlation between indices:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="alpha-diversity-demo.html#cb50-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">colData</span>(tse)) <span class="sc">%&gt;%</span> </span>
+<span id="cb50-2"><a href="alpha-diversity-demo.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;shannon&quot;</span>,<span class="st">&quot;gini_simpson&quot;</span>,<span class="st">&quot;faith&quot;</span>,<span class="st">&quot;chao1&quot;</span>,<span class="st">&quot;observed&quot;</span>), <span class="at">names_to =</span> <span class="st">&quot;index&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;alpha&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb50-3"><a href="alpha-diversity-demo.html#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(.,., <span class="at">by =</span> <span class="st">&quot;sample_name&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb50-4"><a href="alpha-diversity-demo.html#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>( <span class="fu">aes</span>(<span class="at">x =</span> alpha.x, <span class="at">y =</span> alpha.y)) <span class="sc">+</span> </span>
+<span id="cb50-5"><a href="alpha-diversity-demo.html#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb50-6"><a href="alpha-diversity-demo.html#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
+<span id="cb50-7"><a href="alpha-diversity-demo.html#cb50-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(index.x <span class="sc">~</span> index.y, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>)</span>
+<span id="cb50-8"><a href="alpha-diversity-demo.html#cb50-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-9"><a href="alpha-diversity-demo.html#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="05-alpha_diversity_demo_files/figure-html/scatterlots-1.png" width="1248" /></p>
+</div>
+<div id="comparing-alpha-diversity" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Comparing alpha diversity<a href="alpha-diversity-demo.html#comparing-alpha-diversity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>It is often interesting to look for any group differences:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="alpha-diversity-demo.html#cb52-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">colData</span>(tse)) <span class="sc">%&gt;%</span> </span>
+<span id="cb52-2"><a href="alpha-diversity-demo.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;shannon&quot;</span>,<span class="st">&quot;gini_simpson&quot;</span>,<span class="st">&quot;faith&quot;</span>,<span class="st">&quot;chao1&quot;</span>,<span class="st">&quot;observed&quot;</span>), <span class="at">names_to =</span> <span class="st">&quot;index&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;alpha&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb52-3"><a href="alpha-diversity-demo.html#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>( <span class="fu">aes</span>(<span class="at">x =</span> patient_status, <span class="at">y =</span> alpha)) <span class="sc">+</span> </span>
+<span id="cb52-4"><a href="alpha-diversity-demo.html#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb52-5"><a href="alpha-diversity-demo.html#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb52-6"><a href="alpha-diversity-demo.html#cb52-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(index), <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>)</span>
+<span id="cb52-7"><a href="alpha-diversity-demo.html#cb52-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-8"><a href="alpha-diversity-demo.html#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span></code></pre></div>
+<p><img src="05-alpha_diversity_demo_files/figure-html/boxplots-1.png" width="672" /></p>
+<p>Moreover, we can test the group differences by parametric or non-parametric tests:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="alpha-diversity-demo.html#cb53-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">colData</span>(tse)) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-2"><a href="alpha-diversity-demo.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;faith&quot;</span>,<span class="st">&quot;chao1&quot;</span>,<span class="st">&quot;observed&quot;</span>), <span class="at">names_to =</span> <span class="st">&quot;index&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;alpha&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-3"><a href="alpha-diversity-demo.html#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(index) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-4"><a href="alpha-diversity-demo.html#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb53-5"><a href="alpha-diversity-demo.html#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">test_pval =</span> <span class="fu">map_dbl</span>(data, <span class="sc">~</span> <span class="fu">t.test</span>(alpha <span class="sc">~</span> patient_status, <span class="at">data =</span> .x)<span class="sc">$</span>p.value)) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-6"><a href="alpha-diversity-demo.html#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">test =</span> <span class="st">&quot;ttest&quot;</span> ) </span>
+<span id="cb53-7"><a href="alpha-diversity-demo.html#cb53-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-8"><a href="alpha-diversity-demo.html#cb53-8" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">colData</span>(tse)) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-9"><a href="alpha-diversity-demo.html#cb53-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;shannon&quot;</span>,<span class="st">&quot;gini_simpson&quot;</span>), <span class="at">names_to =</span> <span class="st">&quot;index&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;alpha&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-10"><a href="alpha-diversity-demo.html#cb53-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(index) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-11"><a href="alpha-diversity-demo.html#cb53-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb53-12"><a href="alpha-diversity-demo.html#cb53-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">test_pval =</span> <span class="fu">map_dbl</span>(data, <span class="sc">~</span> <span class="fu">wilcox.test</span>(alpha <span class="sc">~</span> patient_status, <span class="at">data =</span> .x)<span class="sc">$</span>p.value))<span class="sc">%&gt;%</span> </span>
+<span id="cb53-13"><a href="alpha-diversity-demo.html#cb53-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">test =</span> <span class="st">&quot;wilcoxon&quot;</span> ) </span>
+<span id="cb53-14"><a href="alpha-diversity-demo.html#cb53-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-15"><a href="alpha-diversity-demo.html#cb53-15" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(df1,df2) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>data) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(test_pval) <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>()</span>
+<span id="cb53-16"><a href="alpha-diversity-demo.html#cb53-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-17"><a href="alpha-diversity-demo.html#cb53-17" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 3
+##   index        test_pval test    
+##   &lt;chr&gt;            &lt;dbl&gt; &lt;chr&gt;   
+## 1 shannon          0.488 wilcoxon
+## 2 gini_simpson     0.685 wilcoxon
+## 3 chao1            0.856 ttest   
+## 4 observed         0.900 ttest   
+## 5 faith            0.983 ttest</code></pre>
+<p>End of the demo.</p>
+</div>
+<div id="exercises" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Exercises<a href="alpha-diversity-demo.html#exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Do “Alpha diversity basics” from the <a href="https://microbiome.github.io/OMA/exercises.html">exercises</a>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="material.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="beta-diversity-demo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": true,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["oulu2022_material.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
