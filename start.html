@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-07-06" />
+<meta name="date" content="2022-07-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -229,8 +229,7 @@ div.csl-indent {
 <h2><span class="header-section-number">3.1</span> Checklist (before the course)<a href="start.html#checklist-before-the-course" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="computer-setup-and-installations" class="section level3 hasAnchor" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> Computer setup and installations<a href="start.html#computer-setup-and-installations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Setting up the system on your own computer is not required for the
-course but it can be useful for later use. The required software:</p>
+<p>Setting up the system on your own computer is required to follow the full course and will be useful for later use if you intent to analyze microbiome data on your computer. The required software:</p>
 <ul>
 <li><p><a href="https://www.r-project.org/">R (version &gt;4.2.0)</a></p></li>
 <li><p><a href="https://www.rstudio.com/products/rstudio/download/">RStudio</a>;
@@ -280,7 +279,7 @@ following code.</p>
 Some function names occur in multiple packages. That is why miaverse’s packages
 mia and miaViz are prioritized. Packages that are loaded first have higher priority.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="start.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loading all packages into session. Returns true if package was successfully loaded.</span></span>
-<span id="cb3-2"><a href="start.html#cb3-2" aria-hidden="true" tabindex="-1"></a>loaded <span class="ot">&lt;-</span> <span class="fu">sapply</span>(packages, require, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-2"><a href="start.html#cb3-2" aria-hidden="true" tabindex="-1"></a>loaded <span class="ot">&lt;-</span> <span class="fu">sapply</span>(pkg, require, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb3-3"><a href="start.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(loaded)</span></code></pre></div>
 
 </div>

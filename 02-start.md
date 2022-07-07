@@ -4,8 +4,7 @@
 
 ### Computer setup and installations
 
-Setting up the system on your own computer is not required for the
-course but it can be useful for later use. The required software:
+Setting up the system on your own computer is required to follow the full course and will be useful for later use if you intent to analyze microbiome data on your computer. The required software:
 
 * [R (version >4.2.0)](https://www.r-project.org/) 
 
@@ -72,7 +71,7 @@ mia and miaViz are prioritized. Packages that are loaded first have higher prior
 
 ```r
 # Loading all packages into session. Returns true if package was successfully loaded.
-loaded <- sapply(packages, require, character.only = TRUE)
+loaded <- sapply(pkg, require, character.only = TRUE)
 as.data.frame(loaded)
 ```
 
