@@ -138,6 +138,7 @@ jobs:
           BiocManager::install("biclust")	  
           BiocManager::install("cobiclust")	  	  
           BiocManager::install("HDF5Array")
+          BiocManager::install("kableExtra")	  
           BiocManager::install("microbiome/microbiomeDataSets")
           BiocManager::install("fionarhuang/TreeSummarizedExperiment")
           # Remove when available in docker
