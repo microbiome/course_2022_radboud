@@ -240,6 +240,10 @@ Now we have loaded the data set into R. Next, let us walk through some
 basic operations for data exploration to confirm that the data has all
 the necessary components.
 
+Chapters 4-6 in
+[OMA](https://microbiome.github.io/OMA/datamanipulation.html) provide
+many more examples on exploring and manipulating microbiome data.
+
 
 ## Data structure
 
@@ -624,5 +628,300 @@ import the data and generate the analyses.
    [OMA](https://microbiome.github.io/OMA/taxonomic-information.html#functions-to-access-taxonomic-information).
 
 
- * Example solution: [Solutions](06-3-ex-sol-ADHD.html)
- 
+
+
+
+## Exploring data: example solutions
+
+ * **Abundance table** Retrieve the taxonomic abundance table from the
+   example data set (TSE object).
+   
+
+```r
+# We show only part of it
+assays(tse)$counts[1:6,1:6]
+```
+
+```
+##           A110   A12  A15  A19  A21  A23
+## 1726470  17722 11630    0 8806 1740 1791
+## 1726471  12052     0 2679 2776  540  229
+## 17264731     0   970    0  549  145    0
+## 17264726     0  1911    0 5497  659    0
+## 1726472   1143  1891 1212  584   84  700
+## 17264724     0  6498    0 4455  610    0
+```
+ * How many different samples and genus-level groups this phyloseq
+   object has?
+
+
+```r
+dim(rowData(tse))
+```
+
+```
+## [1] 151   6
+```
+
+ * What is the maximum abundance of Akkermansia in this data set?
+
+
+```r
+# Agglomerating to Genus level
+tse_genus <- agglomerateByRank(tse,rank="Genus")
+# Retrieving the count for Akkermansia
+Akkermansia_abund <- assays(tse_genus)$count["Genus:Akkermansia",]
+max(Akkermansia_abund)
+```
+
+```
+## [1] 2535
+```
+ * Draw a histogram of library sizes (total number of reads per
+   sample).
+
+
+```r
+library(scater)
+```
+
+```
+## Loading required package: scuttle
+```
+
+```r
+tse <- addPerCellQC(tse) # adding a new column "sum" to colData, of total counts/sample.
+hist(colData(tse)$sum, xlab = "Total number of reads per sample", main = "Histogram of library sizes")
+```
+
+![](05-explore_files/figure-latex/unnamed-chunk-16-1.pdf)<!-- --> 
+ * **Taxonomy table** Retrieve the taxonomy table and print out the
+   first few lines of it with the R command head(). Investigate how
+   many different phylum-level groups this phyloseq object has?
+
+
+```r
+head(rowData(tse))
+```
+
+```
+## DataFrame with 6 rows and 6 columns
+##              Kingdom          Phylum            Class              Order
+##          <character>     <character>      <character>        <character>
+## 1726470     Bacteria   Bacteroidetes      Bacteroidia      Bacteroidales
+## 1726471     Bacteria   Bacteroidetes      Bacteroidia      Bacteroidales
+## 17264731    Bacteria   Bacteroidetes      Bacteroidia      Bacteroidales
+## 17264726    Bacteria   Bacteroidetes      Bacteroidia      Bacteroidales
+## 1726472     Bacteria Verrucomicrobia Verrucomicrobiae Verrucomicrobiales
+## 17264724    Bacteria   Bacteroidetes      Bacteroidia      Bacteroidales
+##                       Family           Genus
+##                  <character>     <character>
+## 1726470       Bacteroidaceae     Bacteroides
+## 1726471       Bacteroidaceae     Bacteroides
+## 17264731  Porphyromonadaceae Parabacteroides
+## 17264726      Bacteroidaceae     Bacteroides
+## 1726472  Verrucomicrobiaceae     Akkermansia
+## 17264724      Bacteroidaceae     Bacteroides
+```
+
+```r
+taxonomyRanks(tse) # The taxonomic ranks available
+```
+
+```
+## [1] "Kingdom" "Phylum"  "Class"   "Order"   "Family"  "Genus"
+```
+
+```r
+unique(rowData(tse)["Phylum"]) # phylum-level groups
+```
+
+```
+## DataFrame with 5 rows and 1 column
+##                    Phylum
+##               <character>
+## 1726470     Bacteroidetes
+## 1726472   Verrucomicrobia
+## 17264729   Proteobacteria
+## 172647189      Firmicutes
+## 17264742    Cyanobacteria
+```
+
+```r
+length(unique(rowData(tse)["Phylum"])[,1]) # number of phylum-level groups
+```
+
+```
+## [1] 5
+```
+
+ * **Sample metadata** Retrieve sample metadata. How many patient
+     groups this data set has? Draw a histogram of sample
+     diversities.
+     
+
+```r
+colData(tse) # samples metadata
+```
+
+```
+## DataFrame with 27 rows and 7 columns
+##      patient_status      cohort patient_status_vs_cohort sample_name       sum
+##         <character> <character>              <character> <character> <numeric>
+## A110           ADHD    Cohort_1            ADHD_Cohort_1        A110     37394
+## A12            ADHD    Cohort_1            ADHD_Cohort_1         A12     40584
+## A15            ADHD    Cohort_1            ADHD_Cohort_1         A15     16077
+## A19            ADHD    Cohort_1            ADHD_Cohort_1         A19     39210
+## A21            ADHD    Cohort_2            ADHD_Cohort_2         A21      6351
+## ...             ...         ...                      ...         ...       ...
+## A26         Control    Cohort_2         Control_Cohort_2         A26     20431
+## A27         Control    Cohort_2         Control_Cohort_2         A27     14636
+## A33         Control    Cohort_3         Control_Cohort_3         A33     13051
+## A35         Control    Cohort_3         Control_Cohort_3         A35     12642
+## A38         Control    Cohort_3         Control_Cohort_3         A38     15544
+##       detected     total
+##      <numeric> <numeric>
+## A110        68     37394
+## A12         51     40584
+## A15         68     16077
+## A19         62     39210
+## A21         58      6351
+## ...        ...       ...
+## A26         64     20431
+## A27         86     14636
+## A33         78     13051
+## A35         62     12642
+## A38         74     15544
+```
+
+```r
+unique(colData(tse)$patient_status) # patient groups
+```
+
+```
+## [1] "ADHD"    "Control"
+```
+
+```r
+# Example of sample diversity using Shannon index
+tse <- mia::estimateDiversity(tse, 
+                             abund_values = "counts",
+                             index = "shannon", 
+                             name = "shannon")
+hist(colData(tse)$shannon, xlab = "Shannon index", main = "Histogram of sample diversity")
+```
+
+![](05-explore_files/figure-latex/unnamed-chunk-18-1.pdf)<!-- --> 
+
+ * **Subsetting** Pick a subset of the data object including only
+     ADHD individuals from Cohort 1. How many there are?
+
+
+```r
+sub_cohort_1 <- tse[, colData(tse)$cohort=="Cohort_1"]
+sub_cohort_1_ADHD <- sub_cohort_1[, colData(sub_cohort_1)$patient_status=="ADHD"]
+colData(sub_cohort_1_ADHD)
+```
+
+```
+## DataFrame with 4 rows and 8 columns
+##      patient_status      cohort patient_status_vs_cohort sample_name       sum
+##         <character> <character>              <character> <character> <numeric>
+## A110           ADHD    Cohort_1            ADHD_Cohort_1        A110     37394
+## A12            ADHD    Cohort_1            ADHD_Cohort_1         A12     40584
+## A15            ADHD    Cohort_1            ADHD_Cohort_1         A15     16077
+## A19            ADHD    Cohort_1            ADHD_Cohort_1         A19     39210
+##       detected     total   shannon
+##      <numeric> <numeric> <numeric>
+## A110        68     37394   1.76541
+## A12         51     40584   2.71644
+## A15         68     16077   3.17810
+## A19         62     39210   2.89199
+```
+
+ * **Transformations** The data contains read counts. We can convert
+  these into relative abundances and other formats. Compare abundance
+  of a given taxonomic group using the example data before and after
+  the compositionality transformation (with a cross-plot, for
+  instance). You can also compare the results to CLR-transformed data
+  (see e.g. [Gloor et
+  al. 2017](https://www.frontiersin.org/articles/10.3389/fmicb.2017.02224/full))
+  
+
+```r
+tse <- transformCounts(tse, method = "relabundance")
+tse <- transformCounts(tse, method = "clr", abund_values = "counts",pseudocount = 1)
+```
+
+```
+## Warning: All the total abundances of samples do not sum-up to a fixed constant.
+## Please consider to apply, e.g., relative transformation in prior to CLR
+## transformation.
+```
+
+```r
+# Lets compare with taxa: A29
+taxa <- "A29"
+df <- as.data.frame(list(
+                          counts=assays(tse)$counts[,taxa],
+                          relabundance=assays(tse)$relabundance[,taxa],
+                          clr=assays(tse)$clr[,taxa])
+                        )
+ggplot(df, aes(x=counts,y=relabundance))+
+  geom_point()+
+  geom_smooth()
+```
+
+```
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+```
+
+![](05-explore_files/figure-latex/unnamed-chunk-20-1.pdf)<!-- --> 
+
+```r
+ggplot(df, aes(x=counts,y=clr))+
+  geom_point()+
+  geom_smooth()
+```
+
+```
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+```
+
+![](05-explore_files/figure-latex/unnamed-chunk-20-2.pdf)<!-- --> 
+
+```r
+ggplot(df, aes(x=relabundance,y=clr))+
+  geom_point()+
+  geom_smooth()
+```
+
+```
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+```
+
+![](05-explore_files/figure-latex/unnamed-chunk-20-3.pdf)<!-- --> 
+ * **Visual exploration** Visualize the population distribution of
+   abundances for certain taxonomic groups. Do the same for
+   CLR-transformed abundances.
+   
+
+```r
+# Same taxa used as earlier
+ggplot(df, aes(x=counts,colour="blue")) +
+    geom_density(alpha=.2)+
+  theme(legend.position = "none")+
+  labs(title =paste("Distribution of counts for",taxa, collapse = ": "))
+```
+
+![](05-explore_files/figure-latex/unnamed-chunk-21-1.pdf)<!-- --> 
+
+```r
+ggplot(df, aes(x=clr,colour="red")) + 
+    geom_density(alpha=.2)+
+  theme(legend.position = "none")+
+  labs(title =paste("Distribution of clr for",taxa, collapse = ": "))
+```
+
+![](05-explore_files/figure-latex/unnamed-chunk-21-2.pdf)<!-- --> 
+

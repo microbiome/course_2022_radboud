@@ -1,7 +1,7 @@
 --- 
 title: "Microbiome data science with R/Bioconductor"
 subtitle: "Welcome to Radboud Summer School, July 2022"
-date: "2022-07-07"
+date: "2022-07-09"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [packages.bib]
@@ -18,6 +18,7 @@ geometry:
   - top=30mm
   - left=15mm
 ---
+
 
 
 

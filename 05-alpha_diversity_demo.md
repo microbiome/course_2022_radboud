@@ -11,207 +11,8 @@ First let`s load the required packages and data set
 
 ```r
 library(mia)
-```
-
-```
-## Loading required package: SummarizedExperiment
-```
-
-```
-## Loading required package: MatrixGenerics
-```
-
-```
-## Loading required package: matrixStats
-```
-
-```
-## 
-## Attaching package: 'MatrixGenerics'
-```
-
-```
-## The following objects are masked from 'package:matrixStats':
-## 
-##     colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
-##     colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
-##     colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
-##     colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
-##     colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
-##     colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
-##     colWeightedMeans, colWeightedMedians, colWeightedSds,
-##     colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
-##     rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
-##     rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
-##     rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
-##     rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
-##     rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
-##     rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
-##     rowWeightedSds, rowWeightedVars
-```
-
-```
-## Loading required package: GenomicRanges
-```
-
-```
-## Loading required package: stats4
-```
-
-```
-## Loading required package: BiocGenerics
-```
-
-```
-## 
-## Attaching package: 'BiocGenerics'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     IQR, mad, sd, var, xtabs
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     anyDuplicated, append, as.data.frame, basename, cbind, colnames,
-##     dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
-##     grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
-##     order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
-##     rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
-##     union, unique, unsplit, which.max, which.min
-```
-
-```
-## Loading required package: S4Vectors
-```
-
-```
-## 
-## Attaching package: 'S4Vectors'
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     expand.grid, I, unname
-```
-
-```
-## Loading required package: IRanges
-```
-
-```
-## Loading required package: GenomeInfoDb
-```
-
-```
-## Loading required package: Biobase
-```
-
-```
-## Welcome to Bioconductor
-## 
-##     Vignettes contain introductory material; view with
-##     'browseVignettes()'. To cite Bioconductor, see
-##     'citation("Biobase")', and for packages 'citation("pkgname")'.
-```
-
-```
-## 
-## Attaching package: 'Biobase'
-```
-
-```
-## The following object is masked from 'package:MatrixGenerics':
-## 
-##     rowMedians
-```
-
-```
-## The following objects are masked from 'package:matrixStats':
-## 
-##     anyMissing, rowMedians
-```
-
-```
-## Loading required package: SingleCellExperiment
-```
-
-```
-## Loading required package: TreeSummarizedExperiment
-```
-
-```
-## Loading required package: Biostrings
-```
-
-```
-## Loading required package: XVector
-```
-
-```
-## 
-## Attaching package: 'Biostrings'
-```
-
-```
-## The following object is masked from 'package:base':
-## 
-##     strsplit
-```
-
-```
-## Loading required package: MultiAssayExperiment
-```
-
-```r
 library(miaViz)
-```
-
-```
-## Loading required package: ggplot2
-```
-
-```
-## Loading required package: ggraph
-```
-
-```r
 library(tidyverse)
-```
-
-```
-## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
-```
-
-```
-## v tibble  3.1.7     v dplyr   1.0.9
-## v tidyr   1.2.0     v stringr 1.4.0
-## v readr   2.1.2     v forcats 0.5.1
-## v purrr   0.3.4
-```
-
-```
-## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::collapse()   masks Biostrings::collapse(), IRanges::collapse()
-## x dplyr::combine()    masks Biobase::combine(), BiocGenerics::combine()
-## x purrr::compact()    masks XVector::compact()
-## x dplyr::count()      masks matrixStats::count()
-## x dplyr::desc()       masks IRanges::desc()
-## x tidyr::expand()     masks S4Vectors::expand()
-## x dplyr::filter()     masks stats::filter()
-## x dplyr::first()      masks S4Vectors::first()
-## x dplyr::lag()        masks stats::lag()
-## x ggplot2::Position() masks BiocGenerics::Position(), base::Position()
-## x purrr::reduce()     masks GenomicRanges::reduce(), IRanges::reduce()
-## x dplyr::rename()     masks S4Vectors::rename()
-## x dplyr::slice()      masks XVector::slice(), IRanges::slice()
-```
-
-```r
 # library(vegan)
 
 tse <- read_rds("data/Tengeler2020/tse.rds")
@@ -313,10 +114,6 @@ p <- as_tibble(colData(tse)) %>%
 print(p)
 ```
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
 ![](05-alpha_diversity_demo_files/figure-latex/distributions-1.pdf)<!-- --> 
 
 ```r
@@ -330,10 +127,6 @@ p <- as_tibble(colData(tse)) %>%
 
 
 print(p)
-```
-
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
 ![](05-alpha_diversity_demo_files/figure-latex/distributions-2.pdf)<!-- --> 
@@ -351,10 +144,6 @@ p <- as_tibble(colData(tse)) %>%
   facet_wrap(index.x ~ index.y, scales = "free")
 
 print(p)
-```
-
-```
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
 ![](05-alpha_diversity_demo_files/figure-latex/scatterlots-1.pdf)<!-- --> 

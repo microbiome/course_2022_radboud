@@ -4,33 +4,33 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Reproducible reporting with Rmarkdown | Microbiome data science with R/Bioconductor</title>
+  <title>4 Reproducible reporting with Rmarkdown | Microbiome data science with R/Bioconductor</title>
   <meta name="description" content="Course material" />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Reproducible reporting with Rmarkdown | Microbiome data science with R/Bioconductor" />
+  <meta property="og:title" content="4 Reproducible reporting with Rmarkdown | Microbiome data science with R/Bioconductor" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Course material" />
   <meta name="github-repo" content="microbiome/course_2022_oulu" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Reproducible reporting with Rmarkdown | Microbiome data science with R/Bioconductor" />
+  <meta name="twitter:title" content="4 Reproducible reporting with Rmarkdown | Microbiome data science with R/Bioconductor" />
   
   <meta name="twitter:description" content="Course material" />
   
 
 
 
-<meta name="date" content="2022-07-07" />
+<meta name="date" content="2022-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="importing-microbiome-data.html"/>
-<link rel="next" href="alpha-diversity-demo.html"/>
+<link rel="prev" href="start.html"/>
+<link rel="next" href="importing-microbiome-data.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,6 +51,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -173,35 +175,49 @@ div.csl-indent {
 <li class="chapter" data-level="3.2" data-path="start.html"><a href="start.html#support-and-resources"><i class="fa fa-check"></i><b>3.2</b> Support and resources</a></li>
 <li class="chapter" data-level="3.3" data-path="start.html"><a href="start.html#packages"><i class="fa fa-check"></i><b>3.3</b> Installing and loading the required R packages</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html"><i class="fa fa-check"></i><b>4</b> Importing microbiome data</a>
+<li class="chapter" data-level="4" data-path="reproducible-reporting-with-rmarkdown.html"><a href="reproducible-reporting-with-rmarkdown.html"><i class="fa fa-check"></i><b>4</b> Reproducible reporting with Rmarkdown</a></li>
+<li class="chapter" data-level="5" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html"><i class="fa fa-check"></i><b>5</b> Importing microbiome data</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#data-access"><i class="fa fa-check"></i><b>4.1</b> Data access</a></li>
-<li class="chapter" data-level="4.2" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#importing-microbiome-data-in-r"><i class="fa fa-check"></i><b>4.2</b> Importing microbiome data in R</a></li>
-<li class="chapter" data-level="4.3" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#example-solutions"><i class="fa fa-check"></i><b>4.3</b> Example solutions</a></li>
+<li class="chapter" data-level="5.1" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#data-access"><i class="fa fa-check"></i><b>5.1</b> Data access</a></li>
+<li class="chapter" data-level="5.2" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#importing-microbiome-data-in-r"><i class="fa fa-check"></i><b>5.2</b> Importing microbiome data in R</a></li>
+<li class="chapter" data-level="5.3" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#importing-data-example-solutions"><i class="fa fa-check"></i><b>5.3</b> Importing data: example solutions</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#loading-the-processed-data"><i class="fa fa-check"></i><b>5.3.1</b> Loading the processed data</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="reproducible-reporting-with-rmarkdown.html"><a href="reproducible-reporting-with-rmarkdown.html"><i class="fa fa-check"></i><b>5</b> Reproducible reporting with Rmarkdown</a></li>
-<li class="chapter" data-level="6" data-path="alpha-diversity-demo.html"><a href="alpha-diversity-demo.html"><i class="fa fa-check"></i><b>6</b> Alpha diversity demo</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="alpha-diversity-demo.html"><a href="alpha-diversity-demo.html#alpha-diversity-estimation"><i class="fa fa-check"></i><b>6.1</b> Alpha diversity estimation</a></li>
-<li class="chapter" data-level="6.2" data-path="alpha-diversity-demo.html"><a href="alpha-diversity-demo.html#visualizing-alpha-diversity"><i class="fa fa-check"></i><b>6.2</b> Visualizing alpha diversity</a></li>
-<li class="chapter" data-level="6.3" data-path="alpha-diversity-demo.html"><a href="alpha-diversity-demo.html#comparing-alpha-diversity"><i class="fa fa-check"></i><b>6.3</b> Comparing alpha diversity</a></li>
-<li class="chapter" data-level="6.4" data-path="alpha-diversity-demo.html"><a href="alpha-diversity-demo.html#exercises"><i class="fa fa-check"></i><b>6.4</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="beta-diversity-demo.html"><a href="beta-diversity-demo.html"><i class="fa fa-check"></i><b>7</b> Beta diversity demo</a>
+<li class="chapter" data-level="6" data-path="microbiome-data-exploration.html"><a href="microbiome-data-exploration.html"><i class="fa fa-check"></i><b>6</b> Microbiome data exploration</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="beta-diversity-demo.html"><a href="beta-diversity-demo.html#visualizations"><i class="fa fa-check"></i><b>7.1</b> Visualizations</a></li>
-<li class="chapter" data-level="7.2" data-path="beta-diversity-demo.html"><a href="beta-diversity-demo.html#hypothesis-testing"><i class="fa fa-check"></i><b>7.2</b> Hypothesis testing</a>
+<li class="chapter" data-level="6.1" data-path="microbiome-data-exploration.html"><a href="microbiome-data-exploration.html#data-structure"><i class="fa fa-check"></i><b>6.1</b> Data structure</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="beta-diversity-demo.html"><a href="beta-diversity-demo.html#testing-the-differences-in-dispersion"><i class="fa fa-check"></i><b>7.2.1</b> Testing the differences in dispersion</a></li>
+<li class="chapter" data-level="6.1.1" data-path="microbiome-data-exploration.html"><a href="microbiome-data-exploration.html#transformations"><i class="fa fa-check"></i><b>6.1.1</b> Transformations</a></li>
+<li class="chapter" data-level="6.1.2" data-path="microbiome-data-exploration.html"><a href="microbiome-data-exploration.html#aggregation"><i class="fa fa-check"></i><b>6.1.2</b> Aggregation</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="beta-diversity-demo.html"><a href="beta-diversity-demo.html#exercises-1"><i class="fa fa-check"></i><b>7.3</b> Exercises</a></li>
+<li class="chapter" data-level="6.2" data-path="microbiome-data-exploration.html"><a href="microbiome-data-exploration.html#visualization"><i class="fa fa-check"></i><b>6.2</b> Visualization</a></li>
+<li class="chapter" data-level="6.3" data-path="microbiome-data-exploration.html"><a href="microbiome-data-exploration.html#exercises-optional"><i class="fa fa-check"></i><b>6.3</b> Exercises (optional)</a></li>
+<li class="chapter" data-level="6.4" data-path="microbiome-data-exploration.html"><a href="microbiome-data-exploration.html#exploring-data-example-solutions"><i class="fa fa-check"></i><b>6.4</b> Exploring data: example solutions</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="material.html"><a href="material.html"><i class="fa fa-check"></i><b>8</b> Study material</a>
+<li class="chapter" data-level="7" data-path="alpha-diversity-demo.html"><a href="alpha-diversity-demo.html"><i class="fa fa-check"></i><b>7</b> Alpha diversity demo</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="material.html"><a href="material.html#online-tutorial"><i class="fa fa-check"></i><b>8.1</b> Online tutorial</a></li>
-<li class="chapter" data-level="8.2" data-path="material.html"><a href="material.html#lecture-slides"><i class="fa fa-check"></i><b>8.2</b> Lecture slides</a></li>
-<li class="chapter" data-level="8.3" data-path="material.html"><a href="material.html#tasks"><i class="fa fa-check"></i><b>8.3</b> Tasks</a></li>
-<li class="chapter" data-level="8.4" data-path="material.html"><a href="material.html#extra-material-on-miaverse-and-r-programming"><i class="fa fa-check"></i><b>8.4</b> Extra material on miaverse and R programming</a></li>
+<li class="chapter" data-level="7.1" data-path="alpha-diversity-demo.html"><a href="alpha-diversity-demo.html#alpha-diversity-estimation"><i class="fa fa-check"></i><b>7.1</b> Alpha diversity estimation</a></li>
+<li class="chapter" data-level="7.2" data-path="alpha-diversity-demo.html"><a href="alpha-diversity-demo.html#visualizing-alpha-diversity"><i class="fa fa-check"></i><b>7.2</b> Visualizing alpha diversity</a></li>
+<li class="chapter" data-level="7.3" data-path="alpha-diversity-demo.html"><a href="alpha-diversity-demo.html#comparing-alpha-diversity"><i class="fa fa-check"></i><b>7.3</b> Comparing alpha diversity</a></li>
+<li class="chapter" data-level="7.4" data-path="alpha-diversity-demo.html"><a href="alpha-diversity-demo.html#exercises"><i class="fa fa-check"></i><b>7.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="beta-diversity-demo.html"><a href="beta-diversity-demo.html"><i class="fa fa-check"></i><b>8</b> Beta diversity demo</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="beta-diversity-demo.html"><a href="beta-diversity-demo.html#visualizations"><i class="fa fa-check"></i><b>8.1</b> Visualizations</a></li>
+<li class="chapter" data-level="8.2" data-path="beta-diversity-demo.html"><a href="beta-diversity-demo.html#hypothesis-testing"><i class="fa fa-check"></i><b>8.2</b> Hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="beta-diversity-demo.html"><a href="beta-diversity-demo.html#testing-the-differences-in-dispersion"><i class="fa fa-check"></i><b>8.2.1</b> Testing the differences in dispersion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="beta-diversity-demo.html"><a href="beta-diversity-demo.html#exercises-1"><i class="fa fa-check"></i><b>8.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="material.html"><a href="material.html"><i class="fa fa-check"></i><b>9</b> Study material</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="material.html"><a href="material.html#online-tutorial"><i class="fa fa-check"></i><b>9.1</b> Online tutorial</a></li>
+<li class="chapter" data-level="9.2" data-path="material.html"><a href="material.html#lecture-slides"><i class="fa fa-check"></i><b>9.2</b> Lecture slides</a></li>
+<li class="chapter" data-level="9.3" data-path="material.html"><a href="material.html#tasks"><i class="fa fa-check"></i><b>9.3</b> Tasks</a></li>
+<li class="chapter" data-level="9.4" data-path="material.html"><a href="material.html#extra-material-on-miaverse-and-r-programming"><i class="fa fa-check"></i><b>9.4</b> Extra material on miaverse and R programming</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -223,8 +239,8 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="reproducible-reporting-with-rmarkdown" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">5</span> Reproducible reporting with Rmarkdown<a href="reproducible-reporting-with-rmarkdown.html#reproducible-reporting-with-rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="reproducible-reporting-with-rmarkdown" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Reproducible reporting with Rmarkdown<a href="reproducible-reporting-with-rmarkdown.html#reproducible-reporting-with-rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Reproducible reporting is the starting point for robust interactive
 data science. Perform the following tasks:</p>
 <ul>
@@ -249,8 +265,8 @@ Brown</a>.</p></li>
           </div>
         </div>
       </div>
-<a href="importing-microbiome-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="alpha-diversity-demo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="start.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="importing-microbiome-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -292,7 +308,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["oulu2022_material.pdf"],
+"download": ["radboud2022_material.pdf"],
 "search": {
 "engine": "fuse",
 "options": null
