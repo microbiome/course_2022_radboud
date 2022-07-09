@@ -1,0 +1,32 @@
+---
+title: "Radboud Course 2022: Practicals"
+author: "Anna Aatsinki"
+date: '2022-07-04'
+output: html_document
+---
+
+## Exercises
+
+### Alpha diversity
+
+- Calculate alpha diversity indices
+
+- Test if data agglomeration to higher taxonomic ranks affects the indices
+
+- Look for differences in alpha diversity between groups or correlation with a continuous variable
+
+
+### Beta diversity
+
+- Visualize community variation with different methods (PCA, MDS, NMDS, etc.) with plotReduceDim and with different dissimilarities and transformations,plot also other than the first two axes.
+
+- Use PERMANOVA to test differences in beta diversity. You can also try including continuous and/or categorical covariates
+
+- If there are statistical differences in PERMANOVA, test PERMDISP2 (betadisper function)
+
+- Do DMM clustering
+
+- Try RDA to test the variance explained by external variables
+
+
+Seek guidance from the [https://microbiome.github.io/OMA/](https://microbiome.github.io/OMA/)

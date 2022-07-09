@@ -2,8 +2,7 @@
 library(mia)
 library(miaViz)
 library(dplyr)
-se <- readRDS("data/se.rds")
-tse <- readRDS("data/tse.rds")
+tse <- readRDS("data/Tengeler2020/tse.rds")
 ```
 
 
@@ -13,6 +12,10 @@ tse <- readRDS("data/tse.rds")
 Now we have loaded the data set into R. Next, let us walk through some
 basic operations for data exploration to confirm that the data has all
 the necessary components.
+
+Chapters 4-6 in
+[OMA](https://microbiome.github.io/OMA/datamanipulation.html) provide
+many more examples on exploring and manipulating microbiome data.
 
 
 ## Data structure
@@ -281,5 +284,121 @@ import the data and generate the analyses.
    [OMA](https://microbiome.github.io/OMA/taxonomic-information.html#functions-to-access-taxonomic-information).
 
 
- * Example solution: [Solutions](06-3-ex-sol-ADHD.html)
- 
+
+
+
+## Exploring data: example solutions
+
+ * **Abundance table** Retrieve the taxonomic abundance table from the
+   example data set (TSE object).
+   
+```{r}
+# We show only part of it
+assays(tse)$counts[1:6,1:6]
+```
+ * How many different samples and genus-level groups this phyloseq
+   object has?
+
+```{r}
+dim(rowData(tse))
+```
+
+ * What is the maximum abundance of Akkermansia in this data set?
+
+```{r}
+# Agglomerating to Genus level
+tse_genus <- agglomerateByRank(tse,rank="Genus")
+# Retrieving the count for Akkermansia
+Akkermansia_abund <- assays(tse_genus)$count["Genus:Akkermansia",]
+max(Akkermansia_abund)
+```
+ * Draw a histogram of library sizes (total number of reads per
+   sample).
+
+```{r}
+library(scater)
+tse <- addPerCellQC(tse) # adding a new column "sum" to colData, of total counts/sample.
+hist(colData(tse)$sum, xlab = "Total number of reads per sample", main = "Histogram of library sizes")
+
+```
+ * **Taxonomy table** Retrieve the taxonomy table and print out the
+   first few lines of it with the R command head(). Investigate how
+   many different phylum-level groups this phyloseq object has?
+
+```{r}
+head(rowData(tse))
+taxonomyRanks(tse) # The taxonomic ranks available
+unique(rowData(tse)["Phylum"]) # phylum-level groups
+length(unique(rowData(tse)["Phylum"])[,1]) # number of phylum-level groups
+```
+
+ * **Sample metadata** Retrieve sample metadata. How many patient
+     groups this data set has? Draw a histogram of sample
+     diversities.
+     
+```{r}
+colData(tse) # samples metadata
+unique(colData(tse)$patient_status) # patient groups
+# Example of sample diversity using Shannon index
+tse <- mia::estimateDiversity(tse, 
+                             abund_values = "counts",
+                             index = "shannon", 
+                             name = "shannon")
+hist(colData(tse)$shannon, xlab = "Shannon index", main = "Histogram of sample diversity")
+```
+
+ * **Subsetting** Pick a subset of the data object including only
+     ADHD individuals from Cohort 1. How many there are?
+
+```{r}
+sub_cohort_1 <- tse[, colData(tse)$cohort=="Cohort_1"]
+sub_cohort_1_ADHD <- sub_cohort_1[, colData(sub_cohort_1)$patient_status=="ADHD"]
+colData(sub_cohort_1_ADHD)
+```
+
+ * **Transformations** The data contains read counts. We can convert
+  these into relative abundances and other formats. Compare abundance
+  of a given taxonomic group using the example data before and after
+  the compositionality transformation (with a cross-plot, for
+  instance). You can also compare the results to CLR-transformed data
+  (see e.g. [Gloor et
+  al. 2017](https://www.frontiersin.org/articles/10.3389/fmicb.2017.02224/full))
+  
+```{r}
+tse <- transformCounts(tse, method = "relabundance")
+tse <- transformCounts(tse, method = "clr", abund_values = "counts",pseudocount = 1)
+# Lets compare with taxa: A29
+taxa <- "A29"
+df <- as.data.frame(list(
+                          counts=assays(tse)$counts[,taxa],
+                          relabundance=assays(tse)$relabundance[,taxa],
+                          clr=assays(tse)$clr[,taxa])
+                        )
+ggplot(df, aes(x=counts,y=relabundance))+
+  geom_point()+
+  geom_smooth()
+
+ggplot(df, aes(x=counts,y=clr))+
+  geom_point()+
+  geom_smooth()
+
+ggplot(df, aes(x=relabundance,y=clr))+
+  geom_point()+
+  geom_smooth()
+```
+ * **Visual exploration** Visualize the population distribution of
+   abundances for certain taxonomic groups. Do the same for
+   CLR-transformed abundances.
+   
+``` {r}
+# Same taxa used as earlier
+ggplot(df, aes(x=counts,colour="blue")) +
+    geom_density(alpha=.2)+
+  theme(legend.position = "none")+
+  labs(title =paste("Distribution of counts for",taxa, collapse = ": "))
+ggplot(df, aes(x=clr,colour="red")) + 
+    geom_density(alpha=.2)+
+  theme(legend.position = "none")+
+  labs(title =paste("Distribution of clr for",taxa, collapse = ": "))
+```
+
