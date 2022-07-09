@@ -14,7 +14,7 @@ Link:
 
 Links:
 
-   * [Rmd](06-3-ex-sol-ADHD.Rmd)
+   * [Rmd](05-3-ex-sol-ADHD.Rmd)
    
 ## Section 7 ##
 
