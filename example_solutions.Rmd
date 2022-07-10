@@ -1,7 +1,7 @@
 ---
-title: "Oulu 2022 course -- example solutions"
+title: "Course -- example solutions"
 output: html_document
-date: '2022-06-27'
+date: '2022'
 ---
 
 ```{r setup, include=FALSE}
