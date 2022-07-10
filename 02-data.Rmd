@@ -112,6 +112,9 @@ rowdata_modified <- BiocParallel::bplapply(rowdata_modified,
 # rowdata_modified is a list, so convert this back to DataFrame format. 
 # and assign the cleaned data back to the TSE rowData
 rowData(tse) <- DataFrame(rowdata_modified)
+
+# Recheck rowData after the modifications
+print(head(rowData(tse)))
 ```
 
 
@@ -139,6 +142,9 @@ colnames(sample_meta) <- c("patient_status", "cohort",
 # Add this sample data to colData of the taxonomic data object
 # Note that the data must be given in a DataFrame format (required for our purposes)
 colData(tse) <- DataFrame(sample_meta)
+
+# Check the colData after modifications
+print(head(colData(tse)))
 ```
 
 
