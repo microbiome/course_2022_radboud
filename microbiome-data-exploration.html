@@ -179,10 +179,10 @@ div.csl-indent {
 <li class="chapter" data-level="5" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html"><i class="fa fa-check"></i><b>5</b> Importing microbiome data</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#data-access"><i class="fa fa-check"></i><b>5.1</b> Data access</a></li>
-<li class="chapter" data-level="5.2" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#importing-microbiome-data-in-r"><i class="fa fa-check"></i><b>5.2</b> Importing microbiome data in R</a></li>
-<li class="chapter" data-level="5.3" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#importing-data-example-solutions"><i class="fa fa-check"></i><b>5.3</b> Importing data: example solutions</a>
+<li class="chapter" data-level="5.2" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#importing-microbiome-data-in-r"><i class="fa fa-check"></i><b>5.2</b> Importing microbiome data in R</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#loading-the-processed-data"><i class="fa fa-check"></i><b>5.3.1</b> Loading the processed data</a></li>
+<li class="chapter" data-level="5.2.1" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#example-solution"><i class="fa fa-check"></i><b>5.2.1</b> Example solution</a></li>
+<li class="chapter" data-level="5.2.2" data-path="importing-microbiome-data.html"><a href="importing-microbiome-data.html#loading-readily-processed-data"><i class="fa fa-check"></i><b>5.2.2</b> Loading readily processed data</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="microbiome-data-exploration.html"><a href="microbiome-data-exploration.html"><i class="fa fa-check"></i><b>6</b> Microbiome data exploration</a>
@@ -253,17 +253,17 @@ many more examples on exploring and manipulating microbiome data.</p>
 <p>Dimensionality tells us how many taxa and samples the data
 contains. As we can see, there are 151 taxa and 27
 samples.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="microbiome-data-exploration.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(tse)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="microbiome-data-exploration.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(tse)</span></code></pre></div>
 <pre><code>## [1] 151  27</code></pre>
 <p>The <code>rowData</code> slot contains a taxonomic table. This includes taxonomic
 information for each of the 151 entries. With the <code>head()</code>
 command, we can print just the beginning of the table.</p>
 <p>The <code>rowData</code> seems to contain information from 6
 different taxonomy classes.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="microbiome-data-exploration.html#cb50-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(<span class="fu">rowData</span>(tse))) <span class="sc">%&gt;%</span> </span>
-<span id="cb50-2"><a href="microbiome-data-exploration.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="st">&quot;striped&quot;</span>, </span>
-<span id="cb50-3"><a href="microbiome-data-exploration.html#cb50-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">latex_options=</span><span class="st">&quot;scale_down&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb50-4"><a href="microbiome-data-exploration.html#cb50-4" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="microbiome-data-exploration.html#cb60-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(<span class="fu">rowData</span>(tse))) <span class="sc">%&gt;%</span> </span>
+<span id="cb60-2"><a href="microbiome-data-exploration.html#cb60-2" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="st">&quot;striped&quot;</span>, </span>
+<span id="cb60-3"><a href="microbiome-data-exploration.html#cb60-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">latex_options=</span><span class="st">&quot;scale_down&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb60-4"><a href="microbiome-data-exploration.html#cb60-4" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <thead>
@@ -435,10 +435,10 @@ Bacteroides
 <p>The colData slot contains sample metadata. It contains information for all 27 samples.
 However, here only the 6 first samples are shown as we use the <code>head()</code> command. There
 are 4 columns, that contain information, e.g., about patients’ status, and cohort.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="microbiome-data-exploration.html#cb51-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(<span class="fu">colData</span>(tse))) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-2"><a href="microbiome-data-exploration.html#cb51-2" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="st">&quot;striped&quot;</span>, </span>
-<span id="cb51-3"><a href="microbiome-data-exploration.html#cb51-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">latex_options=</span><span class="st">&quot;scale_down&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-4"><a href="microbiome-data-exploration.html#cb51-4" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="microbiome-data-exploration.html#cb61-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(<span class="fu">colData</span>(tse))) <span class="sc">%&gt;%</span> </span>
+<span id="cb61-2"><a href="microbiome-data-exploration.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="st">&quot;striped&quot;</span>, </span>
+<span id="cb61-3"><a href="microbiome-data-exploration.html#cb61-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">latex_options=</span><span class="st">&quot;scale_down&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb61-4"><a href="microbiome-data-exploration.html#cb61-4" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <thead>
@@ -573,7 +573,7 @@ class is present, and <code>sort()</code> sorts the table to ascending order.</p
 <p>There are 13
 samples from patients having ADHD,
 and 14 control samples.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="microbiome-data-exploration.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(<span class="fu">colData</span>(tse)<span class="sc">$</span>patient_status))</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="microbiome-data-exploration.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(<span class="fu">colData</span>(tse)<span class="sc">$</span>patient_status))</span></code></pre></div>
 <pre><code>## 
 ##    ADHD Control 
 ##      13      14</code></pre>
@@ -587,8 +587,8 @@ aspects of the data generation process (see e.g. <a href="https://www.frontiers
 interpret than plain counts. For some statistical models we need to
 transform the data into other formats as explained in above link (and
 as we will see later).</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="microbiome-data-exploration.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculates relative abundances, and stores the table to assays</span></span>
-<span id="cb54-2"><a href="microbiome-data-exploration.html#cb54-2" aria-hidden="true" tabindex="-1"></a>tse <span class="ot">&lt;-</span> <span class="fu">transformCounts</span>(tse, <span class="at">method =</span> <span class="st">&quot;relabundance&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="microbiome-data-exploration.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculates relative abundances, and stores the table to assays</span></span>
+<span id="cb64-2"><a href="microbiome-data-exploration.html#cb64-2" aria-hidden="true" tabindex="-1"></a>tse <span class="ot">&lt;-</span> <span class="fu">transformCounts</span>(tse, <span class="at">method =</span> <span class="st">&quot;relabundance&quot;</span>)</span></code></pre></div>
 <p>A variety of standard transformations for microbiome data are available for <code>TSE</code> data objects through <a href="https://microbiome.github.io/mia/reference/transformCounts.html">mia R package</a>.</p>
 </div>
 <div id="aggregation" class="section level3 hasAnchor" number="6.1.2">
@@ -596,10 +596,10 @@ as we will see later).</p>
 <p>Microbial species can be called at multiple taxonomic resolutions. We
 can easily agglomerate the data based on taxonomic ranks. Here, we
 agglomerate the data at Phylum level.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="microbiome-data-exploration.html#cb55-1" aria-hidden="true" tabindex="-1"></a>tse_phylum <span class="ot">&lt;-</span> <span class="fu">agglomerateByRank</span>(tse, <span class="at">rank =</span> <span class="st">&quot;Phylum&quot;</span>)</span>
-<span id="cb55-2"><a href="microbiome-data-exploration.html#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-3"><a href="microbiome-data-exploration.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show dimensionality</span></span>
-<span id="cb55-4"><a href="microbiome-data-exploration.html#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(tse_phylum)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="microbiome-data-exploration.html#cb65-1" aria-hidden="true" tabindex="-1"></a>tse_phylum <span class="ot">&lt;-</span> <span class="fu">agglomerateByRank</span>(tse, <span class="at">rank =</span> <span class="st">&quot;Phylum&quot;</span>)</span>
+<span id="cb65-2"><a href="microbiome-data-exploration.html#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="microbiome-data-exploration.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show dimensionality</span></span>
+<span id="cb65-4"><a href="microbiome-data-exploration.html#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(tse_phylum)</span></code></pre></div>
 <pre><code>## [1]  5 27</code></pre>
 <p>Now there are 5 taxa and 27
 samples, meaning that there are 5 different
@@ -608,10 +608,10 @@ agglomeration shows all Firmicutes are combined together, and all
 lower rank information is lost.</p>
 <p>From the assay we can see that all abundances of taxa that belong to
 Firmicutes are summed up.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="microbiome-data-exploration.html#cb57-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(<span class="fu">rowData</span>(tse_phylum))) <span class="sc">%&gt;%</span> </span>
-<span id="cb57-2"><a href="microbiome-data-exploration.html#cb57-2" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="st">&quot;striped&quot;</span>, </span>
-<span id="cb57-3"><a href="microbiome-data-exploration.html#cb57-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">latex_options=</span><span class="st">&quot;scale_down&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb57-4"><a href="microbiome-data-exploration.html#cb57-4" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="microbiome-data-exploration.html#cb67-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(<span class="fu">rowData</span>(tse_phylum))) <span class="sc">%&gt;%</span> </span>
+<span id="cb67-2"><a href="microbiome-data-exploration.html#cb67-2" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="st">&quot;striped&quot;</span>, </span>
+<span id="cb67-3"><a href="microbiome-data-exploration.html#cb67-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">latex_options=</span><span class="st">&quot;scale_down&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb67-4"><a href="microbiome-data-exploration.html#cb67-4" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <thead>
@@ -765,13 +765,13 @@ ignore the missing values in summing up the data by setting <code>na.rm = TRUE</
 will be removed. Those taxa that do not have information in specified
 level are agglomerated at lowest possible level that is left after
 agglomeration.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="microbiome-data-exploration.html#cb58-1" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">rowData</span>(<span class="fu">agglomerateByRank</span>(tse, <span class="at">rank =</span> <span class="st">&quot;Genus&quot;</span>))</span>
-<span id="cb58-2"><a href="microbiome-data-exploration.html#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-3"><a href="microbiome-data-exploration.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Prints those taxa that do not have information at the Genus level</span></span>
-<span id="cb58-4"><a href="microbiome-data-exploration.html#cb58-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(temp[temp<span class="sc">$</span>Genus <span class="sc">==</span> <span class="st">&quot;&quot;</span>,])) <span class="sc">%&gt;%</span> </span>
-<span id="cb58-5"><a href="microbiome-data-exploration.html#cb58-5" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="st">&quot;striped&quot;</span>, </span>
-<span id="cb58-6"><a href="microbiome-data-exploration.html#cb58-6" aria-hidden="true" tabindex="-1"></a>                            <span class="at">latex_options=</span><span class="st">&quot;scale_down&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb58-7"><a href="microbiome-data-exploration.html#cb58-7" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="microbiome-data-exploration.html#cb68-1" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">rowData</span>(<span class="fu">agglomerateByRank</span>(tse, <span class="at">rank =</span> <span class="st">&quot;Genus&quot;</span>))</span>
+<span id="cb68-2"><a href="microbiome-data-exploration.html#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-3"><a href="microbiome-data-exploration.html#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Prints those taxa that do not have information at the Genus level</span></span>
+<span id="cb68-4"><a href="microbiome-data-exploration.html#cb68-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(temp[temp<span class="sc">$</span>Genus <span class="sc">==</span> <span class="st">&quot;&quot;</span>,])) <span class="sc">%&gt;%</span> </span>
+<span id="cb68-5"><a href="microbiome-data-exploration.html#cb68-5" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="st">&quot;striped&quot;</span>, </span>
+<span id="cb68-6"><a href="microbiome-data-exploration.html#cb68-6" aria-hidden="true" tabindex="-1"></a>                            <span class="at">latex_options=</span><span class="st">&quot;scale_down&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb68-7"><a href="microbiome-data-exploration.html#cb68-7" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <thead>
@@ -910,11 +910,11 @@ Gastranaerophilales
 </table>
 </div>
 <p>Here agglomeration is done similarly, but na.rm = TRUE</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="microbiome-data-exploration.html#cb59-1" aria-hidden="true" tabindex="-1"></a>temp2 <span class="ot">&lt;-</span> <span class="fu">rowData</span>(<span class="fu">agglomerateByRank</span>(tse, <span class="at">rank =</span> <span class="st">&quot;Genus&quot;</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb59-2"><a href="microbiome-data-exploration.html#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-3"><a href="microbiome-data-exploration.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;Agglomeration with na.rm = FALSE: &quot;</span>, <span class="fu">dim</span>(temp)[<span class="dv">1</span>], <span class="st">&quot; taxa.&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="microbiome-data-exploration.html#cb69-1" aria-hidden="true" tabindex="-1"></a>temp2 <span class="ot">&lt;-</span> <span class="fu">rowData</span>(<span class="fu">agglomerateByRank</span>(tse, <span class="at">rank =</span> <span class="st">&quot;Genus&quot;</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb69-2"><a href="microbiome-data-exploration.html#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-3"><a href="microbiome-data-exploration.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;Agglomeration with na.rm = FALSE: &quot;</span>, <span class="fu">dim</span>(temp)[<span class="dv">1</span>], <span class="st">&quot; taxa.&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;Agglomeration with na.rm = FALSE: 54 taxa.&quot;</code></pre>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="microbiome-data-exploration.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;Agglomeration with na.rm = TRUE: &quot;</span>, <span class="fu">dim</span>(temp2)[<span class="dv">1</span>], <span class="st">&quot; taxa.&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="microbiome-data-exploration.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;Agglomeration with na.rm = TRUE: &quot;</span>, <span class="fu">dim</span>(temp2)[<span class="dv">1</span>], <span class="st">&quot; taxa.&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;Agglomeration with na.rm = TRUE: 49 taxa.&quot;</code></pre>
 <p>The <a href="https://microbiome.github.io/mia/reference/index.html">mia
 package</a>
@@ -926,43 +926,43 @@ options.</p>
 <h2><span class="header-section-number">6.2</span> Visualization<a href="microbiome-data-exploration.html#visualization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <a href="https://microbiome.github.io/miaViz/">miaViz package</a> facilitates
 data visualization. Let us plot the Phylum level abundances.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="microbiome-data-exploration.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here we specify &quot;relabundance&quot; to be abundance table that we use for plotting.</span></span>
-<span id="cb63-2"><a href="microbiome-data-exploration.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that we can use agglomerated or non-agglomerated tse as an input, because</span></span>
-<span id="cb63-3"><a href="microbiome-data-exploration.html#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the function agglomeration is built-in option. </span></span>
-<span id="cb63-4"><a href="microbiome-data-exploration.html#cb63-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-5"><a href="microbiome-data-exploration.html#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Legend does not fit into picture, so its height is reduced.</span></span>
-<span id="cb63-6"><a href="microbiome-data-exploration.html#cb63-6" aria-hidden="true" tabindex="-1"></a>plot_abundance <span class="ot">&lt;-</span> <span class="fu">plotAbundance</span>(tse, <span class="at">abund_values=</span><span class="st">&quot;relabundance&quot;</span>, <span class="at">rank =</span> <span class="st">&quot;Phylum&quot;</span>) <span class="sc">+</span></span>
-<span id="cb63-7"><a href="microbiome-data-exploration.html#cb63-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.key.height =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">&quot;cm&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb63-8"><a href="microbiome-data-exploration.html#cb63-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">label =</span> scales<span class="sc">::</span>percent)</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="microbiome-data-exploration.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here we specify &quot;relabundance&quot; to be abundance table that we use for plotting.</span></span>
+<span id="cb73-2"><a href="microbiome-data-exploration.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that we can use agglomerated or non-agglomerated tse as an input, because</span></span>
+<span id="cb73-3"><a href="microbiome-data-exploration.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the function agglomeration is built-in option. </span></span>
+<span id="cb73-4"><a href="microbiome-data-exploration.html#cb73-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-5"><a href="microbiome-data-exploration.html#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Legend does not fit into picture, so its height is reduced.</span></span>
+<span id="cb73-6"><a href="microbiome-data-exploration.html#cb73-6" aria-hidden="true" tabindex="-1"></a>plot_abundance <span class="ot">&lt;-</span> <span class="fu">plotAbundance</span>(tse, <span class="at">abund_values=</span><span class="st">&quot;relabundance&quot;</span>, <span class="at">rank =</span> <span class="st">&quot;Phylum&quot;</span>) <span class="sc">+</span></span>
+<span id="cb73-7"><a href="microbiome-data-exploration.html#cb73-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.key.height =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">&quot;cm&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb73-8"><a href="microbiome-data-exploration.html#cb73-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">label =</span> scales<span class="sc">::</span>percent)</span></code></pre></div>
 <pre><code>## Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which will
 ## replace the existing scale.</code></pre>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="microbiome-data-exploration.html#cb65-1" aria-hidden="true" tabindex="-1"></a>plot_abundance </span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="microbiome-data-exploration.html#cb75-1" aria-hidden="true" tabindex="-1"></a>plot_abundance </span></code></pre></div>
 <p><img src="05-explore_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p><strong>Density plot</strong> shows the overall abundance distribution for a given
 taxonomic group. Let us check the relative abundance of Firmicutes
 across the sample collection. The density plot is a smoothened
 version of a standard histogram.</p>
 <p>The plot shows peak abundances around 30 %.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="microbiome-data-exploration.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset data by taking only Firmicutes</span></span>
-<span id="cb66-2"><a href="microbiome-data-exploration.html#cb66-2" aria-hidden="true" tabindex="-1"></a>tse_firmicutes <span class="ot">&lt;-</span> tse_phylum[<span class="st">&quot;Firmicutes&quot;</span>]</span>
-<span id="cb66-3"><a href="microbiome-data-exploration.html#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-4"><a href="microbiome-data-exploration.html#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Gets the abundance table</span></span>
-<span id="cb66-5"><a href="microbiome-data-exploration.html#cb66-5" aria-hidden="true" tabindex="-1"></a>abundance_firmicutes <span class="ot">&lt;-</span> <span class="fu">assay</span>(tse_firmicutes, <span class="st">&quot;relabundance&quot;</span>)</span>
-<span id="cb66-6"><a href="microbiome-data-exploration.html#cb66-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-7"><a href="microbiome-data-exploration.html#cb66-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Creates a data frame object, where first column includes abundances</span></span>
-<span id="cb66-8"><a href="microbiome-data-exploration.html#cb66-8" aria-hidden="true" tabindex="-1"></a>firmicutes_abund_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">t</span>(abundance_firmicutes))</span>
-<span id="cb66-9"><a href="microbiome-data-exploration.html#cb66-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename the first and only column</span></span>
-<span id="cb66-10"><a href="microbiome-data-exploration.html#cb66-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(firmicutes_abund_df) <span class="ot">&lt;-</span> <span class="st">&quot;abund&quot;</span></span>
-<span id="cb66-11"><a href="microbiome-data-exploration.html#cb66-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-12"><a href="microbiome-data-exploration.html#cb66-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Creates a plot. Parameters inside feom_density are optional. With </span></span>
-<span id="cb66-13"><a href="microbiome-data-exploration.html#cb66-13" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_density(bw=1000), it is possible to adjust bandwidth.</span></span>
-<span id="cb66-14"><a href="microbiome-data-exploration.html#cb66-14" aria-hidden="true" tabindex="-1"></a>firmicutes_abund_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(firmicutes_abund_df, <span class="fu">aes</span>(<span class="at">x =</span> abund)) <span class="sc">+</span> </span>
-<span id="cb66-15"><a href="microbiome-data-exploration.html#cb66-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color=</span><span class="st">&quot;darkred&quot;</span>, <span class="at">fill=</span><span class="st">&quot;lightblue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb66-16"><a href="microbiome-data-exploration.html#cb66-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Relative abundance&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Firmicutes&quot;</span>) <span class="sc">+</span></span>
-<span id="cb66-17"><a href="microbiome-data-exploration.html#cb66-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> <span class="co"># Changes the background</span></span>
-<span id="cb66-18"><a href="microbiome-data-exploration.html#cb66-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">label =</span> scales<span class="sc">::</span>percent)</span>
-<span id="cb66-19"><a href="microbiome-data-exploration.html#cb66-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-20"><a href="microbiome-data-exploration.html#cb66-20" aria-hidden="true" tabindex="-1"></a>firmicutes_abund_plot</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="microbiome-data-exploration.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset data by taking only Firmicutes</span></span>
+<span id="cb76-2"><a href="microbiome-data-exploration.html#cb76-2" aria-hidden="true" tabindex="-1"></a>tse_firmicutes <span class="ot">&lt;-</span> tse_phylum[<span class="st">&quot;Firmicutes&quot;</span>]</span>
+<span id="cb76-3"><a href="microbiome-data-exploration.html#cb76-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-4"><a href="microbiome-data-exploration.html#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Gets the abundance table</span></span>
+<span id="cb76-5"><a href="microbiome-data-exploration.html#cb76-5" aria-hidden="true" tabindex="-1"></a>abundance_firmicutes <span class="ot">&lt;-</span> <span class="fu">assay</span>(tse_firmicutes, <span class="st">&quot;relabundance&quot;</span>)</span>
+<span id="cb76-6"><a href="microbiome-data-exploration.html#cb76-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-7"><a href="microbiome-data-exploration.html#cb76-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Creates a data frame object, where first column includes abundances</span></span>
+<span id="cb76-8"><a href="microbiome-data-exploration.html#cb76-8" aria-hidden="true" tabindex="-1"></a>firmicutes_abund_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">t</span>(abundance_firmicutes))</span>
+<span id="cb76-9"><a href="microbiome-data-exploration.html#cb76-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename the first and only column</span></span>
+<span id="cb76-10"><a href="microbiome-data-exploration.html#cb76-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(firmicutes_abund_df) <span class="ot">&lt;-</span> <span class="st">&quot;abund&quot;</span></span>
+<span id="cb76-11"><a href="microbiome-data-exploration.html#cb76-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-12"><a href="microbiome-data-exploration.html#cb76-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Creates a plot. Parameters inside feom_density are optional. With </span></span>
+<span id="cb76-13"><a href="microbiome-data-exploration.html#cb76-13" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_density(bw=1000), it is possible to adjust bandwidth.</span></span>
+<span id="cb76-14"><a href="microbiome-data-exploration.html#cb76-14" aria-hidden="true" tabindex="-1"></a>firmicutes_abund_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(firmicutes_abund_df, <span class="fu">aes</span>(<span class="at">x =</span> abund)) <span class="sc">+</span> </span>
+<span id="cb76-15"><a href="microbiome-data-exploration.html#cb76-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color=</span><span class="st">&quot;darkred&quot;</span>, <span class="at">fill=</span><span class="st">&quot;lightblue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb76-16"><a href="microbiome-data-exploration.html#cb76-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Relative abundance&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Firmicutes&quot;</span>) <span class="sc">+</span></span>
+<span id="cb76-17"><a href="microbiome-data-exploration.html#cb76-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> <span class="co"># Changes the background</span></span>
+<span id="cb76-18"><a href="microbiome-data-exploration.html#cb76-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">label =</span> scales<span class="sc">::</span>percent)</span>
+<span id="cb76-19"><a href="microbiome-data-exploration.html#cb76-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-20"><a href="microbiome-data-exploration.html#cb76-20" aria-hidden="true" tabindex="-1"></a>firmicutes_abund_plot</span></code></pre></div>
 <p><img src="05-explore_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>For more visualization options and examples, see the <a href="https://microbiome.github.io/miaViz/articles/miaViz.html">miaViz vignette</a>.</p>
 </div>
@@ -1020,8 +1020,8 @@ CLR-transformed abundances. Tip: assays, transformCounts</p></li>
 <li><strong>Abundance table</strong> Retrieve the taxonomic abundance table from the
 example data set (TSE object).</li>
 </ul>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="microbiome-data-exploration.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We show only part of it</span></span>
-<span id="cb67-2"><a href="microbiome-data-exploration.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">assays</span>(tse)<span class="sc">$</span>counts[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="microbiome-data-exploration.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We show only part of it</span></span>
+<span id="cb77-2"><a href="microbiome-data-exploration.html#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">assays</span>(tse)<span class="sc">$</span>counts[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div>
 <pre><code>##           A110   A12  A15  A19  A21  A23
 ## 1726470  17722 11630    0 8806 1740 1791
 ## 1726471  12052     0 2679 2776  540  229
@@ -1033,30 +1033,30 @@ example data set (TSE object).</li>
 <li>How many different samples and genus-level groups this phyloseq
 object has?</li>
 </ul>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="microbiome-data-exploration.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(<span class="fu">rowData</span>(tse))</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="microbiome-data-exploration.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(<span class="fu">rowData</span>(tse))</span></code></pre></div>
 <pre><code>## [1] 151   6</code></pre>
 <ul>
 <li>What is the maximum abundance of Akkermansia in this data set?</li>
 </ul>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="microbiome-data-exploration.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Agglomerating to Genus level</span></span>
-<span id="cb71-2"><a href="microbiome-data-exploration.html#cb71-2" aria-hidden="true" tabindex="-1"></a>tse_genus <span class="ot">&lt;-</span> <span class="fu">agglomerateByRank</span>(tse,<span class="at">rank=</span><span class="st">&quot;Genus&quot;</span>)</span>
-<span id="cb71-3"><a href="microbiome-data-exploration.html#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieving the count for Akkermansia</span></span>
-<span id="cb71-4"><a href="microbiome-data-exploration.html#cb71-4" aria-hidden="true" tabindex="-1"></a>Akkermansia_abund <span class="ot">&lt;-</span> <span class="fu">assays</span>(tse_genus)<span class="sc">$</span>count[<span class="st">&quot;Genus:Akkermansia&quot;</span>,]</span>
-<span id="cb71-5"><a href="microbiome-data-exploration.html#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(Akkermansia_abund)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="microbiome-data-exploration.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Agglomerating to Genus level</span></span>
+<span id="cb81-2"><a href="microbiome-data-exploration.html#cb81-2" aria-hidden="true" tabindex="-1"></a>tse_genus <span class="ot">&lt;-</span> <span class="fu">agglomerateByRank</span>(tse,<span class="at">rank=</span><span class="st">&quot;Genus&quot;</span>)</span>
+<span id="cb81-3"><a href="microbiome-data-exploration.html#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieving the count for Akkermansia</span></span>
+<span id="cb81-4"><a href="microbiome-data-exploration.html#cb81-4" aria-hidden="true" tabindex="-1"></a>Akkermansia_abund <span class="ot">&lt;-</span> <span class="fu">assays</span>(tse_genus)<span class="sc">$</span>count[<span class="st">&quot;Genus:Akkermansia&quot;</span>,]</span>
+<span id="cb81-5"><a href="microbiome-data-exploration.html#cb81-5" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(Akkermansia_abund)</span></code></pre></div>
 <pre><code>## [1] 2535</code></pre>
 <ul>
 <li>Draw a histogram of library sizes (total number of reads per
 sample).</li>
 </ul>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="microbiome-data-exploration.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scater)</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="microbiome-data-exploration.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scater)</span></code></pre></div>
 <pre><code>## Loading required package: scuttle</code></pre>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="microbiome-data-exploration.html#cb75-1" aria-hidden="true" tabindex="-1"></a>tse <span class="ot">&lt;-</span> <span class="fu">addPerCellQC</span>(tse) <span class="co"># adding a new column &quot;sum&quot; to colData, of total counts/sample.</span></span>
-<span id="cb75-2"><a href="microbiome-data-exploration.html#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">colData</span>(tse)<span class="sc">$</span>sum, <span class="at">xlab =</span> <span class="st">&quot;Total number of reads per sample&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Histogram of library sizes&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="microbiome-data-exploration.html#cb85-1" aria-hidden="true" tabindex="-1"></a>tse <span class="ot">&lt;-</span> <span class="fu">addPerCellQC</span>(tse) <span class="co"># adding a new column &quot;sum&quot; to colData, of total counts/sample.</span></span>
+<span id="cb85-2"><a href="microbiome-data-exploration.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">colData</span>(tse)<span class="sc">$</span>sum, <span class="at">xlab =</span> <span class="st">&quot;Total number of reads per sample&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Histogram of library sizes&quot;</span>)</span></code></pre></div>
 <p><img src="05-explore_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 * <strong>Taxonomy table</strong> Retrieve the taxonomy table and print out the
 first few lines of it with the R command head(). Investigate how
 many different phylum-level groups this phyloseq object has?</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="microbiome-data-exploration.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">rowData</span>(tse))</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="microbiome-data-exploration.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">rowData</span>(tse))</span></code></pre></div>
 <pre><code>## DataFrame with 6 rows and 6 columns
 ##              Kingdom          Phylum            Class              Order
 ##          &lt;character&gt;     &lt;character&gt;      &lt;character&gt;        &lt;character&gt;
@@ -1074,9 +1074,9 @@ many different phylum-level groups this phyloseq object has?</p>
 ## 17264726      Bacteroidaceae     Bacteroides
 ## 1726472  Verrucomicrobiaceae     Akkermansia
 ## 17264724      Bacteroidaceae     Bacteroides</code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="microbiome-data-exploration.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">taxonomyRanks</span>(tse) <span class="co"># The taxonomic ranks available</span></span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="microbiome-data-exploration.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">taxonomyRanks</span>(tse) <span class="co"># The taxonomic ranks available</span></span></code></pre></div>
 <pre><code>## [1] &quot;Kingdom&quot; &quot;Phylum&quot;  &quot;Class&quot;   &quot;Order&quot;   &quot;Family&quot;  &quot;Genus&quot;</code></pre>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="microbiome-data-exploration.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(<span class="fu">rowData</span>(tse)[<span class="st">&quot;Phylum&quot;</span>]) <span class="co"># phylum-level groups</span></span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="microbiome-data-exploration.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(<span class="fu">rowData</span>(tse)[<span class="st">&quot;Phylum&quot;</span>]) <span class="co"># phylum-level groups</span></span></code></pre></div>
 <pre><code>## DataFrame with 5 rows and 1 column
 ##                    Phylum
 ##               &lt;character&gt;
@@ -1085,14 +1085,14 @@ many different phylum-level groups this phyloseq object has?</p>
 ## 17264729   Proteobacteria
 ## 172647189      Firmicutes
 ## 17264742    Cyanobacteria</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="microbiome-data-exploration.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">rowData</span>(tse)[<span class="st">&quot;Phylum&quot;</span>])[,<span class="dv">1</span>]) <span class="co"># number of phylum-level groups</span></span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="microbiome-data-exploration.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">rowData</span>(tse)[<span class="st">&quot;Phylum&quot;</span>])[,<span class="dv">1</span>]) <span class="co"># number of phylum-level groups</span></span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <ul>
 <li><strong>Sample metadata</strong> Retrieve sample metadata. How many patient
 groups this data set has? Draw a histogram of sample
 diversities.</li>
 </ul>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="microbiome-data-exploration.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colData</span>(tse) <span class="co"># samples metadata</span></span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="microbiome-data-exploration.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colData</span>(tse) <span class="co"># samples metadata</span></span></code></pre></div>
 <pre><code>## DataFrame with 27 rows and 7 columns
 ##      patient_status      cohort patient_status_vs_cohort sample_name       sum
 ##         &lt;character&gt; &lt;character&gt;              &lt;character&gt; &lt;character&gt; &lt;numeric&gt;
@@ -1120,22 +1120,22 @@ diversities.</li>
 ## A33         78     13051
 ## A35         62     12642
 ## A38         74     15544</code></pre>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="microbiome-data-exploration.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(<span class="fu">colData</span>(tse)<span class="sc">$</span>patient_status) <span class="co"># patient groups</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="microbiome-data-exploration.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(<span class="fu">colData</span>(tse)<span class="sc">$</span>patient_status) <span class="co"># patient groups</span></span></code></pre></div>
 <pre><code>## [1] &quot;ADHD&quot;    &quot;Control&quot;</code></pre>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="microbiome-data-exploration.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of sample diversity using Shannon index</span></span>
-<span id="cb88-2"><a href="microbiome-data-exploration.html#cb88-2" aria-hidden="true" tabindex="-1"></a>tse <span class="ot">&lt;-</span> mia<span class="sc">::</span><span class="fu">estimateDiversity</span>(tse, </span>
-<span id="cb88-3"><a href="microbiome-data-exploration.html#cb88-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">abund_values =</span> <span class="st">&quot;counts&quot;</span>,</span>
-<span id="cb88-4"><a href="microbiome-data-exploration.html#cb88-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">index =</span> <span class="st">&quot;shannon&quot;</span>, </span>
-<span id="cb88-5"><a href="microbiome-data-exploration.html#cb88-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">name =</span> <span class="st">&quot;shannon&quot;</span>)</span>
-<span id="cb88-6"><a href="microbiome-data-exploration.html#cb88-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">colData</span>(tse)<span class="sc">$</span>shannon, <span class="at">xlab =</span> <span class="st">&quot;Shannon index&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Histogram of sample diversity&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="microbiome-data-exploration.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of sample diversity using Shannon index</span></span>
+<span id="cb98-2"><a href="microbiome-data-exploration.html#cb98-2" aria-hidden="true" tabindex="-1"></a>tse <span class="ot">&lt;-</span> mia<span class="sc">::</span><span class="fu">estimateDiversity</span>(tse, </span>
+<span id="cb98-3"><a href="microbiome-data-exploration.html#cb98-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">abund_values =</span> <span class="st">&quot;counts&quot;</span>,</span>
+<span id="cb98-4"><a href="microbiome-data-exploration.html#cb98-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">index =</span> <span class="st">&quot;shannon&quot;</span>, </span>
+<span id="cb98-5"><a href="microbiome-data-exploration.html#cb98-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">name =</span> <span class="st">&quot;shannon&quot;</span>)</span>
+<span id="cb98-6"><a href="microbiome-data-exploration.html#cb98-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">colData</span>(tse)<span class="sc">$</span>shannon, <span class="at">xlab =</span> <span class="st">&quot;Shannon index&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Histogram of sample diversity&quot;</span>)</span></code></pre></div>
 <p><img src="05-explore_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <ul>
 <li><strong>Subsetting</strong> Pick a subset of the data object including only
 ADHD individuals from Cohort 1. How many there are?</li>
 </ul>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="microbiome-data-exploration.html#cb89-1" aria-hidden="true" tabindex="-1"></a>sub_cohort_1 <span class="ot">&lt;-</span> tse[, <span class="fu">colData</span>(tse)<span class="sc">$</span>cohort<span class="sc">==</span><span class="st">&quot;Cohort_1&quot;</span>]</span>
-<span id="cb89-2"><a href="microbiome-data-exploration.html#cb89-2" aria-hidden="true" tabindex="-1"></a>sub_cohort_1_ADHD <span class="ot">&lt;-</span> sub_cohort_1[, <span class="fu">colData</span>(sub_cohort_1)<span class="sc">$</span>patient_status<span class="sc">==</span><span class="st">&quot;ADHD&quot;</span>]</span>
-<span id="cb89-3"><a href="microbiome-data-exploration.html#cb89-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colData</span>(sub_cohort_1_ADHD)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="microbiome-data-exploration.html#cb99-1" aria-hidden="true" tabindex="-1"></a>sub_cohort_1 <span class="ot">&lt;-</span> tse[, <span class="fu">colData</span>(tse)<span class="sc">$</span>cohort<span class="sc">==</span><span class="st">&quot;Cohort_1&quot;</span>]</span>
+<span id="cb99-2"><a href="microbiome-data-exploration.html#cb99-2" aria-hidden="true" tabindex="-1"></a>sub_cohort_1_ADHD <span class="ot">&lt;-</span> sub_cohort_1[, <span class="fu">colData</span>(sub_cohort_1)<span class="sc">$</span>patient_status<span class="sc">==</span><span class="st">&quot;ADHD&quot;</span>]</span>
+<span id="cb99-3"><a href="microbiome-data-exploration.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colData</span>(sub_cohort_1_ADHD)</span></code></pre></div>
 <pre><code>## DataFrame with 4 rows and 8 columns
 ##      patient_status      cohort patient_status_vs_cohort sample_name       sum
 ##         &lt;character&gt; &lt;character&gt;              &lt;character&gt; &lt;character&gt; &lt;numeric&gt;
@@ -1158,46 +1158,46 @@ instance). You can also compare the results to CLR-transformed data
 (see e.g. <a href="https://www.frontiersin.org/articles/10.3389/fmicb.2017.02224/full">Gloor et
 al. 2017</a>)</li>
 </ul>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="microbiome-data-exploration.html#cb91-1" aria-hidden="true" tabindex="-1"></a>tse <span class="ot">&lt;-</span> <span class="fu">transformCounts</span>(tse, <span class="at">method =</span> <span class="st">&quot;relabundance&quot;</span>)</span>
-<span id="cb91-2"><a href="microbiome-data-exploration.html#cb91-2" aria-hidden="true" tabindex="-1"></a>tse <span class="ot">&lt;-</span> <span class="fu">transformCounts</span>(tse, <span class="at">method =</span> <span class="st">&quot;clr&quot;</span>, <span class="at">abund_values =</span> <span class="st">&quot;counts&quot;</span>,<span class="at">pseudocount =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="microbiome-data-exploration.html#cb101-1" aria-hidden="true" tabindex="-1"></a>tse <span class="ot">&lt;-</span> <span class="fu">transformCounts</span>(tse, <span class="at">method =</span> <span class="st">&quot;relabundance&quot;</span>)</span>
+<span id="cb101-2"><a href="microbiome-data-exploration.html#cb101-2" aria-hidden="true" tabindex="-1"></a>tse <span class="ot">&lt;-</span> <span class="fu">transformCounts</span>(tse, <span class="at">method =</span> <span class="st">&quot;clr&quot;</span>, <span class="at">abund_values =</span> <span class="st">&quot;counts&quot;</span>,<span class="at">pseudocount =</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## Warning: All the total abundances of samples do not sum-up to a fixed constant.
 ## Please consider to apply, e.g., relative transformation in prior to CLR
 ## transformation.</code></pre>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="microbiome-data-exploration.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lets compare with taxa: A29</span></span>
-<span id="cb93-2"><a href="microbiome-data-exploration.html#cb93-2" aria-hidden="true" tabindex="-1"></a>taxa <span class="ot">&lt;-</span> <span class="st">&quot;A29&quot;</span></span>
-<span id="cb93-3"><a href="microbiome-data-exploration.html#cb93-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">list</span>(</span>
-<span id="cb93-4"><a href="microbiome-data-exploration.html#cb93-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">counts=</span><span class="fu">assays</span>(tse)<span class="sc">$</span>counts[,taxa],</span>
-<span id="cb93-5"><a href="microbiome-data-exploration.html#cb93-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">relabundance=</span><span class="fu">assays</span>(tse)<span class="sc">$</span>relabundance[,taxa],</span>
-<span id="cb93-6"><a href="microbiome-data-exploration.html#cb93-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">clr=</span><span class="fu">assays</span>(tse)<span class="sc">$</span>clr[,taxa])</span>
-<span id="cb93-7"><a href="microbiome-data-exploration.html#cb93-7" aria-hidden="true" tabindex="-1"></a>                        )</span>
-<span id="cb93-8"><a href="microbiome-data-exploration.html#cb93-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>counts,<span class="at">y=</span>relabundance))<span class="sc">+</span></span>
-<span id="cb93-9"><a href="microbiome-data-exploration.html#cb93-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb93-10"><a href="microbiome-data-exploration.html#cb93-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="microbiome-data-exploration.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lets compare with taxa: A29</span></span>
+<span id="cb103-2"><a href="microbiome-data-exploration.html#cb103-2" aria-hidden="true" tabindex="-1"></a>taxa <span class="ot">&lt;-</span> <span class="st">&quot;A29&quot;</span></span>
+<span id="cb103-3"><a href="microbiome-data-exploration.html#cb103-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">list</span>(</span>
+<span id="cb103-4"><a href="microbiome-data-exploration.html#cb103-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">counts=</span><span class="fu">assays</span>(tse)<span class="sc">$</span>counts[,taxa],</span>
+<span id="cb103-5"><a href="microbiome-data-exploration.html#cb103-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">relabundance=</span><span class="fu">assays</span>(tse)<span class="sc">$</span>relabundance[,taxa],</span>
+<span id="cb103-6"><a href="microbiome-data-exploration.html#cb103-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">clr=</span><span class="fu">assays</span>(tse)<span class="sc">$</span>clr[,taxa])</span>
+<span id="cb103-7"><a href="microbiome-data-exploration.html#cb103-7" aria-hidden="true" tabindex="-1"></a>                        )</span>
+<span id="cb103-8"><a href="microbiome-data-exploration.html#cb103-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>counts,<span class="at">y=</span>relabundance))<span class="sc">+</span></span>
+<span id="cb103-9"><a href="microbiome-data-exploration.html#cb103-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb103-10"><a href="microbiome-data-exploration.html#cb103-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="05-explore_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="microbiome-data-exploration.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>counts,<span class="at">y=</span>clr))<span class="sc">+</span></span>
-<span id="cb95-2"><a href="microbiome-data-exploration.html#cb95-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb95-3"><a href="microbiome-data-exploration.html#cb95-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="microbiome-data-exploration.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>counts,<span class="at">y=</span>clr))<span class="sc">+</span></span>
+<span id="cb105-2"><a href="microbiome-data-exploration.html#cb105-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb105-3"><a href="microbiome-data-exploration.html#cb105-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="05-explore_files/figure-html/unnamed-chunk-20-2.png" width="672" /></p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="microbiome-data-exploration.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>relabundance,<span class="at">y=</span>clr))<span class="sc">+</span></span>
-<span id="cb97-2"><a href="microbiome-data-exploration.html#cb97-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb97-3"><a href="microbiome-data-exploration.html#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="microbiome-data-exploration.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>relabundance,<span class="at">y=</span>clr))<span class="sc">+</span></span>
+<span id="cb107-2"><a href="microbiome-data-exploration.html#cb107-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb107-3"><a href="microbiome-data-exploration.html#cb107-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="05-explore_files/figure-html/unnamed-chunk-20-3.png" width="672" />
 * <strong>Visual exploration</strong> Visualize the population distribution of
 abundances for certain taxonomic groups. Do the same for
 CLR-transformed abundances.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="microbiome-data-exploration.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Same taxa used as earlier</span></span>
-<span id="cb99-2"><a href="microbiome-data-exploration.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>counts,<span class="at">colour=</span><span class="st">&quot;blue&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb99-3"><a href="microbiome-data-exploration.html#cb99-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">alpha=</span>.<span class="dv">2</span>)<span class="sc">+</span></span>
-<span id="cb99-4"><a href="microbiome-data-exploration.html#cb99-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="sc">+</span></span>
-<span id="cb99-5"><a href="microbiome-data-exploration.html#cb99-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="fu">paste</span>(<span class="st">&quot;Distribution of counts for&quot;</span>,taxa, <span class="at">collapse =</span> <span class="st">&quot;: &quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="microbiome-data-exploration.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Same taxa used as earlier</span></span>
+<span id="cb109-2"><a href="microbiome-data-exploration.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>counts,<span class="at">colour=</span><span class="st">&quot;blue&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb109-3"><a href="microbiome-data-exploration.html#cb109-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">alpha=</span>.<span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb109-4"><a href="microbiome-data-exploration.html#cb109-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="sc">+</span></span>
+<span id="cb109-5"><a href="microbiome-data-exploration.html#cb109-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="fu">paste</span>(<span class="st">&quot;Distribution of counts for&quot;</span>,taxa, <span class="at">collapse =</span> <span class="st">&quot;: &quot;</span>))</span></code></pre></div>
 <p><img src="05-explore_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="microbiome-data-exploration.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>clr,<span class="at">colour=</span><span class="st">&quot;red&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb100-2"><a href="microbiome-data-exploration.html#cb100-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">alpha=</span>.<span class="dv">2</span>)<span class="sc">+</span></span>
-<span id="cb100-3"><a href="microbiome-data-exploration.html#cb100-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="sc">+</span></span>
-<span id="cb100-4"><a href="microbiome-data-exploration.html#cb100-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="fu">paste</span>(<span class="st">&quot;Distribution of clr for&quot;</span>,taxa, <span class="at">collapse =</span> <span class="st">&quot;: &quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="microbiome-data-exploration.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>clr,<span class="at">colour=</span><span class="st">&quot;red&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb110-2"><a href="microbiome-data-exploration.html#cb110-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">alpha=</span>.<span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb110-3"><a href="microbiome-data-exploration.html#cb110-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="sc">+</span></span>
+<span id="cb110-4"><a href="microbiome-data-exploration.html#cb110-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="fu">paste</span>(<span class="st">&quot;Distribution of clr for&quot;</span>,taxa, <span class="at">collapse =</span> <span class="st">&quot;: &quot;</span>))</span></code></pre></div>
 <p><img src="05-explore_files/figure-html/unnamed-chunk-21-2.png" width="672" /></p>
 
 </div>

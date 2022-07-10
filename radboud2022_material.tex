@@ -354,12 +354,10 @@ data science. Perform the following tasks:
 \hypertarget{importing-microbiome-data}{%
 \chapter{Importing microbiome data}\label{importing-microbiome-data}}
 
-This section demonstrates how to import microbiome profiling data in R.
+This section demonstrates how to import taxonomic profiling data in R.
 
 \hypertarget{data-access}{%
 \section{Data access}\label{data-access}}
-
-\textbf{Option 1}
 
 \emph{ADHD-associated changes in gut microbiota and brain in a mouse model}
 
@@ -379,32 +377,22 @@ Download the data from
 \href{https://github.com/microbiome/course_2022_radboud/tree/main/data}{data}
 subfolder.
 
-\textbf{Option 2}
-
-\emph{Open data set of your own choice}, different options are listed in \href{https://microbiome.github.io/OMA/containers.html\#example-data}{OMA}.
-
 \hypertarget{importing-microbiome-data-in-r}{%
 \section{Importing microbiome data in R}\label{importing-microbiome-data-in-r}}
 
 \textbf{Import example data} by modifying the examples in the online book
 section on \href{https://microbiome.github.io/OMA/data-introduction.html\#loading-experimental-microbiome-data}{data exploration and
-manipulation}. The
-data files in our example are in \emph{biom} format, which is a standard
-file format for microbiome data. Other file formats exist as well, and
-import details vary by platform.
+manipulation}.
 
-Here, we import \emph{biom} data files into a specific data container (structure)
-in R, \emph{TreeSummarizedExperiment} (TSE) \href{https://f1000research.com/articles/9-1246}{Huang et
-al.~(2020)}. This provides
-the basis for downstream data analysis in the \emph{miaverse} data science
-framework.
+The data files in our example are in \emph{biom} container, which is a
+standard file format for microbiome data. Other file formats exist as
+well, and import details vary by platform. Here, we import \emph{biom} data
+files into a specific data container (structure) in R,
+\emph{TreeSummarizedExperiment} (TreeSE) \href{https://f1000research.com/articles/9-1246}{Huang et
+al.~(2020)}.
 
-In this course, we focus on downstream analysis of taxonomic profiling
-data, and assume that the data has already been appropriately
-preprocessed and available in the TSE format. In addition to our
-example data, further demonstration data sets are readily available in
-the TSE format through
-\href{https://bioconductor.org/packages/release/data/experiment/html/microbiomeDataSets.html}{microbiomeDataSets}.
+The data container provides the basis for downstream data analysis in
+the \emph{miaverse} data science framework.
 
 \textbf{Figure sources:}
 
@@ -416,28 +404,68 @@ for data with hierarchical structure}. F1000Research 9:1246.
 - Lahti L \emph{et al}. (2020) \href{https://doi.org/10.7490/\%20f1000research.1118447.1}{Upgrading the R/Bioconductor ecosystem for microbiome
 research} F1000Research 9:1464 (slides).
 
-\hypertarget{importing-data-example-solutions}{%
-\section{Importing data: example solutions}\label{importing-data-example-solutions}}
+\hypertarget{example-solution}{%
+\subsection{Example solution}\label{example-solution}}
+
+Let us first import the biom file into R / TreeSE container.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Defining file paths}
-\NormalTok{biom\_file\_path }\OtherTok{\textless{}{-}} \StringTok{"data/Tengeler2020/Aggregated\_humanization2.biom"}
-\NormalTok{sample\_meta\_file\_path }\OtherTok{\textless{}{-}} \StringTok{"data/Tengeler2020/Mapping\_file\_ADHD\_aggregated.csv"}
-\NormalTok{tree\_file\_path }\OtherTok{\textless{}{-}} \StringTok{"data/Tengeler2020/Data\_humanization\_phylo\_aggregation.tre"}
-
+\CommentTok{\# Load the mia R package}
 \FunctionTok{library}\NormalTok{(mia)}
 
-\CommentTok{\# Imports the data}
+\CommentTok{\# Defining file paths}
+\DocumentationTok{\#\# Biom file (taxonomic profiles)}
+\NormalTok{biom\_file\_path }\OtherTok{\textless{}{-}} \StringTok{"data/Tengeler2020/Aggregated\_humanization2.biom"}
+
+\CommentTok{\# Import the data into SummarizedExperiment container}
 \NormalTok{se }\OtherTok{\textless{}{-}} \FunctionTok{loadFromBiom}\NormalTok{(biom\_file\_path)}
 
+\CommentTok{\# Convert this data to TreeSE container (no direct importer exists)}
+\NormalTok{tse }\OtherTok{\textless{}{-}} \FunctionTok{as}\NormalTok{(se, }\StringTok{"TreeSummarizedExperiment"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
-\FunctionTok{names}\NormalTok{(}\FunctionTok{rowData}\NormalTok{(se)) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Kingdom"}\NormalTok{, }\StringTok{"Phylum"}\NormalTok{, }\StringTok{"Class"}\NormalTok{, }\StringTok{"Order"}\NormalTok{, }
+Check and clean up rowData (information on the taxonomic features).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Investigate the rowData of this data object}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{head}\NormalTok{(}\FunctionTok{rowData}\NormalTok{(tse)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## DataFrame with 6 rows and 6 columns
+##             taxonomy1          taxonomy2           taxonomy3
+##           <character>        <character>         <character>
+## 1726470  "k__Bacteria   p__Bacteroidetes      c__Bacteroidia
+## 1726471  "k__Bacteria   p__Bacteroidetes      c__Bacteroidia
+## 17264731 "k__Bacteria   p__Bacteroidetes      c__Bacteroidia
+## 17264726 "k__Bacteria   p__Bacteroidetes      c__Bacteroidia
+## 1726472  "k__Bacteria p__Verrucomicrobia c__Verrucomicrobiae
+## 17264724 "k__Bacteria   p__Bacteroidetes      c__Bacteroidia
+##                      taxonomy4              taxonomy5           taxonomy6
+##                    <character>            <character>         <character>
+## 1726470       o__Bacteroidales      f__Bacteroidaceae     g__Bacteroides"
+## 1726471       o__Bacteroidales      f__Bacteroidaceae     g__Bacteroides"
+## 17264731      o__Bacteroidales  f__Porphyromonadaceae g__Parabacteroides"
+## 17264726      o__Bacteroidales      f__Bacteroidaceae     g__Bacteroides"
+## 1726472  o__Verrucomicrobiales f__Verrucomicrobiaceae     g__Akkermansia"
+## 17264724      o__Bacteroidales      f__Bacteroidaceae     g__Bacteroides"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# We notice that the rowData fields do not have descriptibve names.}
+\CommentTok{\# Hence, let us rename the columns in rowData}
+\FunctionTok{names}\NormalTok{(}\FunctionTok{rowData}\NormalTok{(tse)) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Kingdom"}\NormalTok{, }\StringTok{"Phylum"}\NormalTok{, }\StringTok{"Class"}\NormalTok{, }\StringTok{"Order"}\NormalTok{, }
                         \StringTok{"Family"}\NormalTok{, }\StringTok{"Genus"}\NormalTok{)}
 
+\CommentTok{\# We also notice that the taxa names are of form "c\_\_Bacteroidia" etc.}
 \CommentTok{\# Goes through the whole DataFrame. Removes \textquotesingle{}.*[kpcofg]\_\_\textquotesingle{} from strings, where [kpcofg] }
 \CommentTok{\# is any character from listed ones, and .* any character.}
-\NormalTok{rowdata\_modified }\OtherTok{\textless{}{-}}\NormalTok{ BiocParallel}\SpecialCharTok{::}\FunctionTok{bplapply}\NormalTok{(}\FunctionTok{rowData}\NormalTok{(se), }
+\NormalTok{rowdata\_modified }\OtherTok{\textless{}{-}}\NormalTok{ BiocParallel}\SpecialCharTok{::}\FunctionTok{bplapply}\NormalTok{(}\FunctionTok{rowData}\NormalTok{(tse), }
                                            \AttributeTok{FUN =}\NormalTok{ stringr}\SpecialCharTok{::}\NormalTok{str\_remove, }
                                            \AttributeTok{pattern =} \StringTok{\textquotesingle{}.*[kpcofg]\_\_\textquotesingle{}}\NormalTok{)}
 
@@ -446,37 +474,99 @@ research} F1000Research 9:1464 (slides).
                                            \AttributeTok{FUN =}\NormalTok{ stringr}\SpecialCharTok{::}\NormalTok{str\_remove, }
                                            \AttributeTok{pattern =} \StringTok{\textquotesingle{}}\SpecialCharTok{\textbackslash{}"}\StringTok{\textquotesingle{}}\NormalTok{)}
 
-\CommentTok{\# rowdata\_modified is a list, so it is converted back to DataFrame format. }
-\NormalTok{rowdata\_modified }\OtherTok{\textless{}{-}} \FunctionTok{DataFrame}\NormalTok{(rowdata\_modified)}
+\CommentTok{\# rowdata\_modified is a list, so convert this back to DataFrame format. }
+\CommentTok{\# and assign the cleaned data back to the TSE rowData}
+\FunctionTok{rowData}\NormalTok{(tse) }\OtherTok{\textless{}{-}} \FunctionTok{DataFrame}\NormalTok{(rowdata\_modified)}
 
-\CommentTok{\# And then assigned back to the SE object}
-\FunctionTok{rowData}\NormalTok{(se) }\OtherTok{\textless{}{-}}\NormalTok{ rowdata\_modified}
+\CommentTok{\# Recheck rowData after the modifications}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{head}\NormalTok{(}\FunctionTok{rowData}\NormalTok{(tse)))}
+\end{Highlighting}
+\end{Shaded}
 
+\begin{verbatim}
+## DataFrame with 6 rows and 6 columns
+##              Kingdom          Phylum            Class              Order
+##          <character>     <character>      <character>        <character>
+## 1726470     Bacteria   Bacteroidetes      Bacteroidia      Bacteroidales
+## 1726471     Bacteria   Bacteroidetes      Bacteroidia      Bacteroidales
+## 17264731    Bacteria   Bacteroidetes      Bacteroidia      Bacteroidales
+## 17264726    Bacteria   Bacteroidetes      Bacteroidia      Bacteroidales
+## 1726472     Bacteria Verrucomicrobia Verrucomicrobiae Verrucomicrobiales
+## 17264724    Bacteria   Bacteroidetes      Bacteroidia      Bacteroidales
+##                       Family           Genus
+##                  <character>     <character>
+## 1726470       Bacteroidaceae     Bacteroides
+## 1726471       Bacteroidaceae     Bacteroides
+## 17264731  Porphyromonadaceae Parabacteroides
+## 17264726      Bacteroidaceae     Bacteroides
+## 1726472  Verrucomicrobiaceae     Akkermansia
+## 17264724      Bacteroidaceae     Bacteroides
+\end{verbatim}
 
-\CommentTok{\# We use this to check what type of data it is}
+Next let us add sample information (colData) to our TreeSE object.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Sample phenodata}
+\NormalTok{sample\_meta\_file\_path }\OtherTok{\textless{}{-}} \StringTok{"data/Tengeler2020/Mapping\_file\_ADHD\_aggregated.csv"}
+
+\CommentTok{\# Check what type of data it is}
 \CommentTok{\# read.table(sample\_meta\_file\_path)}
 
 \CommentTok{\# It seems like a comma separated file and it does not include headers}
-\CommentTok{\# Let us read it and then convert from data.frame to DataFrame}
-\CommentTok{\# (required for our purposes)}
-\NormalTok{sample\_meta }\OtherTok{\textless{}{-}} \FunctionTok{DataFrame}\NormalTok{(}\FunctionTok{read.table}\NormalTok{(sample\_meta\_file\_path, }\AttributeTok{sep =} \StringTok{","}\NormalTok{, }\AttributeTok{header =} \ConstantTok{FALSE}\NormalTok{))}
+\CommentTok{\# Let us read the file; note that sample names are in the first column}
+\NormalTok{sample\_meta }\OtherTok{\textless{}{-}} \FunctionTok{read.table}\NormalTok{(sample\_meta\_file\_path, }\AttributeTok{sep=}\StringTok{","}\NormalTok{, }\AttributeTok{header=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{)}
 
-\CommentTok{\# Add sample names to rownames}
-\FunctionTok{rownames}\NormalTok{(sample\_meta) }\OtherTok{\textless{}{-}}\NormalTok{ sample\_meta[,}\DecValTok{1}\NormalTok{]}
+\CommentTok{\# Check the data}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{head}\NormalTok{(sample\_meta))}
+\end{Highlighting}
+\end{Shaded}
 
-\CommentTok{\# Delete column that included sample names}
-\NormalTok{sample\_meta[,}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\begin{verbatim}
+##        V2       V3            V4   V5
+## A110 ADHD Cohort_1 ADHD_Cohort_1 A110
+## A12  ADHD Cohort_1 ADHD_Cohort_1  A12
+## A15  ADHD Cohort_1 ADHD_Cohort_1  A15
+## A19  ADHD Cohort_1 ADHD_Cohort_1  A19
+## A21  ADHD Cohort_2 ADHD_Cohort_2  A21
+## A23  ADHD Cohort_2 ADHD_Cohort_2  A23
+\end{verbatim}
 
-\CommentTok{\# We can add headers}
-\FunctionTok{colnames}\NormalTok{(sample\_meta) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"patient\_status"}\NormalTok{, }\StringTok{"cohort"}\NormalTok{, }\StringTok{"patient\_status\_vs\_cohort"}\NormalTok{, }\StringTok{"sample\_name"}\NormalTok{)}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Add headers for the columns (as they seem to be missing)}
+\FunctionTok{colnames}\NormalTok{(sample\_meta) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"patient\_status"}\NormalTok{, }\StringTok{"cohort"}\NormalTok{,}
+                           \StringTok{"patient\_status\_vs\_cohort"}\NormalTok{, }\StringTok{"sample\_name"}\NormalTok{)}
 
-\CommentTok{\# Then it can be added to colData}
-\FunctionTok{colData}\NormalTok{(se) }\OtherTok{\textless{}{-}}\NormalTok{ sample\_meta}
+\CommentTok{\# Add this sample data to colData of the taxonomic data object}
+\CommentTok{\# Note that the data must be given in a DataFrame format (required for our purposes)}
+\FunctionTok{colData}\NormalTok{(tse) }\OtherTok{\textless{}{-}} \FunctionTok{DataFrame}\NormalTok{(sample\_meta)}
 
-\CommentTok{\# Convert to tse format}
-\NormalTok{tse }\OtherTok{\textless{}{-}} \FunctionTok{as}\NormalTok{(se, }\StringTok{"TreeSummarizedExperiment"}\NormalTok{)}
+\CommentTok{\# Check the colData after modifications}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{head}\NormalTok{(}\FunctionTok{colData}\NormalTok{(tse)))}
+\end{Highlighting}
+\end{Shaded}
 
-\CommentTok{\# Reads the tree file}
+\begin{verbatim}
+## DataFrame with 6 rows and 4 columns
+##      patient_status      cohort patient_status_vs_cohort sample_name
+##         <character> <character>              <character> <character>
+## A110           ADHD    Cohort_1            ADHD_Cohort_1        A110
+## A12            ADHD    Cohort_1            ADHD_Cohort_1         A12
+## A15            ADHD    Cohort_1            ADHD_Cohort_1         A15
+## A19            ADHD    Cohort_1            ADHD_Cohort_1         A19
+## A21            ADHD    Cohort_2            ADHD_Cohort_2         A21
+## A23            ADHD    Cohort_2            ADHD_Cohort_2         A23
+\end{verbatim}
+
+Add phylogenetic tree (rowTree).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Phylogenetic tree}
+\NormalTok{tree\_file\_path }\OtherTok{\textless{}{-}} \StringTok{"data/Tengeler2020/Data\_humanization\_phylo\_aggregation.tre"}
+
+\CommentTok{\# Read the tree file}
 \NormalTok{tree }\OtherTok{\textless{}{-}}\NormalTok{ ape}\SpecialCharTok{::}\FunctionTok{read.tree}\NormalTok{(tree\_file\_path)}
 
 \CommentTok{\# Add tree to rowTree}
@@ -484,16 +574,32 @@ research} F1000Research 9:1464 (slides).
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{loading-the-processed-data}{%
-\subsection{Loading the processed data}\label{loading-the-processed-data}}
+We can save the data object as follows.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{saveRDS}\NormalTok{(tse, }\AttributeTok{file=}\StringTok{"tse.rds"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{loading-readily-processed-data}{%
+\subsection{Loading readily processed data}\label{loading-readily-processed-data}}
 
 Alternatively, you can just load the already processed data set.
+
+By using this readily processed data set we can skip the data import
+step, and assume that the data has already been appropriately
+preprocessed and available in the TreeSE container.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{tse }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"data/Tengeler2020/tse.rds"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+In addition to our example data, further demonstration data sets are
+available in the TreeSE data container: see \href{https://microbiome.github.io/OMA/containers.html\#example-data}{OMA demo data
+sets}.
 
 \begin{verbatim}
 ## Loading required package: SummarizedExperiment
