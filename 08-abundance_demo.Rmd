@@ -34,7 +34,7 @@ We will analyse Genus level abundances.
 We recommend to first have a look at the [DAA section](https://microbiome.github.io/OMA/differential-abundance.html) of the OMA
 book. This will give you a little repetition of the introduction
 and leads you through an example analysis with a different data 
-set and more explanations. Simultaneously, you may want to perform
+set and more explanations of the code. Simultaneously, you may want to perform
 the same analysis on the dataset we have worked with so far. You can double check the steps below where we show how to perform the
 steps on our dataset.
 
