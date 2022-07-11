@@ -50,6 +50,8 @@ tse <- subsetByPrevalentTaxa(tse, detection = 0, prevalence = 0.1)
 ## ALDEx2 
 
 ```{r}
+# set seed to rule out different results from randomness
+set.seed(1)
 # Generate Monte Carlo samples of the Dirichlet distribution for each sample.
 # Convert each instance using the centered log-ratio transform.
 # This is the input for all further analyses.
@@ -187,7 +189,7 @@ res <- linda(
   meta, 
   formula = '~patient_status', 
   alpha = 0.05, 
-  prev.cut = 0.1, 
+  prev.cut = 0 # we already filtered 
   lib.cut = 1000, 
   winsor.quan = 0.97)
 ```
