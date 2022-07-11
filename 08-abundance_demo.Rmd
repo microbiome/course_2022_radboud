@@ -198,7 +198,7 @@ res <- linda(
   meta, 
   formula = '~patient_status', 
   alpha = 0.05, 
-  prev.cut = 0 # we already filtered 
+  prev.cut = 0, # we already filtered 
   lib.cut = 1000, 
   winsor.quan = 0.97)
 ```
