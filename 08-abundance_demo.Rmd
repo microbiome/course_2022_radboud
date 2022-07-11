@@ -15,9 +15,8 @@ tse <- read_rds("data/Tengeler2020/tse.rds")
 
 # Differential abundance analysis
 
-Here, we analyse abundances with four different methods: 
-**Aldex2**, **ANCOMBC**, **MaAsLin2** and **LinDA**. All of these
-perform differential abundance analysis. 
+Here, we perform differential abundance analyses using four different methods: 
+**Aldex2**, **ANCOMBC**, **MaAsLin2** and **LinDA**. 
 We will analyse Genus level abundances. 
 
 We recommend to first have a look at the [DAA section](https://microbiome.github.io/OMA/differential-abundance.html) of the OMA
@@ -88,8 +87,9 @@ par(mfrow = c(1, 2))
 
 ## ANCOM-BC
 
-Make sure you have installed the newest version of ANCOMBC by running the following line of code in case the code further below 
-leads to an error.
+In case you get an error when running the function below, you may need to 
+install the newest version of ANCOMBC (released a few days ago) by running the
+following line of code:
 
 ```{r}
 # library(devtools)
@@ -122,7 +122,7 @@ res <- out$res
 
 ## MaAsLin2  
 ```{r results = "hide"}
-# first we rarefy data 
+# first we rarefy data to stick to Nearing et al 2022
 tse <- subsampleCounts(
   tse,
   abund_values = "counts",
@@ -142,6 +142,9 @@ meta_data <- data.frame(colData(tse))
 fit_data <- Maaslin2(
   asv,
   meta_data,
+  # A folder will be created that is called like the below specified output.
+  # It contains also figures to visualize the difference between genera 
+  # for the significant ones.
   output = "DAA example",
   transform = "AST",
   fixed_effects = "patient_status",
@@ -158,9 +161,6 @@ fit_data <- Maaslin2(
 # which genera are identified as differentially abundant? (leave out "head" to
 # see all)
 kable(head(filter(fit_data$results, qval <= 0.05)))
-# A folder will be created that is called like the above specified output.
-# It contains also figures to visualize the difference between genera 
-# for the significant ones.
 ```
 
 
@@ -170,11 +170,11 @@ kable(head(filter(fit_data$results, qval <= 0.05)))
 ```{r}
 # LinDA is a very new package that we therefore install separately
 # directly from Github:
+# if this function results in an error, read the error message and install 
+# missing packages if there are any
 if (!"LinDA" %in% installed.packages()[, "Package"]) {
   devtools::install_github("zhouhj1994/LinDA")
 }
-
-
 ```
 
 ```{r}
@@ -230,10 +230,10 @@ Now we can answer our questions:
 summarise(summ, across(where(is.logical), sum)) %>%
   kable()
 # which genera are identified by all methods?
-filter(summ, score == 3) %>% kable()
+filter(summ, score == 4) %>% kable()
 ```
 
-
+Lets create plots to vizualize differential abundance:
 
 ```{r}
 # to plot the highest phylogenetic taxon name 
