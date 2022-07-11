@@ -261,7 +261,7 @@ plots <- pmap(
     ylab(taxon)
 })
 
-# now we can show only those genera that have at least score 3 (or 2 or 1)
+# now we can show only those genera that have at least score 4 (3, 2 or 1)
 robust_plots <- plots[summ$score == 4] 
 
 
