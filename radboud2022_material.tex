@@ -138,7 +138,7 @@
 \makeatother
 \subtitle{Welcome to Radboud Summer School, July 2022}
 \author{}
-\date{\vspace{-2.5em}2022-07-10}
+\date{\vspace{-2.5em}2022-07-11}
 
 \begin{document}
 \maketitle
@@ -2077,6 +2077,426 @@ End of the demo.
 \section{Exercises}\label{exercises-1}}
 
 Do ``Beta diversity'' from the \href{https://microbiome.github.io/OMA/exercises.html}{exercises}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(mia)}
+\FunctionTok{library}\NormalTok{(patchwork)}
+\FunctionTok{library}\NormalTok{(tidySummarizedExperiment)}
+\FunctionTok{library}\NormalTok{(ANCOMBC)}
+\FunctionTok{library}\NormalTok{(ALDEx2)}
+\FunctionTok{library}\NormalTok{(Maaslin2)}
+\FunctionTok{library}\NormalTok{(knitr)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\CommentTok{\# LinDA is a very new package that we therefore install separately}
+\CommentTok{\# directly from Github:}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\StringTok{"LinDA"} \SpecialCharTok{\%in\%} \FunctionTok{installed.packages}\NormalTok{()[, }\StringTok{"Package"}\NormalTok{]) \{}
+\NormalTok{  devtools}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"zhouhj1994/LinDA"}\NormalTok{)}
+\NormalTok{\}}
+\FunctionTok{library}\NormalTok{(LinDA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# import our dataset }
+\NormalTok{tse }\OtherTok{\textless{}{-}} \FunctionTok{read\_rds}\NormalTok{(}\StringTok{"data/Tengeler2020/tse.rds"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{differential-abundance-analysis-demo}{%
+\chapter{Differential abundance analysis demo}\label{differential-abundance-analysis-demo}}
+
+Here, we perform differential abundance analyses using four different methods:
+\textbf{Aldex2}, \textbf{ANCOMBC}, \textbf{MaAsLin2} and \textbf{LinDA}.
+We will analyse Genus level abundances.
+
+We recommend to first have a look at the \href{https://microbiome.github.io/OMA/differential-abundance.html}{DAA section} of the OMA
+book. This will give you a little repetition of the introduction
+and leads you through an example analysis with a different data
+set and more explanations of the code. Simultaneously, you may want to perform
+the same analysis on the dataset we have worked with so far. You can double check the steps below where we show how to perform the
+steps on our dataset.
+
+Lets start with the prevalence filtering:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# note that some tools perform prevalence filtering themselves}
+\CommentTok{\# so that this step is unncessary depending on the tool used }
+\NormalTok{tse }\OtherTok{\textless{}{-}} \FunctionTok{subsetByPrevalentTaxa}\NormalTok{(tse, }\AttributeTok{detection =} \DecValTok{0}\NormalTok{, }\AttributeTok{prevalence =} \FloatTok{0.1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{aldex2}{%
+\section{ALDEx2}\label{aldex2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# set seed to rule out different results from randomness}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\CommentTok{\# Generate Monte Carlo samples of the Dirichlet distribution for each sample.}
+\CommentTok{\# Convert each instance using the centered log{-}ratio transform.}
+\CommentTok{\# This is the input for all further analyses.}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{aldex.clr}\NormalTok{(}
+  \AttributeTok{reads =} \FunctionTok{assay}\NormalTok{(tse),}
+  \AttributeTok{conds =} \FunctionTok{colData}\NormalTok{(tse)}\SpecialCharTok{$}\NormalTok{patient\_status, }
+  \CommentTok{\# 128 recommened for ttest, 1000 for rigorous effect size calculation}
+  \AttributeTok{mc.samples =} \DecValTok{128}\NormalTok{, }
+  \AttributeTok{denom =} \StringTok{"all"}\NormalTok{,}
+  \AttributeTok{verbose =} \ConstantTok{FALSE}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## operating in serial mode
+\end{verbatim}
+
+\begin{verbatim}
+## computing center with all features
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# calculates expected values of the Welch\textquotesingle{}s t{-}test and Wilcoxon rank test on}
+\CommentTok{\# the data returned by aldex.clr}
+\NormalTok{x\_tt }\OtherTok{\textless{}{-}} \FunctionTok{aldex.ttest}\NormalTok{(}
+\NormalTok{  x, }
+  \AttributeTok{paired.test =} \ConstantTok{FALSE}\NormalTok{, }
+  \AttributeTok{verbose =} \ConstantTok{FALSE}\NormalTok{)}
+\CommentTok{\# determines the median clr abundance of the feature in all samples and in}
+\CommentTok{\# groups, the median difference between the two groups, the median variation}
+\CommentTok{\# within each group and the effect size, which is the median of the ratio}
+\CommentTok{\# of the between group difference and the larger of the variance within groups}
+\NormalTok{x\_effect }\OtherTok{\textless{}{-}} \FunctionTok{aldex.effect}\NormalTok{(x, }\AttributeTok{CI =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{verbose =} \ConstantTok{FALSE}\NormalTok{)}
+\CommentTok{\# combine all outputs }
+\NormalTok{aldex\_out }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(x\_tt, x\_effect)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+  \FunctionTok{aldex.plot}\NormalTok{(}
+\NormalTok{    aldex\_out, }
+    \AttributeTok{type =} \StringTok{"MA"}\NormalTok{, }
+    \AttributeTok{test =} \StringTok{"welch"}\NormalTok{, }
+    \AttributeTok{xlab =} \StringTok{"Log{-}ratio abundance"}\NormalTok{,}
+    \AttributeTok{ylab =} \StringTok{"Difference"}\NormalTok{,}
+    \AttributeTok{cutoff =} \FloatTok{0.05}
+\NormalTok{  )}
+  \FunctionTok{aldex.plot}\NormalTok{(}
+\NormalTok{    aldex\_out, }
+    \AttributeTok{type =} \StringTok{"MW"}\NormalTok{, }
+    \AttributeTok{test =} \StringTok{"welch"}\NormalTok{,}
+    \AttributeTok{xlab =} \StringTok{"Dispersion"}\NormalTok{,}
+    \AttributeTok{ylab =} \StringTok{"Difference"}\NormalTok{,}
+    \AttributeTok{cutoff =} \FloatTok{0.05}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{08-abundance_demo_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\hypertarget{ancom-bc}{%
+\section{ANCOM-BC}\label{ancom-bc}}
+
+In case you get an error when running the function below, you may need to
+install the newest version of ANCOMBC (released a few days ago) by running the
+following line of code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# library(devtools)}
+\CommentTok{\# install\_github("FrederickHuangLin/ANCOMBC", ref = "develop")}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# perform the analysis }
+\NormalTok{out }\OtherTok{=} \FunctionTok{ancombc}\NormalTok{(}
+  \AttributeTok{x =}\NormalTok{ tse, }
+  \AttributeTok{formula =} \StringTok{"patient\_status"}\NormalTok{, }
+  \AttributeTok{p\_adj\_method =} \StringTok{"fdr"}\NormalTok{, }
+  \AttributeTok{prv\_cut =} \DecValTok{0}\NormalTok{, }\CommentTok{\# no prev filtering necessary anymore }
+  \AttributeTok{lib\_cut =} \DecValTok{0}\NormalTok{, }
+  \AttributeTok{group =} \StringTok{"patient\_status"}\NormalTok{, }
+  \AttributeTok{struc\_zero =} \ConstantTok{TRUE}\NormalTok{, }
+  \AttributeTok{neg\_lb =} \ConstantTok{TRUE}\NormalTok{, }
+  \AttributeTok{tol =} \FloatTok{1e{-}5}\NormalTok{, }
+  \AttributeTok{max\_iter =} \DecValTok{100}\NormalTok{, }
+  \AttributeTok{conserve =} \ConstantTok{TRUE}\NormalTok{, }
+  \AttributeTok{alpha =} \FloatTok{0.05}\NormalTok{, }
+  \AttributeTok{global =} \ConstantTok{TRUE}
+\NormalTok{)}
+
+
+\CommentTok{\# store the results in res }
+\NormalTok{res }\OtherTok{\textless{}{-}}\NormalTok{ out}\SpecialCharTok{$}\NormalTok{res}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{maaslin2}{%
+\section{MaAsLin2}\label{maaslin2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# first we rarefy data to stick to Nearing et al 2022}
+\NormalTok{tse }\OtherTok{\textless{}{-}} \FunctionTok{subsampleCounts}\NormalTok{(}
+\NormalTok{  tse,}
+  \AttributeTok{abund\_values =} \StringTok{"counts"}\NormalTok{,}
+  \AttributeTok{min\_size =} \FunctionTok{min}\NormalTok{(}\FunctionTok{colSums2}\NormalTok{(}\FunctionTok{assay}\NormalTok{(tse))),}
+  \AttributeTok{seed =} \FunctionTok{runif}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, .Machine}\SpecialCharTok{$}\NormalTok{integer.max),}
+  \AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{,}
+  \AttributeTok{name =} \StringTok{"subsampled"}\NormalTok{,}
+  \AttributeTok{verbose =} \ConstantTok{TRUE}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Subsampling/Rarefying may undermine downstream analyses and have
+## unintended consequences. Therefore, make sure this normalization is appropriate
+## for your data.
+\end{verbatim}
+
+\begin{verbatim}
+## `set.seed(1347512162.87252)` was used to initialize repeatable random subsampling.
+## Please record this for your records so others can reproduce.
+\end{verbatim}
+
+\begin{verbatim}
+## 0 features removed because they are not present in all samples after subsampling.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# maaslin expects features as columns and samples as rows }
+\CommentTok{\# for both the asv/otu table as well as meta data }
+\NormalTok{asv }\OtherTok{\textless{}{-}} \FunctionTok{t}\NormalTok{(}\FunctionTok{assay}\NormalTok{(tse, }\StringTok{"subsampled"}\NormalTok{))}
+\NormalTok{meta\_data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\FunctionTok{colData}\NormalTok{(tse))}
+\CommentTok{\# you can specifiy different GLMs/normalizations/transforms. We used similar}
+\CommentTok{\# settings as in Nearing et al. (2021) here:}
+\NormalTok{fit\_data }\OtherTok{\textless{}{-}} \FunctionTok{Maaslin2}\NormalTok{(}
+\NormalTok{  asv,}
+\NormalTok{  meta\_data,}
+  \CommentTok{\# A folder will be created that is called like the below specified output.}
+  \CommentTok{\# It contains also figures to visualize the difference between genera }
+  \CommentTok{\# for the significant ones.}
+  \AttributeTok{output =} \StringTok{"DAA example"}\NormalTok{,}
+  \AttributeTok{transform =} \StringTok{"AST"}\NormalTok{,}
+  \AttributeTok{fixed\_effects =} \StringTok{"patient\_status"}\NormalTok{,}
+  \CommentTok{\# random\_effects = c(...), \# you can also fit MLM by specifying random effects}
+  \CommentTok{\# specifying a ref is especially important if you have more than 2 levels}
+  \AttributeTok{reference =} \StringTok{"patient\_status,Control"}\NormalTok{,  }
+  \AttributeTok{normalization =} \StringTok{"TSS"}\NormalTok{,}
+  \AttributeTok{standardize =} \ConstantTok{FALSE}\NormalTok{,}
+  \AttributeTok{min\_prevalence =} \DecValTok{0} \CommentTok{\# prev filterin already done}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in xtfrm.data.frame(x): cannot xtfrm data frames
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# which genera are identified as differentially abundant? (leave out "head" to}
+\CommentTok{\# see all)}
+\FunctionTok{kable}\NormalTok{(}\FunctionTok{head}\NormalTok{(}\FunctionTok{filter}\NormalTok{(fit\_data}\SpecialCharTok{$}\NormalTok{results, qval }\SpecialCharTok{\textless{}=} \FloatTok{0.05}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|l|l|r|r|r|l|r|r|r}
+\hline
+feature & metadata & value & coef & stderr & pval & name & qval & N & N.not.zero\\
+\hline
+X17264718 & patient\_status & Control & 0.0728128 & 0.0125076 & 0.0000045 & patient\_statusControl & 0.0006841 & 27 & 20\\
+\hline
+X172647170 & patient\_status & Control & 0.0675534 & 0.0147170 & 0.0001078 & patient\_statusControl & 0.0081392 & 27 & 18\\
+\hline
+\end{tabular}
+
+\hypertarget{linda}{%
+\subsection{LinDA}\label{linda}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{otu.tab }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{assay}\NormalTok{(tse))}
+\NormalTok{meta }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{colData}\NormalTok{(tse)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(patient\_status)}
+\NormalTok{res }\OtherTok{\textless{}{-}} \FunctionTok{linda}\NormalTok{(}
+\NormalTok{  otu.tab, }
+\NormalTok{  meta, }
+  \AttributeTok{formula =} \StringTok{\textquotesingle{}\textasciitilde{}patient\_status\textquotesingle{}}\NormalTok{, }
+  \AttributeTok{alpha =} \FloatTok{0.05}\NormalTok{, }
+  \AttributeTok{prev.cut =} \DecValTok{0}\NormalTok{, }\CommentTok{\# we already filtered }
+  \AttributeTok{lib.cut =} \DecValTok{1000}\NormalTok{, }
+  \AttributeTok{winsor.quan =} \FloatTok{0.97}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Pseudo-count approach is used.
+\end{verbatim}
+
+\hypertarget{summary-of-methods}{%
+\section{Summary of methods}\label{summary-of-methods}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{summ }\OtherTok{\textless{}{-}} \FunctionTok{full\_join}\NormalTok{(}
+    \FunctionTok{rownames\_to\_column}\NormalTok{(aldex\_out, }\StringTok{"genus"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{select}\NormalTok{(genus, }\AttributeTok{aldex2 =}\NormalTok{ wi.eBH),}
+    \FunctionTok{rownames\_to\_column}\NormalTok{(out}\SpecialCharTok{$}\NormalTok{res}\SpecialCharTok{$}\NormalTok{diff\_abn, }\StringTok{"genus"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{select}\NormalTok{(genus, }\AttributeTok{ancombc =}\NormalTok{ patient\_statusControl),}
+    \AttributeTok{by =} \StringTok{"genus"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{full\_join}\NormalTok{(}
+    \FunctionTok{select}\NormalTok{(fit\_data}\SpecialCharTok{$}\NormalTok{results, }\AttributeTok{genus =}\NormalTok{ feature, }\AttributeTok{maaslin2 =}\NormalTok{ qval) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{mutate}\NormalTok{(}\AttributeTok{genus =} \FunctionTok{str\_remove}\NormalTok{(genus, }\StringTok{"X"}\NormalTok{)), }
+    \AttributeTok{by =} \StringTok{"genus"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{full\_join}\NormalTok{(}
+    \FunctionTok{select}\NormalTok{(}
+      \FunctionTok{rownames\_to\_column}\NormalTok{(res}\SpecialCharTok{$}\NormalTok{output}\SpecialCharTok{$}\NormalTok{patient\_statusControl, }\StringTok{"genus"}\NormalTok{),}
+\NormalTok{      genus, }\AttributeTok{linda =}\NormalTok{ reject),}
+      \AttributeTok{by =} \StringTok{"genus"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \FunctionTok{across}\NormalTok{(}\FunctionTok{c}\NormalTok{(aldex2, maaslin2), }\SpecialCharTok{\textasciitilde{}}\NormalTok{ .x }\SpecialCharTok{\textless{}=} \FloatTok{0.05}\NormalTok{),}
+    \CommentTok{\# the following line would be necessary without prevalence filtering }
+    \CommentTok{\# as some methods output NA}
+    \CommentTok{\#across({-}genus, function(x) ifelse(is.na(x), FALSE, x)),}
+    \AttributeTok{score =} \FunctionTok{rowSums}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{c}\NormalTok{(aldex2, ancombc, maaslin2, linda)))}
+\NormalTok{  )}
+
+\CommentTok{\# This is how it looks like:}
+\FunctionTok{kable}\NormalTok{(}\FunctionTok{head}\NormalTok{(}\FunctionTok{arrange}\NormalTok{(summ, }\FunctionTok{desc}\NormalTok{(score))))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|l|l|l|l|r}
+\hline
+genus & aldex2 & ancombc & maaslin2 & linda & score\\
+\hline
+17264718 & TRUE & TRUE & TRUE & TRUE & 4\\
+\hline
+172647170 & TRUE & TRUE & TRUE & TRUE & 4\\
+\hline
+17264734 & FALSE & TRUE & FALSE & TRUE & 2\\
+\hline
+1726479 & FALSE & TRUE & FALSE & TRUE & 2\\
+\hline
+17264728 & FALSE & TRUE & FALSE & TRUE & 2\\
+\hline
+17264733 & FALSE & TRUE & FALSE & TRUE & 2\\
+\hline
+\end{tabular}
+
+Now we can answer our questions:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# how many genera were identified by each method?}
+\FunctionTok{summarise}\NormalTok{(summ, }\FunctionTok{across}\NormalTok{(}\FunctionTok{where}\NormalTok{(is.logical), sum)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{r|r|r|r}
+\hline
+aldex2 & ancombc & maaslin2 & linda\\
+\hline
+2 & 73 & 2 & 23\\
+\hline
+\end{tabular}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# which genera are identified by all methods?}
+\FunctionTok{filter}\NormalTok{(summ, score }\SpecialCharTok{==} \DecValTok{4}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{kable}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|l|l|l|l|r}
+\hline
+genus & aldex2 & ancombc & maaslin2 & linda & score\\
+\hline
+17264718 & TRUE & TRUE & TRUE & TRUE & 4\\
+\hline
+172647170 & TRUE & TRUE & TRUE & TRUE & 4\\
+\hline
+\end{tabular}
+
+Lets create plots to vizualize differential abundance:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# to plot the highest phylogenetic taxon name }
+\NormalTok{taxid\_switch }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{rowData}\NormalTok{(tse)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rownames\_to\_column}\NormalTok{(}\StringTok{"taxid"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{genus =} \FunctionTok{ifelse}\NormalTok{(Family }\SpecialCharTok{==} \StringTok{""}\NormalTok{, Class, }\FunctionTok{ifelse}\NormalTok{(Genus }\SpecialCharTok{==} \StringTok{""}\NormalTok{, Family, Genus))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(taxid, genus) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{column\_to\_rownames}\NormalTok{(}\StringTok{"taxid"}\NormalTok{)}
+
+\NormalTok{plot\_data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\FunctionTok{t}\NormalTok{(}\FunctionTok{assay}\NormalTok{(tse)))}
+\NormalTok{plot\_data}\SpecialCharTok{$}\NormalTok{patient\_status }\OtherTok{\textless{}{-}} \FunctionTok{colData}\NormalTok{(tse)}\SpecialCharTok{$}\NormalTok{patient\_status}
+
+
+\CommentTok{\# create a plot for each genus where the score is indicated in the title}
+\NormalTok{plots }\OtherTok{\textless{}{-}} \FunctionTok{pmap}\NormalTok{(}
+  \FunctionTok{select}\NormalTok{(summ, genus, score), }
+  \ControlFlowTok{function}\NormalTok{(genus, score) \{}
+\NormalTok{  taxon }\OtherTok{\textless{}{-}}\NormalTok{ taxid\_switch[genus, }\StringTok{"genus"}\NormalTok{]}
+  \FunctionTok{ggplot}\NormalTok{(plot\_data, }\FunctionTok{aes\_string}\NormalTok{(}\StringTok{"patient\_status"}\NormalTok{, glue}\SpecialCharTok{::}\FunctionTok{glue}\NormalTok{(}\StringTok{"X\{genus\}"}\NormalTok{))) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ patient\_status), }\AttributeTok{outlier.shape =} \ConstantTok{NA}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{geom\_jitter}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.2}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ggtitle}\NormalTok{(glue}\SpecialCharTok{::}\FunctionTok{glue}\NormalTok{(}\StringTok{"Robustness score \{score\}"}\NormalTok{)) }\SpecialCharTok{+}
+    \FunctionTok{theme\_bw}\NormalTok{() }\SpecialCharTok{+} 
+    \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ylab}\NormalTok{(taxon)}
+\NormalTok{\})}
+
+\CommentTok{\# now we can show only those genera that have at least score 4 (3, 2 or 1)}
+\NormalTok{robust\_plots }\OtherTok{\textless{}{-}}\NormalTok{ plots[summ}\SpecialCharTok{$}\NormalTok{score }\SpecialCharTok{==} \DecValTok{4}\NormalTok{] }
+
+
+\CommentTok{\# to display this nicely in the book we use patchwork here:}
+\CommentTok{\# (we show first 8)}
+\NormalTok{robust\_plots[[}\DecValTok{1}\NormalTok{]] }\SpecialCharTok{+} 
+\NormalTok{  robust\_plots[[}\DecValTok{2}\NormalTok{]] }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{08-abundance_demo_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# or if we have most trust in any specific method we can show genera that }
+\CommentTok{\# are differentially abundant according to that method and then look in the}
+\CommentTok{\# title how many methods also identified it (we only show first 9 here):}
+\NormalTok{linda\_plots }\OtherTok{\textless{}{-}}\NormalTok{ plots[summ}\SpecialCharTok{$}\NormalTok{linda] }
+\NormalTok{linda\_plots[[}\DecValTok{1}\NormalTok{]] }\SpecialCharTok{+}\NormalTok{ linda\_plots[[}\DecValTok{2}\NormalTok{]] }\SpecialCharTok{+}
+\NormalTok{  linda\_plots[[}\DecValTok{3}\NormalTok{]] }\SpecialCharTok{+}\NormalTok{ linda\_plots[[}\DecValTok{4}\NormalTok{]] }\SpecialCharTok{+}
+\NormalTok{  linda\_plots[[}\DecValTok{5}\NormalTok{]] }\SpecialCharTok{+}\NormalTok{ linda\_plots[[}\DecValTok{6}\NormalTok{]] }\SpecialCharTok{+}
+\NormalTok{  linda\_plots[[}\DecValTok{7}\NormalTok{]] }\SpecialCharTok{+}\NormalTok{ linda\_plots[[}\DecValTok{8}\NormalTok{]] }\SpecialCharTok{+}
+\NormalTok{  linda\_plots[[}\DecValTok{9}\NormalTok{]] }\SpecialCharTok{+}
+  \FunctionTok{plot\_layout}\NormalTok{(}\AttributeTok{ncol =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{08-abundance_demo_files/figure-latex/unnamed-chunk-14-2.pdf}
+
+\hypertarget{exercises-2}{%
+\section{Exercises}\label{exercises-2}}
+
+\begin{itemize}
+\tightlist
+\item
+  Try to interpret above analyses.\\
+\item
+  Do ``Differential Abundance'' from the \href{https://microbiome.github.io/OMA/exercises.html}{exercises}.
+\end{itemize}
 
 \hypertarget{material}{%
 \chapter{Study material}\label{material}}

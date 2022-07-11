@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-07-10" />
+<meta name="date" content="2022-07-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="alpha-diversity-demo.html"/>
-<link rel="next" href="material.html"/>
+<link rel="next" href="differential-abundance-analysis-demo.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -212,12 +212,23 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="beta-diversity-demo.html"><a href="beta-diversity-demo.html#exercises-1"><i class="fa fa-check"></i><b>8.3</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="material.html"><a href="material.html"><i class="fa fa-check"></i><b>9</b> Study material</a>
+<li class="chapter" data-level="9" data-path="differential-abundance-analysis-demo.html"><a href="differential-abundance-analysis-demo.html"><i class="fa fa-check"></i><b>9</b> Differential abundance analysis demo</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="material.html"><a href="material.html#online-tutorial"><i class="fa fa-check"></i><b>9.1</b> Online tutorial</a></li>
-<li class="chapter" data-level="9.2" data-path="material.html"><a href="material.html#lecture-slides"><i class="fa fa-check"></i><b>9.2</b> Lecture slides</a></li>
-<li class="chapter" data-level="9.3" data-path="material.html"><a href="material.html#tasks"><i class="fa fa-check"></i><b>9.3</b> Tasks</a></li>
-<li class="chapter" data-level="9.4" data-path="material.html"><a href="material.html#extra-material-on-miaverse-and-r-programming"><i class="fa fa-check"></i><b>9.4</b> Extra material on miaverse and R programming</a></li>
+<li class="chapter" data-level="9.1" data-path="differential-abundance-analysis-demo.html"><a href="differential-abundance-analysis-demo.html#aldex2"><i class="fa fa-check"></i><b>9.1</b> ALDEx2</a></li>
+<li class="chapter" data-level="9.2" data-path="differential-abundance-analysis-demo.html"><a href="differential-abundance-analysis-demo.html#ancom-bc"><i class="fa fa-check"></i><b>9.2</b> ANCOM-BC</a></li>
+<li class="chapter" data-level="9.3" data-path="differential-abundance-analysis-demo.html"><a href="differential-abundance-analysis-demo.html#maaslin2"><i class="fa fa-check"></i><b>9.3</b> MaAsLin2</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="differential-abundance-analysis-demo.html"><a href="differential-abundance-analysis-demo.html#linda"><i class="fa fa-check"></i><b>9.3.1</b> LinDA</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="differential-abundance-analysis-demo.html"><a href="differential-abundance-analysis-demo.html#summary-of-methods"><i class="fa fa-check"></i><b>9.4</b> Summary of methods</a></li>
+<li class="chapter" data-level="9.5" data-path="differential-abundance-analysis-demo.html"><a href="differential-abundance-analysis-demo.html#exercises-2"><i class="fa fa-check"></i><b>9.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="material.html"><a href="material.html"><i class="fa fa-check"></i><b>10</b> Study material</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="material.html"><a href="material.html#online-tutorial"><i class="fa fa-check"></i><b>10.1</b> Online tutorial</a></li>
+<li class="chapter" data-level="10.2" data-path="material.html"><a href="material.html#lecture-slides"><i class="fa fa-check"></i><b>10.2</b> Lecture slides</a></li>
+<li class="chapter" data-level="10.3" data-path="material.html"><a href="material.html#tasks"><i class="fa fa-check"></i><b>10.3</b> Tasks</a></li>
+<li class="chapter" data-level="10.4" data-path="material.html"><a href="material.html#extra-material-on-miaverse-and-r-programming"><i class="fa fa-check"></i><b>10.4</b> Extra material on miaverse and R programming</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -413,6 +424,45 @@ Follow-up testing can be done with PERMDISP2 implemented in the vegan package.</
 <h2><span class="header-section-number">8.3</span> Exercises<a href="beta-diversity-demo.html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Do “Beta diversity” from the <a href="https://microbiome.github.io/OMA/exercises.html">exercises</a>.</p>
 
+<pre><code>## deldir       (NA     -&gt; 1.0-6 ) [CRAN]
+## interp       (NA     -&gt; 1.1-2 ) [CRAN]
+## htmlTable    (2.4.0  -&gt; 2.4.1 ) [CRAN]
+## latticeExtra (0.6-29 -&gt; 0.6-30) [CRAN]
+## * checking for file ‘/tmp/RtmpzBk5ZT/remotes5b840995f80/FrederickHuangLin-ANCOMBC-093ce61/DESCRIPTION’ ... OK
+## * preparing ‘ANCOMBC’:
+## * checking DESCRIPTION meta-information ... OK
+## * installing the package to process help pages
+## Loading required namespace: ANCOMBC
+## Warning: replacing previous import ‘microbiome::coverage’ by ‘SummarizedExperiment::coverage’ when loading ‘ANCOMBC’
+## Warning: replacing previous import ‘SummarizedExperiment::distance’ by ‘phyloseq::distance’ when loading ‘ANCOMBC’
+## Warning: replacing previous import ‘SummarizedExperiment::start’ by ‘stats::start’ when loading ‘ANCOMBC’
+## Warning: replacing previous import ‘SummarizedExperiment::end’ by ‘stats::end’ when loading ‘ANCOMBC’
+## * saving partial Rd database
+## * checking for LF line-endings in source and make files and shell scripts
+## * checking for empty or unneeded directories
+## * building ‘ANCOMBC_1.99.1.tar.gz’</code></pre>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="beta-diversity-demo.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mia)</span>
+<span id="cb142-2"><a href="beta-diversity-demo.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb142-3"><a href="beta-diversity-demo.html#cb142-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidySummarizedExperiment)</span>
+<span id="cb142-4"><a href="beta-diversity-demo.html#cb142-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ANCOMBC)</span>
+<span id="cb142-5"><a href="beta-diversity-demo.html#cb142-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ALDEx2)</span>
+<span id="cb142-6"><a href="beta-diversity-demo.html#cb142-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Maaslin2)</span>
+<span id="cb142-7"><a href="beta-diversity-demo.html#cb142-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb142-8"><a href="beta-diversity-demo.html#cb142-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb142-9"><a href="beta-diversity-demo.html#cb142-9" aria-hidden="true" tabindex="-1"></a><span class="co"># LinDA is a very new package that we therefore install separately</span></span>
+<span id="cb142-10"><a href="beta-diversity-demo.html#cb142-10" aria-hidden="true" tabindex="-1"></a><span class="co"># directly from Github:</span></span>
+<span id="cb142-11"><a href="beta-diversity-demo.html#cb142-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">&quot;LinDA&quot;</span> <span class="sc">%in%</span> <span class="fu">installed.packages</span>()[, <span class="st">&quot;Package&quot;</span>]) {</span>
+<span id="cb142-12"><a href="beta-diversity-demo.html#cb142-12" aria-hidden="true" tabindex="-1"></a>  devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;zhouhj1994/LinDA&quot;</span>)</span>
+<span id="cb142-13"><a href="beta-diversity-demo.html#cb142-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## * checking for file ‘/tmp/RtmpzBk5ZT/remotes5b84ee47b90/zhouhj1994-LinDA-bf65791/DESCRIPTION’ ... OK
+## * preparing ‘LinDA’:
+## * checking DESCRIPTION meta-information ... OK
+## * checking for LF line-endings in source and make files and shell scripts
+## * checking for empty or unneeded directories
+## * building ‘LinDA_0.1.0.tar.gz’</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="beta-diversity-demo.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(LinDA)</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="beta-diversity-demo.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import our dataset </span></span>
+<span id="cb145-2"><a href="beta-diversity-demo.html#cb145-2" aria-hidden="true" tabindex="-1"></a>tse <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">&quot;data/Tengeler2020/tse.rds&quot;</span>)</span></code></pre></div>
 </div>
 </div>
             </section>
@@ -421,7 +471,7 @@ Follow-up testing can be done with PERMDISP2 implemented in the vegan package.</
         </div>
       </div>
 <a href="alpha-diversity-demo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="material.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="differential-abundance-analysis-demo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
