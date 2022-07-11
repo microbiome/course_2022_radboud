@@ -1,4 +1,6 @@
-##```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
 library(mia)
 library(patchwork)
 library(tidySummarizedExperiment)
@@ -23,7 +25,7 @@ library(LinDA)
 tse <- read_rds("data/Tengeler2020/tse.rds")
 ```
 
-# Differential abundance analysis
+# Differential abundance analysis demo
 
 Here, we perform differential abundance analyses using four different methods: 
 **Aldex2**, **ANCOMBC**, **MaAsLin2** and **LinDA**. 
