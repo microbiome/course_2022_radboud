@@ -21,6 +21,7 @@ biocViews:
     Book
 Suggests:
     bookdown,
+    devtools,
     dplyr,
     ggplot2,
     ggpubr,

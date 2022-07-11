@@ -15,6 +15,7 @@ rmd_files:
   - 05-explore.Rmd
   - 05-alpha_diversity_demo.Rmd
   - 06-beta_diversity_demo.Rmd
+  - 08-abundance_demo.Rmd
   - 04-material.Rmd  
 
 
