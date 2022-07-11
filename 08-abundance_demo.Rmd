@@ -1,6 +1,17 @@
 
-
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
+pkg <- read.csv("pkgs.csv")[,1]
+pkg_already_installed <- pkg[pkg %in% installed.packages()]
+packages_to_install <- setdiff(pkg, pkg_already_installed)
+if( length(packages_to_install) ) {
+   BiocManager::install(packages_to_install)
+}
+```
+
+
+
+
+```{r, echo=TRUE, warning=FALSE, message=FALSE}
 library(mia)
 library(patchwork)
 library(tidySummarizedExperiment)
