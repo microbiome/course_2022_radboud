@@ -6,6 +6,7 @@ packages_to_install <- setdiff(pkg, pkg_already_installed)
 if( length(packages_to_install) ) {
    BiocManager::install(packages_to_install)
 }
+install_github("FrederickHuangLin/ANCOMBC", ref = "develop")
 ```
 
 
