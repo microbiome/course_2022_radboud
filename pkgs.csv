@@ -20,6 +20,7 @@ curatedMetagenomicData
 dada2
 datasets
 DESeq2
+devtools
 DirichletMultinomial
 dplyr
 DT
