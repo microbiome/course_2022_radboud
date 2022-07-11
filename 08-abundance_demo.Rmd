@@ -5,11 +5,21 @@ library(tidySummarizedExperiment)
 library(ANCOMBC)
 library(ALDEx2)
 library(Maaslin2)
-library(LinDA)
 library(knitr)
 library(tidyverse)
+# LinDA is a very new package that we therefore install separately
+# directly from Github:
+# if below function results in an error, read the error message and install 
+# missing packages if there are any. If that does not work continue without the 
+# package for now.
+if (!"LinDA" %in% installed.packages()[, "Package"]) {
+  devtools::install_github("zhouhj1994/LinDA")
+}
+library(LinDA)
+```
 
-se <- readRDS("data/Tengeler2020/se.rds")
+```{r}
+# import our dataset 
 tse <- read_rds("data/Tengeler2020/tse.rds")
 ```
 
@@ -166,16 +176,6 @@ kable(head(filter(fit_data$results, qval <= 0.05)))
 
 
 ### LinDA 
-
-```{r}
-# LinDA is a very new package that we therefore install separately
-# directly from Github:
-# if this function results in an error, read the error message and install 
-# missing packages if there are any
-if (!"LinDA" %in% installed.packages()[, "Package"]) {
-  devtools::install_github("zhouhj1994/LinDA")
-}
-```
 
 ```{r}
 otu.tab <- as.data.frame(assay(tse))
