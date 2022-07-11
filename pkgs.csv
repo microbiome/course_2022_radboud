@@ -27,11 +27,13 @@ DT
 ecodist
 factoextra
 forcats
+foreach
 GenomeInfoDb
 GenomicRanges
 ggord
 ggplot2
 ggraph
+ggrepel
 ggsignif
 ggtree
 graphics
@@ -42,15 +44,18 @@ IRanges
 kableExtra
 knitr
 lattice
+lmerTest
 Maaslin2
 MASS
 MatrixGenerics
 matrixStats
 methods
 microbiomeDataSets
+modeest
 MOFA2
 MultiAssayExperiment
 NADA
+parallel
 patchwork
 permute
 pheatmap
@@ -84,3 +89,4 @@ vegan
 XVector
 yulab.utils
 zCompositions
+

@@ -11,9 +11,6 @@ library(knitr)
 library(tidyverse)
 # LinDA is a very new package that we therefore install separately
 # directly from Github:
-# if below function results in an error, read the error message and install 
-# missing packages if there are any. If that does not work continue without the 
-# package for now.
 if (!"LinDA" %in% installed.packages()[, "Package"]) {
   devtools::install_github("zhouhj1994/LinDA")
 }
